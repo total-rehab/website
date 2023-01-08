@@ -22,7 +22,7 @@ jobs:
           COMMIT_HASH=$(git rev-parse HEAD)
           yarn prepare-env \
           --app-env ${{ github.ref_name }} \
-          --app-version $COMMIT_HASH
+          --app-name total-rehab-admin-${{ github.ref_name }}
         env:
           STAGING_DIGITALOCEAN_APP_ID: ${{ secrets.STAGING_DIGITALOCEAN_APP_ID }}
           PRODUCTION_DIGITALOCEAN_APP_ID: ${{ secrets.PRODUCTION_DIGITALOCEAN_APP_ID }}

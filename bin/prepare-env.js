@@ -2,11 +2,13 @@ const path = require('path');
 const fs = require('fs');
 const core = require('@actions/core');
 const Handlebars = require('handlebars');
+const fetch = require('node-fetch');
 const yargs = require('yargs');
 const { hideBin } = require('yargs/helpers');
+const isCI = require('is-ci');
 
 const { argv } = yargs(hideBin(process.argv));
-const requiredVars = ['appEnv'];
+const requiredVars = ['appName', 'appEnv'];
 
 requiredVars.forEach((requiredVar) => {
   if (!(requiredVar in argv)) {
@@ -16,20 +18,55 @@ requiredVars.forEach((requiredVar) => {
   }
 });
 
-const digitalOceanDir = path.join(__dirname, '..', '.do');
-const templatePath = path.join(digitalOceanDir, 'app.template.yaml');
-const appSpecPath = path.join(digitalOceanDir, 'app.yaml');
-const source = fs.readFileSync(templatePath).toString();
-const template = Handlebars.compile(source);
-const compiledContent = template({
-  appEnv: argv.appEnv,
-});
+const writeAppSpec = () => {
+  const digitalOceanDir = path.join(__dirname, '..', '.do');
+  const templatePath = path.join(digitalOceanDir, 'app.template.yaml');
+  const appSpecPath = path.join(digitalOceanDir, 'app.yaml');
+  const source = fs.readFileSync(templatePath).toString();
+  const template = Handlebars.compile(source);
+  const compiledContent = template({
+    appEnv: argv.appEnv,
+  });
 
-// Write the app spec
-fs.writeFileSync(appSpecPath, Buffer.from(compiledContent));
+  fs.writeFileSync(appSpecPath, Buffer.from(compiledContent));
+};
 
-// Set the DigitalOcean app ID for use in later GH Actions steps
-core.setOutput(
-  'digitalocean-app-id',
-  process.env[`${argv.appEnv.toUpperCase()}_DIGITALOCEAN_APP_ID`],
-);
+const getAppId = async () => {
+  const token = process.env.DIGITALOCEAN_ACCESS_TOKEN;
+
+  if (!token) {
+    if (isCI) {
+      throw new Error(
+        'The DIGITALOCEAN_ACCESS_TOKEN env var is required when running as part of a CI process',
+      );
+    }
+  }
+
+  const res = await fetch('https://api.digitalocean.com/v2/apps?per_page=200', {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  const { apps } = await res.json();
+  const app = apps.find(({ spec }) => spec.name === argv.appName);
+
+  return app.id;
+};
+
+const setGhActionsOutput = (appId) => {
+  if (!isCI) {
+    return;
+  }
+
+  // Set the DigitalOcean app ID for use in later GH Actions steps
+  core.setOutput('digitalocean-app-id', appId);
+};
+
+(async () => {
+  writeAppSpec();
+
+  const appId = await getAppId();
+
+  setGhActionsOutput(appId);
+})();
