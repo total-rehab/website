@@ -32,3 +32,5 @@ jobs:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
       - name: Update app
         run: doctl apps update ${{ steps.prepare.outputs.digitalocean-app-id }} --spec ./.do/app.yaml
+      - name: Create deployment
+        run: doctl apps create-deployment ${{ steps.prepare.outputs.digitalocean-app-id }}
