@@ -1,0 +1,37 @@
+name: total-rehab-admin-{{appEnv}}
+region: lon
+alerts:
+- disabled: true
+  rule: DEPLOYMENT_FAILED
+- disabled: true
+  rule: DOMAIN_FAILED
+services:
+- name: total-rehab-admin
+  build_command: yarn build
+  environment_slug: node-js
+  envs:
+  - key: NODE_ENV
+    scope: RUN_TIME
+    value: production
+  - key: APP_ENV
+    scope: RUN_TIME
+    value: {{appEnv}}
+  - key: APP_VERSION
+    scope: RUN_TIME
+    value: {{appVersion}}
+  - key: HOST
+    scope: RUN_TIME
+    value: "0.0.0.0"
+  - key: PORT
+    scope: RUN_TIME
+    value: "3000"
+  github:
+    branch: main
+    repo: total-rehan/admin
+  http_port: 3000
+  instance_count: 1
+  instance_size_slug: basic-xxs
+  routes:
+  - path: /
+  run_command: yarn start
+  source_dir: /

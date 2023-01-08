@@ -1,0 +1,34 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - staging
+      - production
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Install
+        run: yarn install --frozen-lockfile --non-interactive
+      - name: Build
+        run: yarn build
+      - name: Prepare environment
+        id: prepare
+        run: |
+          COMMIT_HASH=$(git rev-parse HEAD)
+          yarn prepare-env \
+          --app-env ${{ github.ref_name }} \
+          --app-version $COMMIT_HASH
+        env:
+          STAGING_DIGITALOCEAN_APP_ID: ${{ secrets.STAGING_DIGITALOCEAN_APP_ID }}
+          PRODUCTION_DIGITALOCEAN_APP_ID: ${{ secrets.PRODUCTION_DIGITALOCEAN_APP_ID }}
+      - name: Install doctl
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+      - name: Update app
+        run: doctl apps update ${{ steps.prepare.outputs.digitalocean-app-id }} --spec ./.do/app.yaml
