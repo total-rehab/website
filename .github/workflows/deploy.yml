@@ -24,8 +24,7 @@ jobs:
           --app-env ${{ github.ref_name }} \
           --app-name total-rehab-admin-${{ github.ref_name }}
         env:
-          STAGING_DIGITALOCEAN_APP_ID: ${{ secrets.STAGING_DIGITALOCEAN_APP_ID }}
-          PRODUCTION_DIGITALOCEAN_APP_ID: ${{ secrets.PRODUCTION_DIGITALOCEAN_APP_ID }}
+          DIGITALOCEAN_ACCESS_TOKEN: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
       - name: Install doctl
         uses: digitalocean/action-doctl@v2
         with:
