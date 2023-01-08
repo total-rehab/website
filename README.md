@@ -22,10 +22,20 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Environments
 
-By default the local URL of the Vibefind API will be used. If you want to point
-at staging, for example, you export the following environment variable before
-running the app (or write it to a local `.env` file):
+By default the staging versions of the Vibefind API and Supabase database will
+by used when you run `yarn dev` and the production versions when you run
+`yarn build && yarn start`.
+
+If you want to override this behaviour to point at your locally running version
+of the API you can add the following environment variable to you `.env.local` file:
 
 ```text
-export API_BASE_URL=http://example.com
+API_BASE_URL=http://127.0.0.1:7000
+```
+
+You can disable Supabase auth by adding the following to your `.env.local` file:
+
+```text
+SUPABASE_URL=
+SUPABASE_ANON_KEY=
 ```
