@@ -6,7 +6,7 @@ alerts:
 - disabled: true
   rule: DOMAIN_FAILED
 services:
-- name: total-rehab-admin
+- name: admin
   build_command: yarn build
   environment_slug: node-js
   envs:
@@ -16,9 +16,6 @@ services:
   - key: APP_ENV
     scope: RUN_AND_BUILD_TIME
     value: {{appEnv}}
-  - key: API_BASE_URL
-    scope: RUN_AND_BUILD_TIME
-    value: {{apiBaseUrl}}
   - key: HOST
     scope: RUN_TIME
     value: "0.0.0.0"
