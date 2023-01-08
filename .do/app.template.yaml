@@ -16,9 +16,6 @@ services:
   - key: APP_ENV
     scope: RUN_TIME
     value: {{appEnv}}
-  - key: APP_VERSION
-    scope: RUN_TIME
-    value: {{appVersion}}
   - key: HOST
     scope: RUN_TIME
     value: "0.0.0.0"

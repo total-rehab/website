@@ -6,6 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "set-app-version": "echo \"APP_VERSION=$(git rev-parse HEAD)\" >> .env",
+    "prebuild": "yarn set-app-version",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx,.json .",
     "typecheck": "tsc --noEmit",
     "prepare-env": "node ./bin/prepare-env.js"

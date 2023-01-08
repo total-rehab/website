@@ -6,7 +6,7 @@ const yargs = require('yargs');
 const { hideBin } = require('yargs/helpers');
 
 const { argv } = yargs(hideBin(process.argv));
-const requiredVars = ['appEnv', 'appVersion'];
+const requiredVars = ['appEnv'];
 
 requiredVars.forEach((requiredVar) => {
   if (!(requiredVar in argv)) {
@@ -23,7 +23,6 @@ const source = fs.readFileSync(templatePath).toString();
 const template = Handlebars.compile(source);
 const compiledContent = template({
   appEnv: argv.appEnv,
-  appVersion: argv.appVersion,
 });
 
 // Write the app spec
