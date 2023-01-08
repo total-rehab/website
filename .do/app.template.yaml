@@ -14,10 +14,10 @@ services:
     scope: RUN_TIME
     value: production
   - key: APP_ENV
-    scope: RUN_TIME
+    scope: RUN_AND_BUILD_TIME
     value: {{appEnv}}
   - key: API_BASE_URL
-    scope: RUN_TIME
+    scope: RUN_AND_BUILD_TIME
     value: {{apiBaseUrl}}
   - key: HOST
     scope: RUN_TIME
