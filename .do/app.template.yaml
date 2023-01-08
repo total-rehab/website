@@ -23,7 +23,7 @@ services:
     scope: RUN_TIME
     value: "3000"
   github:
-    branch: main
+    branch: {{appEnv}}
     repo: total-rehan/admin
   http_port: 3000
   instance_count: 1
