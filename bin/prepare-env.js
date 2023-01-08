@@ -8,7 +8,7 @@ const { hideBin } = require('yargs/helpers');
 const isCI = require('is-ci');
 
 const { argv } = yargs(hideBin(process.argv));
-const requiredVars = ['appName', 'appEnv'];
+const requiredVars = ['appName', 'appEnv', 'apiAppName'];
 
 requiredVars.forEach((requiredVar) => {
   if (!(requiredVar in argv)) {
@@ -18,7 +18,7 @@ requiredVars.forEach((requiredVar) => {
   }
 });
 
-const writeAppSpec = () => {
+const writeAppSpec = (apiBaseUrl) => {
   const digitalOceanDir = path.join(__dirname, '..', '.do');
   const templatePath = path.join(digitalOceanDir, 'app.template.yaml');
   const appSpecPath = path.join(digitalOceanDir, 'app.yaml');
@@ -26,12 +26,13 @@ const writeAppSpec = () => {
   const template = Handlebars.compile(source);
   const compiledContent = template({
     appEnv: argv.appEnv,
+    apiBaseUrl,
   });
 
   fs.writeFileSync(appSpecPath, Buffer.from(compiledContent));
 };
 
-const getAppId = async () => {
+const getApp = async (name) => {
   const token = process.env.DIGITALOCEAN_ACCESS_TOKEN;
 
   if (!token) {
@@ -49,24 +50,19 @@ const getAppId = async () => {
   });
 
   const { apps } = await res.json();
-  const app = apps.find(({ spec }) => spec.name === argv.appName);
+  const app = apps.find(({ spec }) => spec.name === name);
 
-  return app.id;
-};
-
-const setGhActionsOutput = (appId) => {
-  if (!isCI) {
-    return;
-  }
-
-  // Set the DigitalOcean app ID for use in later GH Actions steps
-  core.setOutput('digitalocean-app-id', appId);
+  return app;
 };
 
 (async () => {
-  writeAppSpec();
+  const [app, api] = await Promise.all([
+    getApp(argv.appName),
+    getApp(argv.apiAppName),
+  ]);
 
-  const appId = await getAppId();
+  writeAppSpec(api.live_url_base);
 
-  setGhActionsOutput(appId);
+  // Set the DigitalOcean app ID for use in later GH Actions steps
+  core.setOutput('digitalocean-app-id', app.id);
 })();

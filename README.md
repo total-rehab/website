@@ -19,3 +19,13 @@ yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000).
+
+## Environments
+
+By default the local URL of the Vibefind API will be used. If you want to point
+at staging, for example, you export the following environment variable before
+running the app (or write it to a local `.env` file):
+
+```text
+export API_BASE_URL=http://example.com
+```
