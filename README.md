@@ -20,22 +20,22 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-## Environments
+## Configuration
 
-By default the staging versions of the Vibefind API and Supabase database will
-by used when you run `yarn dev` and the production versions when you run
-`yarn build && yarn start`.
+In remote environments the app is configured via `env.staging` and `env.production`
+files. For local development (i.e. when using `yarn dev`) we use the `env.development`
+file. You can also override settings by creating a `.env.local` file.
 
-If you want to override this behaviour to point at your locally running version
-of the API you can add the following environment variable to you `.env.local` file:
+Note that no secret values should be committed to these files.
 
-```text
-API_BASE_URL=http://127.0.0.1:7000
-```
+### Backend API
 
-You can disable Supabase auth by adding the following to your `.env.local` file:
+By default, the local URL for the backend API is used during local development.
+If you want to override this you can add the `API_BASE_URL` to your `.env.local`
+file.
 
-```text
-SUPABASE_URL=
-SUPABASE_ANON_KEY=
-```
+## Authentication
+
+By default, authentication is disabled during local development. If you want to
+enable it you can add the `SUPABASE_URL` and `SUPABASE_ANON_KEY` environment
+variables to your `.env.local` file.
