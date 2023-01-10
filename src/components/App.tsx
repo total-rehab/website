@@ -2,9 +2,12 @@ import { FC } from 'react';
 import { Admin, Resource } from 'react-admin';
 import { getDataProvider } from '../data-provider';
 import { theme } from '../theme';
-import { ModalityCreate } from './events/ModalityCreate';
-import { ModalityEdit } from './events/ModalityEdit';
-import { ModalityList } from './events/ModalityList';
+import { ModalityCreate } from './modalities/ModalityCreate';
+import { ModalityEdit } from './modalities/ModalityEdit';
+import { ModalityList } from './modalities/ModalityList';
+import { EquipmentList } from './equipment/EquipmentList';
+import { EquipmentCreate } from './equipment/EquipmentCreate';
+import { EquipmentEdit } from './equipment/EquipmentEdit';
 import { Layout } from './Layout';
 
 const App: FC = () => (
@@ -19,6 +22,12 @@ const App: FC = () => (
       list={ModalityList}
       create={ModalityCreate}
       edit={ModalityEdit}
+    />
+    <Resource
+      name="equipment"
+      list={EquipmentList}
+      create={EquipmentCreate}
+      edit={EquipmentEdit}
     />
   </Admin>
 );
