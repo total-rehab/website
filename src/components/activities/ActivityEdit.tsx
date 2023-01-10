@@ -21,7 +21,7 @@ export const ActivityEdit: FC = () => {
   };
 
   return (
-    <Edit mutationOptions={{ onSuccess }}>
+    <Edit mutationOptions={{ onSuccess }} mutationMode="pessimistic">
       <SimpleForm>
         <TextInput source="title" validate={[required()]} fullWidth />
         <ArrayInput source="instructions">

@@ -19,7 +19,7 @@ export const EquipmentEdit: FC = () => {
   };
 
   return (
-    <Edit mutationOptions={{ onSuccess }}>
+    <Edit mutationOptions={{ onSuccess }} mutationMode="pessimistic">
       <SimpleForm>
         <TextInput source="name" validate={[required()]} fullWidth />
       </SimpleForm>
