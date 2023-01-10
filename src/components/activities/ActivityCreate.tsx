@@ -1,20 +1,15 @@
 import { FC } from 'react';
 import {
-  ArrayInput,
   Create,
-  FunctionField,
-  ImageField,
-  ImageInput,
   RaRecord,
   required,
   SimpleForm,
-  SimpleFormIterator,
   TextInput,
   useNotify,
   useRedirect,
 } from 'react-admin';
-import { useTheme, Button } from '@mui/material';
-import { StepFormIterator } from '../inputs/StepFormIterator';
+import { useTheme } from '@mui/material';
+import { TextArrayInput } from '../inputs/TextArrayInput';
 
 export const ActivityCreate: FC = () => {
   const notify = useNotify();
@@ -26,17 +21,11 @@ export const ActivityCreate: FC = () => {
     redirect('list', 'activities', data.id, data);
   };
 
-  console.log(theme.palette.grey[50]);
-
   return (
     <Create mutationOptions={{ onSuccess }}>
       <SimpleForm>
         <TextInput source="title" validate={[required()]} fullWidth />
-        <ArrayInput source="instructions">
-          <StepFormIterator>
-            <TextInput source="" />
-          </StepFormIterator>
-        </ArrayInput>
+        <TextArrayInput source="instructions" />
       </SimpleForm>
     </Create>
   );

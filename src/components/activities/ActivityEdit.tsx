@@ -1,6 +1,5 @@
 import { FC } from 'react';
 import {
-  ArrayInput,
   Edit,
   RaRecord,
   required,
@@ -9,7 +8,7 @@ import {
   useNotify,
   useRedirect,
 } from 'react-admin';
-import { StepFormIterator } from '../inputs/StepFormIterator';
+import { TextArrayInput } from '../inputs/TextArrayInput';
 
 export const ActivityEdit: FC = () => {
   const notify = useNotify();
@@ -24,11 +23,7 @@ export const ActivityEdit: FC = () => {
     <Edit mutationOptions={{ onSuccess }} mutationMode="pessimistic">
       <SimpleForm>
         <TextInput source="title" validate={[required()]} fullWidth />
-        <ArrayInput source="instructions">
-          <StepFormIterator>
-            <TextInput source="" />
-          </StepFormIterator>
-        </ArrayInput>
+        <TextArrayInput source="instructions" />
       </SimpleForm>
     </Edit>
   );
