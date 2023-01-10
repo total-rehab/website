@@ -1,28 +1,9 @@
 import { FC } from 'react';
-import {
-  Create,
-  RaRecord,
-  required,
-  SimpleForm,
-  TextInput,
-  useNotify,
-  useRedirect,
-} from 'react-admin';
+import { required, TextInput } from 'react-admin';
+import { CreateForm } from '../forms/CreateForm';
 
-export const ModalityCreate: FC = () => {
-  const notify = useNotify();
-  const redirect = useRedirect();
-
-  const onSuccess = (data: RaRecord) => {
-    notify('Modality created');
-    redirect('list', 'modalities', data.id, data);
-  };
-
-  return (
-    <Create mutationOptions={{ onSuccess }}>
-      <SimpleForm>
-        <TextInput source="name" validate={[required()]} fullWidth />
-      </SimpleForm>
-    </Create>
-  );
-};
+export const ModalityCreate: FC = () => (
+  <CreateForm>
+    <TextInput source="name" validate={[required()]} fullWidth />
+  </CreateForm>
+);

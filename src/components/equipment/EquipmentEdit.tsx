@@ -1,28 +1,9 @@
 import { FC } from 'react';
-import {
-  Edit,
-  RaRecord,
-  required,
-  SimpleForm,
-  TextInput,
-  useNotify,
-  useRedirect,
-} from 'react-admin';
+import { required, TextInput } from 'react-admin';
+import { EditForm } from '../forms/EditForm';
 
-export const EquipmentEdit: FC = () => {
-  const notify = useNotify();
-  const redirect = useRedirect();
-
-  const onSuccess = (data: RaRecord) => {
-    notify('Equipment updated');
-    redirect('list', 'equipment', data.id, data);
-  };
-
-  return (
-    <Edit mutationOptions={{ onSuccess }} mutationMode="pessimistic">
-      <SimpleForm>
-        <TextInput source="name" validate={[required()]} fullWidth />
-      </SimpleForm>
-    </Edit>
-  );
-};
+export const EquipmentEdit: FC = () => (
+  <EditForm>
+    <TextInput source="name" validate={[required()]} fullWidth />
+  </EditForm>
+);

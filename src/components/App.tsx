@@ -12,6 +12,9 @@ import { Layout } from './Layout';
 import { ActivityList } from './activities/ActivityList';
 import { ActivityCreate } from './activities/ActivityCreate';
 import { ActivityEdit } from './activities/ActivityEdit';
+import { ProgramList } from './programs/ProgramList';
+import { ProgramCreate } from './programs/ProgramCreate';
+import { ProgramEdit } from './programs/ProgramEdit';
 
 const App: FC = () => (
   <Admin
@@ -20,6 +23,12 @@ const App: FC = () => (
       process.env.API_BASE_URL ?? 'http://localhost:7000',
     )}
     layout={Layout}>
+    <Resource
+      name="programs"
+      list={ProgramList}
+      create={ProgramCreate}
+      edit={ProgramEdit}
+    />
     <Resource
       name="activities"
       list={ActivityList}
