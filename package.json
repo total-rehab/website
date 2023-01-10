@@ -13,9 +13,13 @@
     "prepare-env": "node ./bin/prepare-env.js"
   },
   "dependencies": {
+    "@jambff/ra-supabase-next-auth": "^1.0.2",
     "@next/font": "13.1.1",
-    "@supabase/supabase-js": "^2.2.3",
+    "app-root-path": "^3.1.0",
+    "dotenv": "^16.0.3",
+    "js-cookie": "^3.0.1",
     "next": "13.1.1",
+    "normalize.css": "^8.0.1",
     "qs": "^6.11.0",
     "react": "18.2.0",
     "react-admin": "^4.7.0",
@@ -30,6 +34,7 @@
   "devDependencies": {
     "@actions/core": "^1.10.0",
     "@commitlint/config-conventional": "^8.3.4",
+    "@types/js-cookie": "^3.0.2",
     "@types/node": "18.11.18",
     "@types/qs": "^6.9.7",
     "@types/react": "18.0.26",

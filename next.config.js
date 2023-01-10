@@ -1,10 +1,17 @@
+const path = require('path');
+const dotenv = require('dotenv');
+const appRoot = require('app-root-path');
+
+dotenv.config({ path: path.join(appRoot.path, `.env.${process.env.APP_ENV}`) });
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   env: {
-    apiBaseUrl: process.env.API_BASE_URL,
-    supabaseUrl: process.env.SUPABASE_URL,
-    supabaseAnonKey: process.env.SUPABASE_ANON_KEY,
+    APP_VERSION: process.env.APP_VERSION,
+    API_BASE_URL: process.env.API_BASE_URL,
+    SUPABASE_URL: process.env.SUPABASE_URL,
+    SUPABASE_ANON_KEY: process.env.SUPABASE_ANON_KEY,
   },
 };
 
