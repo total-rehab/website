@@ -6,6 +6,6 @@ import { TextArrayInput } from '../inputs/TextArrayInput';
 export const ProgramEdit: FC = () => (
   <EditForm>
     <TextInput source="title" validate={[required()]} fullWidth />
-    <TextArrayInput source="features" />
+    <TextArrayInput source="features" addButtonText="Add feature" />
   </EditForm>
 );

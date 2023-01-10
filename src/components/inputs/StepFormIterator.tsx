@@ -2,14 +2,19 @@ import { FC } from 'react';
 import { SimpleFormIterator, SimpleFormIteratorProps } from 'react-admin';
 import { useTheme, Button } from '@mui/material';
 
-export const StepFormIterator: FC<SimpleFormIteratorProps> = (
-  props: SimpleFormIteratorProps,
-) => {
+type StepFormIteratorProps = SimpleFormIteratorProps & {
+  addButtonText?: string;
+};
+
+export const StepFormIterator: FC<StepFormIteratorProps> = ({
+  addButtonText = 'Add step',
+  ...restProps
+}: StepFormIteratorProps) => {
   const theme = useTheme();
 
   return (
     <SimpleFormIterator
-      {...props}
+      {...restProps}
       disableClear
       sx={{
         flex: 1,
@@ -21,7 +26,7 @@ export const StepFormIterator: FC<SimpleFormIteratorProps> = (
       }}
       addButton={
         <Button size="small" variant="outlined">
-          Add step
+          {addButtonText}
         </Button>
       }
     />

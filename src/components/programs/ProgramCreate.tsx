@@ -8,7 +8,7 @@ export const ProgramCreate: FC = () => {
   return (
     <CreateForm>
       <TextInput source="title" validate={[required()]} fullWidth />
-      <TextArrayInput source="features" />
+      <TextArrayInput source="features" addButtonText="Add feature" />
       <EditorContent source="content" fullWidth />
     </CreateForm>
   );
