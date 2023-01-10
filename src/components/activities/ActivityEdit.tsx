@@ -5,11 +5,11 @@ import {
   RaRecord,
   required,
   SimpleForm,
-  SimpleFormIterator,
   TextInput,
   useNotify,
   useRedirect,
 } from 'react-admin';
+import { StepFormIterator } from '../inputs/StepFormIterator';
 
 export const ActivityEdit: FC = () => {
   const notify = useNotify();
@@ -25,9 +25,9 @@ export const ActivityEdit: FC = () => {
       <SimpleForm>
         <TextInput source="title" validate={[required()]} fullWidth />
         <ArrayInput source="instructions">
-          <SimpleFormIterator>
+          <StepFormIterator>
             <TextInput source="" />
-          </SimpleFormIterator>
+          </StepFormIterator>
         </ArrayInput>
       </SimpleForm>
     </Edit>
