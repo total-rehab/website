@@ -26,6 +26,8 @@ services:
     branch: {{appEnv}}
     repo: total-rehan/admin
   http_port: 3000
+  health_check:
+    http_path: /healthcheck
   instance_count: 1
   instance_size_slug: basic-xxs
   routes:
