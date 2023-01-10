@@ -1,5 +1,9 @@
 import { FC } from 'react';
 import { Admin, Resource } from 'react-admin';
+import FitnessCenter from '@mui/icons-material/FitnessCenter';
+import DirectionsRun from '@mui/icons-material/DirectionsRun';
+import CalendarMonth from '@mui/icons-material/CalendarMonth';
+import Category from '@mui/icons-material/Category';
 import { getDataProvider } from '../data-provider';
 import { theme } from '../theme';
 import { ModalityCreate } from './modalities/ModalityCreate';
@@ -28,24 +32,28 @@ const App: FC = () => (
       list={ProgramList}
       create={ProgramCreate}
       edit={ProgramEdit}
+      icon={CalendarMonth}
     />
     <Resource
       name="activities"
       list={ActivityList}
       create={ActivityCreate}
       edit={ActivityEdit}
+      icon={DirectionsRun}
     />
     <Resource
       name="modalities"
       list={ModalityList}
       create={ModalityCreate}
       edit={ModalityEdit}
+      icon={Category}
     />
     <Resource
       name="equipment"
       list={EquipmentList}
       create={EquipmentCreate}
       edit={EquipmentEdit}
+      icon={FitnessCenter}
     />
   </Admin>
 );
