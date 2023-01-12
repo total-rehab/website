@@ -32,6 +32,13 @@ const stringifyQuery = (queryParameters: any) =>
     encodeValuesOnly: true,
   } as IStringifyOptions);
 
+type GetListQuery = {
+  limit: number;
+  offset: number;
+  sort?: Record<string, string>;
+  q?: string;
+};
+
 export const getDataProvider = (baseUrl: string): DataProvider => ({
   getList: async (
     resource: string,
@@ -40,10 +47,22 @@ export const getDataProvider = (baseUrl: string): DataProvider => ({
     const { page, perPage } = params.pagination;
     const url = new URL(`/${resource}`, baseUrl);
 
-    url.search = stringifyQuery({
+    const query: GetListQuery = {
       limit: perPage,
       offset: (page - 1) * perPage,
-    });
+    };
+
+    if (Object.keys(params.sort)) {
+      query.sort = { [params.sort.field]: params.sort.order.toLowerCase() };
+    }
+
+    const { q } = params.filter;
+
+    if (q) {
+      query.q = q;
+    }
+
+    url.search = stringifyQuery(query);
 
     const res = await fetch(url.href);
     const data = await res.json();
