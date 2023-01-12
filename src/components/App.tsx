@@ -6,12 +6,9 @@ import CalendarMonth from '@mui/icons-material/CalendarMonth';
 import Category from '@mui/icons-material/Category';
 import { getDataProvider } from '../data-provider';
 import { theme } from '../theme';
-import { ModalityCreate } from './modalities/ModalityCreate';
-import { ModalityEdit } from './modalities/ModalityEdit';
-import { ModalityList } from './modalities/ModalityList';
-import { EquipmentList } from './equipment/EquipmentList';
-import { EquipmentCreate } from './equipment/EquipmentCreate';
-import { EquipmentEdit } from './equipment/EquipmentEdit';
+import { TaxonomyCreate } from './taxonomies/TaxonomyCreate';
+import { TaxonomyEdit } from './taxonomies/TaxonomyEdit';
+import { TaxonomyList } from './taxonomies/TaxonomyList';
 import { Layout } from './Layout';
 import { ActivityList } from './activities/ActivityList';
 import { ActivityCreate } from './activities/ActivityCreate';
@@ -43,16 +40,16 @@ const App: FC = () => (
     />
     <Resource
       name="modalities"
-      list={ModalityList}
-      create={ModalityCreate}
-      edit={ModalityEdit}
+      list={TaxonomyList}
+      create={TaxonomyCreate}
+      edit={TaxonomyEdit}
       icon={Category}
     />
     <Resource
       name="equipment"
-      list={EquipmentList}
-      create={EquipmentCreate}
-      edit={EquipmentEdit}
+      list={TaxonomyList}
+      create={TaxonomyCreate}
+      edit={TaxonomyEdit}
       icon={FitnessCenter}
     />
   </Admin>

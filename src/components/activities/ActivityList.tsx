@@ -17,13 +17,6 @@ export const ActivityList: FC = () => (
       <TextField source="title" />
       <DateField source="createdAt" showTime />
       <DateField source="updatedAt" showTime />
-      <FunctionField
-        label="Has instructions"
-        textAlign="center"
-        render={(record: RaRecord) =>
-          record.instructions.length > 0 ? <TrueIcon /> : <FalseIcon />
-        }
-      />
       <TextField source="id" textAlign="center" />
     </Datagrid>
   </List>

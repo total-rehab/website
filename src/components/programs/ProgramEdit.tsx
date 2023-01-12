@@ -1,11 +1,9 @@
+import { EditForm } from '@jambff/ra-components';
 import { FC } from 'react';
-import { required, TextInput } from 'react-admin';
-import { EditForm } from '../forms/EditForm';
-import { TextArrayInput } from '../inputs/TextArrayInput';
+import { ProgramInputs } from './ProgramInputs';
 
 export const ProgramEdit: FC = () => (
   <EditForm>
-    <TextInput source="title" validate={[required()]} fullWidth />
-    <TextArrayInput source="features" addButtonText="Add feature" />
+    <ProgramInputs />
   </EditForm>
 );

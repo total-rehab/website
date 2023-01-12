@@ -1,11 +1,9 @@
+import { EditForm } from '@jambff/ra-components';
 import { FC } from 'react';
-import { required, TextInput } from 'react-admin';
-import { EditForm } from '../forms/EditForm';
-import { TextArrayInput } from '../inputs/TextArrayInput';
+import { ActivityInputs } from './ActivityInputs';
 
 export const ActivityEdit: FC = () => (
   <EditForm>
-    <TextInput source="title" validate={[required()]} fullWidth />
-    <TextArrayInput source="instructions" />
+    <ActivityInputs />
   </EditForm>
 );
