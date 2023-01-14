@@ -2,7 +2,9 @@ const path = require('path');
 const dotenv = require('dotenv');
 const appRoot = require('app-root-path');
 
-dotenv.config({ path: path.join(appRoot.path, `.env.${process.env.APP_ENV}`) });
+dotenv.config({
+  path: path.join(appRoot.path, `.env.${process.env.APP_ENV ?? 'local'}`),
+});
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
