@@ -2,11 +2,14 @@ const path = require('path');
 const dotenv = require('dotenv');
 const appRoot = require('app-root-path');
 
-dotenv.config({
-  path: path.join(appRoot.path, `.env.${process.env.APP_ENV ?? 'local'}`),
-});
+const configPath = path.join(
+  appRoot.path,
+  `.env.${process.env.APP_ENV ?? 'local'}`,
+);
 
-console.log(process.env.SUPABASE_URL);
+dotenv.config({ path: configPath });
+
+console.info(`Loading environment variables from ${configPath}`);
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {

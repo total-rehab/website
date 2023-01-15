@@ -4,11 +4,17 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:staging": "APP_ENV=staging yarn dev",
+    "dev:production": "APP_ENV=production yarn dev",
     "build": "next build",
+    "build:staging": "APP_ENV=staging yarn build",
+    "build:production": "APP_ENV=production yarn build",
     "start": "next start",
+    "start:staging": "APP_ENV=staging yarn start",
+    "start:production": "APP_ENV=production yarn start",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx,.json .",
     "set-app-version": "echo \"APP_VERSION=$(git rev-parse HEAD)\" >> .env",
     "prebuild": "yarn set-app-version",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx,.json .",
     "typecheck": "tsc --noEmit",
     "prepare-env": "node ./bin/prepare-env.js"
   },

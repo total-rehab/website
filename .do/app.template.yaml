@@ -6,8 +6,8 @@ alerts:
 - disabled: true
   rule: DOMAIN_FAILED
 services:
-- name: admin
-  build_command: yarn build
+- name: vibefind-admin
+  build_command: yarn build:{{appEnv}}
   environment_slug: node-js
   envs:
   - key: NODE_ENV
@@ -32,5 +32,5 @@ services:
   instance_size_slug: basic-xxs
   routes:
   - path: /
-  run_command: yarn start
+  run_command: yarn start:{{appEnv}}
   source_dir: /
