@@ -1,16 +1,3 @@
-const path = require('path');
-const dotenv = require('dotenv');
-const appRoot = require('app-root-path');
-
-const configPath = path.join(
-  appRoot.path,
-  `.env.${process.env.APP_ENV ?? 'local'}`,
-);
-
-dotenv.config({ path: configPath });
-
-console.info(`Loading environment variables from ${configPath}`);
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,

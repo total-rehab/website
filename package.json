@@ -4,19 +4,16 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "dev:staging": "APP_ENV=staging yarn dev",
-    "dev:production": "APP_ENV=production yarn dev",
     "build": "next build",
-    "build:staging": "APP_ENV=staging yarn build",
-    "build:production": "APP_ENV=production yarn build",
     "start": "next start",
-    "start:staging": "APP_ENV=staging yarn start",
-    "start:production": "APP_ENV=production yarn start",
+    "predev": "yarn prepare-env",
+    "prebuild": "yarn prepare-env && yarn set-app-version",
+    "prestart": "yarn prepare-env",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx,.json .",
     "set-app-version": "echo \"APP_VERSION=$(git rev-parse HEAD)\" >> .env",
-    "prebuild": "yarn set-app-version",
     "typecheck": "tsc --noEmit",
-    "prepare-env": "node ./bin/prepare-env.js"
+    "prepare-env": "node ./bin/prepare-env.js",
+    "prepare-deployment": "node ./bin/prepare-deployment.js"
   },
   "dependencies": {
     "@jambff/ra-components": "^1.5.0",
@@ -24,7 +21,6 @@
     "@supabase/supabase-js": "^2.4.0",
     "app-root-path": "^3.1.0",
     "change-case": "^4.1.2",
-    "dotenv": "^16.0.3",
     "js-cookie": "^3.0.1",
     "next": "13.1.1",
     "normalize.css": "^8.0.1",

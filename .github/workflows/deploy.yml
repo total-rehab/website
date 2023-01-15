@@ -18,7 +18,7 @@ jobs:
         id: prepare
         run: |
           COMMIT_HASH=$(git rev-parse HEAD)
-          yarn prepare-env \
+          yarn prepare-deployment \
           --app-env ${{ github.ref_name }} \
           --app-name total-rehab-admin-${{ github.ref_name }}
         env:
