@@ -15,7 +15,7 @@ jobs:
       - name: Install
         run: yarn install --frozen-lockfile --non-interactive
       - name: Build
-        run: yarn build
+        run: APP_ENV=${{ github.ref_name }} yarn build
       - name: Prepare environment
         id: prepare
         run: |
