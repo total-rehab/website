@@ -22,25 +22,30 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Configuration
 
-In remote environments the app is configured via `env.staging` and `env.production`
-files. For local development (i.e. when using `yarn dev`) we use the `env.development`
-file. You can also override settings by creating a `.env.local` file.
+In remote environments the app is configured via `env.staging` and
+`env.production` files. You can use the settings from these files by running,
+for example:
 
-Note that no secret values should be committed to these files.
+```text
+APP_ENV=staging yarn dev
+```
+
+If you want to override these settings you can do so by creating a `env.local`
+file and then simply running `yarn dev`.
+
+Note that no secret values should be committed to these files (with the
+exception of the `env.local`, which does not get committed to version control).
 
 ### Backend API
 
-By default, the local URL for the backend API is used during local development.
-If you want to override this you can add the `API_BASE_URL` to your `.env.local`
-file.
+The backend API to be used is set via the `API_BASE_URL` environment variable.
 
 ### Authentication
 
-To enable authentication you will need to add the `SUPABASE_URL` and
-`SUPABASE_ANON_KEY` environment variables to your `.env.local` file. These can
-be retrieved from the Supabase dashboard.
+Supabase authentication is set via the `SUPABASE_URL` and `SUPABASE_ANON_KEY`
+environment variables. These can be retrieved from the Supabase dashboard.
 
-## Media library
+### Media library
 
 To enable image uploads you will need to make sure that Supabase storage has
 a public bucket called "images", containing a filter called "public" for a given
