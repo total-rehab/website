@@ -358,13 +358,15 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz#b520529ec21d8e5945a1851dfd1c32e94e39ff45"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
-"@jambff/ra-components@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@jambff/ra-components/-/ra-components-1.0.1.tgz#59912b7a1da96e6899ed9a1b48b0d4d188d77ab5"
-  integrity sha512-s6ZrFiSYLDAzBJJPP3WZHSYy0PZhv88Iic1/CY2RS3AJJIYlyjqeiUt3nFs1YDMXiaH6RMBhehXDoO377np8QQ==
+"@jambff/ra-components@^1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@jambff/ra-components/-/ra-components-1.5.0.tgz#4a6a4a3ffca8b64351a287fd4501c6c93c3b6e25"
+  integrity sha512-I1KHZK8dR7Q2Dvmb2ExzZzFc7g/5bDr6cQ03rUo90ze1r5KKZXOS5dB5yEkoHSzC0z6Y1wiwBxAk52PP7lNsmA==
   dependencies:
     change-case "^4.1.2"
+    matcher "^5.0.0"
     pluralize "^8.0.0"
+    unfetch "^5.0.0"
 
 "@jambff/ra-supabase-next-auth@^1.0.6":
   version "1.0.6"
@@ -1851,6 +1853,11 @@ escape-string-regexp@^4.0.0:
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-4.0.0.tgz#14ba83a5d373e3d311e5afca29cf5bfad965bf34"
   integrity sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA==
 
+escape-string-regexp@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-5.0.0.tgz#4683126b500b61762f2dbebace1806e8be31b1c8"
+  integrity sha512-/veY75JbMK4j1yjvuUxuVsiS/hr/4iHs9FTT6cgTexxdE0Ly/glccBAkloH/DofkjRbZU3bnoj38mOmhkZ0lHw==
+
 eslint-config-airbnb-base@^15.0.0:
   version "15.0.0"
   resolved "https://registry.yarnpkg.com/eslint-config-airbnb-base/-/eslint-config-airbnb-base-15.0.0.tgz#6b09add90ac79c2f8d723a2580e07f3925afd236"
@@ -3005,6 +3012,13 @@ match-sorter@^6.0.2:
   dependencies:
     "@babel/runtime" "^7.12.5"
     remove-accents "0.4.2"
+
+matcher@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/matcher/-/matcher-5.0.0.tgz#cd82f1c7ae7ee472a9eeaf8ec7cac45e0fe0da62"
+  integrity sha512-s2EMBOWtXFc8dgqvoAzKJXxNHibcdJMV0gwqKUaw9E2JBJuGUK7DrNKrA6g/i+v72TT16+6sVm5mS3thaMLQUw==
+  dependencies:
+    escape-string-regexp "^5.0.0"
 
 meow@5.0.0:
   version "5.0.0"

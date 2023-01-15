@@ -1,14 +1,5 @@
 import { FC } from 'react';
-import {
-  Datagrid,
-  DateField,
-  FunctionField,
-  List,
-  RaRecord,
-  TextField,
-} from 'react-admin';
-import TrueIcon from '@mui/icons-material/Done';
-import FalseIcon from '@mui/icons-material/Clear';
+import { Datagrid, DateField, List, TextField } from 'react-admin';
 import { ListActions } from '../ListActions';
 
 export const ActivityList: FC = () => (

@@ -13,7 +13,7 @@
     "prepare-env": "node ./bin/prepare-env.js"
   },
   "dependencies": {
-    "@jambff/ra-components": "^1.0.1",
+    "@jambff/ra-components": "^1.5.0",
     "@jambff/ra-supabase-next-auth": "^1.0.6",
     "app-root-path": "^3.1.0",
     "change-case": "^4.1.2",

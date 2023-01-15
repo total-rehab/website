@@ -1,9 +1,11 @@
 import { FC } from 'react';
 import { Admin, Resource } from 'react-admin';
+import { LoginPage, authProvider } from '@jambff/ra-supabase-next-auth';
 import FitnessCenter from '@mui/icons-material/FitnessCenter';
 import DirectionsRun from '@mui/icons-material/DirectionsRun';
 import CalendarMonth from '@mui/icons-material/CalendarMonth';
 import Category from '@mui/icons-material/Category';
+import { MediaLibraryProvider } from '@jambff/ra-components';
 import { getDataProvider } from '../data-provider';
 import { theme } from '../theme';
 import { TaxonomyCreate } from './taxonomies/TaxonomyCreate';
@@ -16,43 +18,59 @@ import { ActivityEdit } from './activities/ActivityEdit';
 import { ProgramList } from './programs/ProgramList';
 import { ProgramCreate } from './programs/ProgramCreate';
 import { ProgramEdit } from './programs/ProgramEdit';
+import { createSupabaseClient } from '../supabase';
 
 const App: FC = () => (
-  <Admin
-    theme={theme}
-    dataProvider={getDataProvider(
-      process.env.API_BASE_URL ?? 'http://localhost:7000',
-    )}
-    layout={Layout}>
-    <Resource
-      name="programs"
-      list={ProgramList}
-      create={ProgramCreate}
-      edit={ProgramEdit}
-      icon={CalendarMonth}
-    />
-    <Resource
-      name="activities"
-      list={ActivityList}
-      create={ActivityCreate}
-      edit={ActivityEdit}
-      icon={DirectionsRun}
-    />
-    <Resource
-      name="modalities"
-      list={TaxonomyList}
-      create={TaxonomyCreate}
-      edit={TaxonomyEdit}
-      icon={Category}
-    />
-    <Resource
-      name="equipment"
-      list={TaxonomyList}
-      create={TaxonomyCreate}
-      edit={TaxonomyEdit}
-      icon={FitnessCenter}
-    />
-  </Admin>
+  <MediaLibraryProvider
+    supabase={createSupabaseClient()}
+    resource="media"
+    bucket="images"
+    bucketFolder="public"
+    accept="image/*"
+    maxSize={2000000}
+    aspectRatio="3 / 2"
+    sort={{
+      field: 'createdAt',
+      order: 'desc',
+    }}>
+    <Admin
+      theme={theme}
+      dataProvider={getDataProvider(
+        process.env.API_BASE_URL ?? 'http://localhost:7000',
+      )}
+      authProvider={authProvider}
+      layout={Layout}
+      loginPage={LoginPage}>
+      <Resource
+        name="programs"
+        list={ProgramList}
+        create={ProgramCreate}
+        edit={ProgramEdit}
+        icon={CalendarMonth}
+      />
+      <Resource
+        name="activities"
+        list={ActivityList}
+        create={ActivityCreate}
+        edit={ActivityEdit}
+        icon={DirectionsRun}
+      />
+      <Resource
+        name="modalities"
+        list={TaxonomyList}
+        create={TaxonomyCreate}
+        edit={TaxonomyEdit}
+        icon={Category}
+      />
+      <Resource
+        name="equipment"
+        list={TaxonomyList}
+        create={TaxonomyCreate}
+        edit={TaxonomyEdit}
+        icon={FitnessCenter}
+      />
+    </Admin>
+  </MediaLibraryProvider>
 );
 
 export default App;

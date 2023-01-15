@@ -6,6 +6,8 @@ dotenv.config({
   path: path.join(appRoot.path, `.env.${process.env.APP_ENV ?? 'local'}`),
 });
 
+console.log(process.env.SUPABASE_URL);
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,

@@ -34,8 +34,14 @@ By default, the local URL for the backend API is used during local development.
 If you want to override this you can add the `API_BASE_URL` to your `.env.local`
 file.
 
-## Authentication
+### Authentication
 
-By default, authentication is disabled during local development. If you want to
-enable it you can add the `SUPABASE_URL` and `SUPABASE_ANON_KEY` environment
-variables to your `.env.local` file.
+To enable authentication you will need to add the `SUPABASE_URL` and
+`SUPABASE_ANON_KEY` environment variables to your `.env.local` file. These can
+be retrieved from the Supabase dashboard.
+
+## Media library
+
+To enable image uploads you will need to make sure that Supabase storage has
+a public bucket called "images", containing a filter called "public" for a given
+environment.
