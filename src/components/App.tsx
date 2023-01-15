@@ -1,13 +1,12 @@
 import { FC } from 'react';
 import { Admin, Resource } from 'react-admin';
-import { LoginPage, authProvider } from '@jambff/ra-supabase-next-auth';
+import { LoginPage, createAuthProvider } from '@jambff/ra-supabase-next-auth';
 import FitnessCenter from '@mui/icons-material/FitnessCenter';
 import DirectionsRun from '@mui/icons-material/DirectionsRun';
 import CalendarMonth from '@mui/icons-material/CalendarMonth';
 import Category from '@mui/icons-material/Category';
 import { MediaLibraryProvider } from '@jambff/ra-components';
 import { getDataProvider } from '../data-provider';
-import { theme } from '../theme';
 import { TaxonomyCreate } from './taxonomies/TaxonomyCreate';
 import { TaxonomyEdit } from './taxonomies/TaxonomyEdit';
 import { TaxonomyList } from './taxonomies/TaxonomyList';
@@ -19,10 +18,14 @@ import { ProgramList } from './programs/ProgramList';
 import { ProgramCreate } from './programs/ProgramCreate';
 import { ProgramEdit } from './programs/ProgramEdit';
 import { createSupabaseClient } from '../supabase';
+import { SECONDARY_COLOR, theme } from '../theme';
+
+const supabase = createSupabaseClient();
+const authProvider = createAuthProvider(supabase);
 
 const App: FC = () => (
   <MediaLibraryProvider
-    supabase={createSupabaseClient()}
+    supabase={supabase}
     resource="media"
     bucket="images"
     bucketFolder="public"
@@ -40,7 +43,7 @@ const App: FC = () => (
       )}
       authProvider={authProvider}
       layout={Layout}
-      loginPage={LoginPage}>
+      loginPage={<LoginPage background={SECONDARY_COLOR} />}>
       <Resource
         name="programs"
         list={ProgramList}
