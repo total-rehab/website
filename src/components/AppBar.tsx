@@ -17,6 +17,7 @@ export const AppBar = (props: AppBarProps) => (
         justifyContent: 'center',
       }}>
       <Image
+        priority
         src="/images/total-rehab-logo.png"
         alt="Total Rehab logo"
         width={175}
