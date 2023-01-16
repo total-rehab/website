@@ -30,10 +30,11 @@ for example:
 APP_ENV=staging yarn dev
 ```
 
-If you want to override these settings you can do so by creating a `.env`.
+If you want to override these settings you can do so by creating a `.env.local`
+file and running `yarn dev`.
 
 Note that no secret values should be committed to these files (with the
-exception of the `.env`, which does not get committed to version control).
+exception of the `.env.local`, which does not get committed to version control).
 
 ### Backend API
 
