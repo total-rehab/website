@@ -26,17 +26,59 @@ import Cookies from 'js-cookie';
 
 const ACCESS_TOKEN_COOKIE_KEY = 'access_token';
 
+const convertFilters = (filters: Record<string, string>) =>
+  Object.entries(filters).reduce(
+    (acc, [key, value]) => ({
+      ...acc,
+      [key]: `equals:${value}`,
+    }),
+    {},
+  );
+
 const stringifyQuery = (queryParameters: any) =>
   qs.stringify(queryParameters, {
     arrayFormat: 'brackets',
     encodeValuesOnly: true,
   } as IStringifyOptions);
 
-type GetListQuery = {
+type ListQuery = {
   limit: number;
   offset: number;
   sort?: Record<string, string>;
+  filter?: Record<string, string>;
   q?: string;
+};
+
+const getListQuery = ({
+  pagination,
+  sort,
+  filter,
+}: GetListParams | GetManyReferenceParams) => {
+  const { page, perPage } = pagination;
+  const query: ListQuery = {
+    limit: perPage,
+    offset: (page - 1) * perPage,
+  };
+
+  if (Object.keys(sort)) {
+    query.sort = { [sort.field]: sort.order.toLowerCase() };
+  }
+
+  const { q, ...filters } = filter;
+
+  if (q) {
+    query.q = q;
+  }
+
+  query.filter = Object.entries(filters).reduce(
+    (acc, [key, value]) => ({
+      ...acc,
+      [key]: `equals:${value}`,
+    }),
+    {},
+  );
+
+  return query;
 };
 
 export const getDataProvider = (baseUrl: string): DataProvider => ({
@@ -44,25 +86,9 @@ export const getDataProvider = (baseUrl: string): DataProvider => ({
     resource: string,
     params: GetListParams,
   ): Promise<GetListResult> => {
-    const { page, perPage } = params.pagination;
     const url = new URL(`/${resource}`, baseUrl);
 
-    const query: GetListQuery = {
-      limit: perPage,
-      offset: (page - 1) * perPage,
-    };
-
-    if (Object.keys(params.sort)) {
-      query.sort = { [params.sort.field]: params.sort.order.toLowerCase() };
-    }
-
-    const { q } = params.filter;
-
-    if (q) {
-      query.q = q;
-    }
-
-    url.search = stringifyQuery(query);
+    url.search = stringifyQuery(getListQuery(params));
 
     const res = await fetch(url.href);
     const data = await res.json();
@@ -99,12 +125,27 @@ export const getDataProvider = (baseUrl: string): DataProvider => ({
     return { data: data.items };
   },
 
-  // TODO
   getManyReference: async (
     resource: string,
     params: GetManyReferenceParams,
   ): Promise<GetManyReferenceResult> => {
-    return { data: [] };
+    const url = new URL(`/${resource}`, baseUrl);
+
+    const listQuery = getListQuery(params);
+
+    if (params.target) {
+      params.filter[params.target] = `equals:${params.id}`;
+    }
+
+    url.search = stringifyQuery(listQuery);
+
+    const res = await fetch(url.href);
+    const data = await res.json();
+
+    return {
+      data: data.items,
+      total: data.total,
+    };
   },
 
   create: async (
