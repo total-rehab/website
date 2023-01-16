@@ -368,13 +368,14 @@
     pluralize "^8.0.0"
     unfetch "^5.0.0"
 
-"@jambff/ra-supabase-next-auth@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@jambff/ra-supabase-next-auth/-/ra-supabase-next-auth-1.1.0.tgz#f8dc2f6e8ddb1e84b918a45d2caae88afdd7d55c"
-  integrity sha512-prRsUNrpB9Mz1ferpOXUNTy5NgDxKQ2KunDVsgcKJHmS15ScuHoBXOYRz3QfXcfbu2Jj7cwNzigUbhe3ODC6uQ==
+"@jambff/ra-supabase-next-auth@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@jambff/ra-supabase-next-auth/-/ra-supabase-next-auth-1.2.0.tgz#db1897e5d7b05492fed23119cf1f245677d2ed3c"
+  integrity sha512-Vof0NUw4l2VeJkP0geBKsCvxQrXm62HedIxRrgMJLh2nXgX56d7zc1gBY3tQS1FF6VHf2TDeFz6/tkzwuNv3Rg==
   dependencies:
     js-cookie "^3.0.1"
     qs "^6.11.0"
+    unfetch "^5.0.0"
 
 "@marionebl/sander@^0.6.0":
   version "0.6.1"

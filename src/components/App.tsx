@@ -40,6 +40,7 @@ const App: FC = () => (
       theme={theme}
       dataProvider={getDataProvider(
         process.env.API_BASE_URL ?? 'http://localhost:7000',
+        supabase,
       )}
       authProvider={authProvider}
       layout={Layout}

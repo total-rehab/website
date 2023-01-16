@@ -16,30 +16,23 @@ import {
   GetManyResult,
   GetOneParams,
   GetOneResult,
-  HttpError,
   UpdateManyParams,
   UpdateManyResult,
   UpdateParams,
   UpdateResult,
 } from 'ra-core';
-import Cookies from 'js-cookie';
-
-const ACCESS_TOKEN_COOKIE_KEY = 'access_token';
-
-const convertFilters = (filters: Record<string, string>) =>
-  Object.entries(filters).reduce(
-    (acc, [key, value]) => ({
-      ...acc,
-      [key]: `equals:${value}`,
-    }),
-    {},
-  );
+import { SupabaseClient } from '@supabase/supabase-js';
+import { createAuthenticatedFetch } from '@jambff/ra-supabase-next-auth';
 
 const stringifyQuery = (queryParameters: any) =>
   qs.stringify(queryParameters, {
     arrayFormat: 'brackets',
     encodeValuesOnly: true,
   } as IStringifyOptions);
+
+const isIdObject = (
+  item: number | string | { id: number | string },
+): item is { id: number | string } => typeof item === 'object' && 'id' in item;
 
 type ListQuery = {
   limit: number;
@@ -81,166 +74,164 @@ const getListQuery = ({
   return query;
 };
 
-export const getDataProvider = (baseUrl: string): DataProvider => ({
-  getList: async (
-    resource: string,
-    params: GetListParams,
-  ): Promise<GetListResult> => {
-    const url = new URL(`/${resource}`, baseUrl);
+export const getDataProvider = (
+  baseUrl: string,
+  supabase: SupabaseClient,
+): DataProvider => {
+  const authenticatedFetch = createAuthenticatedFetch(supabase);
 
-    url.search = stringifyQuery(getListQuery(params));
+  return {
+    getList: async (
+      resource: string,
+      params: GetListParams,
+    ): Promise<GetListResult> => {
+      const url = new URL(`/${resource}`, baseUrl);
 
-    const res = await fetch(url.href);
-    const data = await res.json();
+      url.search = stringifyQuery(getListQuery(params));
 
-    return {
-      data: data.items,
-      total: data.total,
-    };
-  },
+      const res = await fetch(url.href);
+      const data = await res.json();
 
-  getOne: async (
-    resource: string,
-    params: GetOneParams,
-  ): Promise<GetOneResult> => {
-    const url = new URL(`/${resource}/${params.id}`, baseUrl);
+      return {
+        data: data.items,
+        total: data.total,
+      };
+    },
 
-    const res = await fetch(url.href);
-    const data = await res.json();
+    getOne: async (
+      resource: string,
+      params: GetOneParams,
+    ): Promise<GetOneResult> => {
+      const url = new URL(`/${resource}/${params.id}`, baseUrl);
 
-    return { data };
-  },
+      const res = await fetch(url.href);
+      const data = await res.json();
 
-  getMany: async (
-    resource: string,
-    params: GetManyParams,
-  ): Promise<GetManyResult> => {
-    const url = new URL(`/${resource}`, baseUrl);
+      return { data };
+    },
 
-    url.search = stringifyQuery({ id: params.ids });
+    getMany: async (
+      resource: string,
+      params: GetManyParams,
+    ): Promise<GetManyResult> => {
+      const url = new URL(`/${resource}`, baseUrl);
 
-    const res = await fetch(url.href);
-    const data = await res.json();
+      // Account for an array of related objects being passed, rather than an
+      // array of IDs.
+      const id = (params.ids ?? []).map((item) =>
+        isIdObject(item) ? item.id : item,
+      );
 
-    return { data: data.items };
-  },
+      url.search = stringifyQuery({ id });
 
-  getManyReference: async (
-    resource: string,
-    params: GetManyReferenceParams,
-  ): Promise<GetManyReferenceResult> => {
-    const url = new URL(`/${resource}`, baseUrl);
+      const res = await fetch(url.href);
+      const data = await res.json();
 
-    const listQuery = getListQuery(params);
+      return { data: data.items };
+    },
 
-    if (params.target) {
-      params.filter[params.target] = `equals:${params.id}`;
-    }
+    getManyReference: async (
+      resource: string,
+      params: GetManyReferenceParams,
+    ): Promise<GetManyReferenceResult> => {
+      const url = new URL(`/${resource}`, baseUrl);
 
-    url.search = stringifyQuery(listQuery);
+      const listQuery = getListQuery(params);
 
-    const res = await fetch(url.href);
-    const data = await res.json();
+      if (params.target) {
+        params.filter[params.target] = `equals:${params.id}`;
+      }
 
-    return {
-      data: data.items,
-      total: data.total,
-    };
-  },
+      url.search = stringifyQuery(listQuery);
 
-  create: async (
-    resource: string,
-    params: CreateParams,
-  ): Promise<CreateResult> => {
-    const url = new URL(`/${resource}`, baseUrl);
+      const res = await fetch(url.href);
+      const data = await res.json();
 
-    const res = await fetch(url.href, {
-      method: 'POST',
-      body: JSON.stringify(params.data),
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${Cookies.get(ACCESS_TOKEN_COOKIE_KEY)}`,
-      },
-    });
+      return {
+        data: data.items,
+        total: data.total,
+      };
+    },
 
-    const data = await res.json();
+    create: async (
+      resource: string,
+      params: CreateParams,
+    ): Promise<CreateResult> => {
+      const url = new URL(`/${resource}`, baseUrl);
 
-    return { data };
-  },
+      const res = await authenticatedFetch(url.href, {
+        method: 'POST',
+        body: JSON.stringify(params.data),
+        headers: { 'Content-Type': 'application/json' },
+      });
 
-  update: async (
-    resource: string,
-    params: UpdateParams,
-  ): Promise<UpdateResult> => {
-    const url = new URL(`/${resource}/${params.id}`, baseUrl);
+      const data = await res.json();
 
-    const res = await fetch(url.href, {
-      method: 'PUT',
-      body: JSON.stringify(params.data),
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${Cookies.get(ACCESS_TOKEN_COOKIE_KEY)}`,
-      },
-    });
+      return { data };
+    },
 
-    const data = await res.json();
+    update: async (
+      resource: string,
+      params: UpdateParams,
+    ): Promise<UpdateResult> => {
+      const url = new URL(`/${resource}/${params.id}`, baseUrl);
 
-    return { data };
-  },
+      const res = await authenticatedFetch(url.href, {
+        method: 'PUT',
+        body: JSON.stringify(params.data),
+        headers: { 'Content-Type': 'application/json' },
+      });
 
-  updateMany: async (
-    resource: string,
-    params: UpdateManyParams,
-  ): Promise<UpdateManyResult> => {
-    const url = new URL(`/${resource}`, baseUrl);
+      const data = await res.json();
 
-    url.search = stringifyQuery({ id: params.ids });
+      return { data };
+    },
 
-    const res = await fetch(url.href, {
-      method: 'PUT',
-      body: JSON.stringify(params.data),
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${Cookies.get(ACCESS_TOKEN_COOKIE_KEY)}`,
-      },
-    });
+    updateMany: async (
+      resource: string,
+      params: UpdateManyParams,
+    ): Promise<UpdateManyResult> => {
+      const url = new URL(`/${resource}`, baseUrl);
 
-    const data = await res.json();
+      url.search = stringifyQuery({ id: params.ids });
 
-    return { data: data.items };
-  },
+      const res = await authenticatedFetch(url.href, {
+        method: 'PUT',
+        body: JSON.stringify(params.data),
+        headers: { 'Content-Type': 'application/json' },
+      });
 
-  delete: async (
-    resource: string,
-    params: DeleteParams,
-  ): Promise<DeleteResult> => {
-    const url = new URL(`/${resource}/${params.id}`, baseUrl);
+      const data = await res.json();
 
-    await fetch(url.href, {
-      method: 'DELETE',
-      headers: {
-        Authorization: `Bearer ${Cookies.get(ACCESS_TOKEN_COOKIE_KEY)}`,
-      },
-    });
+      return { data: data.items };
+    },
 
-    return { data: {} };
-  },
+    delete: async (
+      resource: string,
+      params: DeleteParams,
+    ): Promise<DeleteResult> => {
+      const url = new URL(`/${resource}/${params.id}`, baseUrl);
 
-  deleteMany: async (
-    resource: string,
-    params: DeleteManyParams,
-  ): Promise<DeleteManyResult> => {
-    const url = new URL(`/${resource}`, baseUrl);
+      await authenticatedFetch(url.href, {
+        method: 'DELETE',
+      });
 
-    url.search = stringifyQuery({ id: params.ids });
+      return { data: {} };
+    },
 
-    await fetch(url.href, {
-      method: 'DELETE',
-      headers: {
-        Authorization: `Bearer ${Cookies.get(ACCESS_TOKEN_COOKIE_KEY)}`,
-      },
-    });
+    deleteMany: async (
+      resource: string,
+      params: DeleteManyParams,
+    ): Promise<DeleteManyResult> => {
+      const url = new URL(`/${resource}`, baseUrl);
 
-    return { data: params.ids };
-  },
-});
+      url.search = stringifyQuery({ id: params.ids });
+
+      await authenticatedFetch(url.href, {
+        method: 'DELETE',
+      });
+
+      return { data: params.ids };
+    },
+  };
+};

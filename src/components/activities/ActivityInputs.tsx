@@ -1,11 +1,7 @@
 import { MediaLibraryInput, TextArrayInput } from '@jambff/ra-components';
 import { FC } from 'react';
-import {
-  AutocompleteArrayInput,
-  ReferenceArrayInput,
-  required,
-  TextInput,
-} from 'react-admin';
+import { ReferenceArrayInput, required, TextInput } from 'react-admin';
+import { AutocompleteArrayOfObjectsInput } from '../generic/AutocompleteArrayOfObjectsInput';
 import { FlexRow } from '../generic/FlexRow';
 
 export const ActivityInputs: FC = () => (
@@ -17,7 +13,11 @@ export const ActivityInputs: FC = () => (
     </FlexRow>
     <TextArrayInput source="instructions" />
     <ReferenceArrayInput source="equipment" reference="equipment">
-      <AutocompleteArrayInput fullWidth label="Equipment" optionText="name" />
+      <AutocompleteArrayOfObjectsInput
+        fullWidth
+        label="Equipment"
+        optionText="name"
+      />
     </ReferenceArrayInput>
   </>
 );
