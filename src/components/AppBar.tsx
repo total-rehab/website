@@ -16,13 +16,21 @@ export const AppBar = (props: AppBarProps) => (
         alignItems: 'center',
         justifyContent: 'center',
       }}>
-      <Image
-        priority
-        src="/images/total-rehab-logo.png"
-        alt="Total Rehab logo"
-        width={175}
-        height={25}
-      />
+      <div
+        style={{
+          display: 'flex',
+          position: 'absolute',
+          left: '50%',
+          transform: 'translateX(-50%)',
+        }}>
+        <Image
+          priority
+          src="/images/total-rehab-logo.png"
+          alt="Total Rehab logo"
+          width={175}
+          height={25}
+        />
+      </div>
     </div>
   </RaAppBar>
 );
