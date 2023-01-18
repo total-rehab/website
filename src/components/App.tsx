@@ -4,6 +4,7 @@ import { LoginPage, createAuthProvider } from '@jambff/ra-supabase-next-auth';
 import FitnessCenter from '@mui/icons-material/FitnessCenter';
 import DirectionsRun from '@mui/icons-material/DirectionsRun';
 import CalendarMonth from '@mui/icons-material/CalendarMonth';
+import Image from '@mui/icons-material/Image';
 import Category from '@mui/icons-material/Category';
 import { MediaLibraryProvider } from '@jambff/ra-components';
 import { getDataProvider } from '../data-provider';
@@ -19,6 +20,9 @@ import { ProgramCreate } from './programs/ProgramCreate';
 import { ProgramEdit } from './programs/ProgramEdit';
 import { createSupabaseClient } from '../supabase';
 import { SECONDARY_COLOR, theme } from '../theme';
+import { MediaList } from './media/MediaList';
+import { MediaCreate } from './media/MediaCreate';
+import { MediaEdit } from './media/MediaEdit';
 
 const supabase = createSupabaseClient();
 const authProvider = createAuthProvider(supabase);
@@ -72,6 +76,14 @@ const App: FC = () => (
         create={TaxonomyCreate}
         edit={TaxonomyEdit}
         icon={FitnessCenter}
+      />
+      <Resource
+        name="media"
+        options={{ label: 'Media Library' }}
+        list={MediaList}
+        create={MediaCreate}
+        edit={MediaEdit}
+        icon={Image}
       />
     </Admin>
   </MediaLibraryProvider>
