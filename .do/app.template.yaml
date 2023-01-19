@@ -5,6 +5,9 @@ alerts:
   rule: DEPLOYMENT_FAILED
 - disabled: true
   rule: DOMAIN_FAILED
+domains:
+- domain: {{subDomain}}.total-rehab.co.uk
+  type: PRIMARY
 services:
 - name: vibefind-admin
   build_command: APP_ENV={{appEnv}} yarn build
