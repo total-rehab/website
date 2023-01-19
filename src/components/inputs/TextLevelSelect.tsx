@@ -30,14 +30,24 @@ const options: Array<LevelOption | HeadingLevelOption> = [
   },
   {
     // Content will always have a separate title at level 1, so start at level 2.
-    label: 'Heading',
+    label: 'Heading 1',
     value: 'heading',
     level: 2,
   },
   {
-    label: 'Subheading',
+    label: 'Heading 2',
     value: 'heading',
     level: 3,
+  },
+  {
+    label: 'Heading 3',
+    value: 'heading',
+    level: 4,
+  },
+  {
+    label: 'Heading 4',
+    value: 'heading',
+    level: 5,
   },
 ];
 
