@@ -34,7 +34,7 @@ const App: FC = () => (
     bucket="images"
     bucketFolder="public"
     accept="image/*"
-    maxSize={2000000}
+    maxSize={10000000}
     aspectRatio="3 / 2"
     sort={{
       field: 'createdAt',
