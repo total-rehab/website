@@ -358,8 +358,10 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz#b520529ec21d8e5945a1851dfd1c32e94e39ff45"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
-"@jambff/ra-components@file:.yalc/@jambff/ra-components":
-  version "1.7.0"
+"@jambff/ra-components@^1.10.2":
+  version "1.10.2"
+  resolved "https://registry.yarnpkg.com/@jambff/ra-components/-/ra-components-1.10.2.tgz#d7bda7febcf020a5e1716d738cbf6b755da8bec1"
+  integrity sha512-xkqfOXfjpXUCi5OnsVpbyC4Q3ldHu7ISv8H8oPIdXH2C/J2hfO+9HPhF5jbnnfySgg8jZVJpMyHAjU41MV0W0A==
   dependencies:
     change-case "^4.1.2"
     matcher "^5.0.0"

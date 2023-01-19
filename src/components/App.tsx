@@ -27,15 +27,39 @@ import { MediaEdit } from './media/MediaEdit';
 const supabase = createSupabaseClient();
 const authProvider = createAuthProvider(supabase);
 
+const MEDIA_LIBRARY_BUCKET = 'images';
+const MEDIA_LIBRARY_BUCKET_FOLDER = 'public';
+
+const parseImageUrl = (url: string) => {
+  const { pathname } = new URL(url);
+  const fileName = pathname.split('/').pop();
+
+  return new URL(
+    `/${MEDIA_LIBRARY_BUCKET}/${MEDIA_LIBRARY_BUCKET_FOLDER}/${fileName}`,
+    process.env.IMAGE_RESIZER_BASE_URL,
+  ).href;
+};
+
+const formatImageUrl = (url: string, displayWidth: number = 300) => {
+  const urlObject = new URL(url);
+
+  urlObject.searchParams.set('w', String(displayWidth));
+
+  return urlObject.href;
+};
+
 const App: FC = () => (
   <MediaLibraryProvider
+    croppable
     supabase={supabase}
     resource="media"
-    bucket="images"
-    bucketFolder="public"
+    bucket={MEDIA_LIBRARY_BUCKET}
+    bucketFolder={MEDIA_LIBRARY_BUCKET_FOLDER}
     accept="image/*"
     maxSize={10000000}
     aspectRatio="3 / 2"
+    parseImageUrl={parseImageUrl}
+    formatImageUrl={formatImageUrl}
     sort={{
       field: 'createdAt',
       order: 'desc',
