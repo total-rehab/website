@@ -40,10 +40,20 @@ const parseImageUrl = (url: string) => {
   ).href;
 };
 
-const formatImageUrl = (url: string, displayWidth: number = 300) => {
+const formatImageUrl = (
+  url: string,
+  displayWidth: number = 300,
+  crop: number[] | null = null,
+) => {
   const urlObject = new URL(url);
 
   urlObject.searchParams.set('w', String(displayWidth));
+
+  if (crop) {
+    urlObject.search = `${urlObject.search}&crop=${crop
+      .map((value) => `${value}px`)
+      .join(',')}`;
+  }
 
   return urlObject.href;
 };
@@ -51,6 +61,7 @@ const formatImageUrl = (url: string, displayWidth: number = 300) => {
 const App: FC = () => (
   <MediaLibraryProvider
     croppable
+    convertFileName
     supabase={supabase}
     resource="media"
     bucket={MEDIA_LIBRARY_BUCKET}
@@ -58,11 +69,15 @@ const App: FC = () => (
     accept="image/*"
     maxSize={10000000}
     aspectRatio="3 / 2"
-    parseImageUrl={parseImageUrl}
     formatImageUrl={formatImageUrl}
+    parseImageUrl={parseImageUrl}
     sort={{
       field: 'createdAt',
       order: 'desc',
+    }}
+    resizeOptions={{
+      maxSizeMB: 1,
+      maxWidthOrHeight: 1920,
     }}>
     <Admin
       theme={theme}

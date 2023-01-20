@@ -358,13 +358,15 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz#b520529ec21d8e5945a1851dfd1c32e94e39ff45"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
-"@jambff/ra-components@^1.10.2":
-  version "1.10.2"
-  resolved "https://registry.yarnpkg.com/@jambff/ra-components/-/ra-components-1.10.2.tgz#d7bda7febcf020a5e1716d738cbf6b755da8bec1"
-  integrity sha512-xkqfOXfjpXUCi5OnsVpbyC4Q3ldHu7ISv8H8oPIdXH2C/J2hfO+9HPhF5jbnnfySgg8jZVJpMyHAjU41MV0W0A==
+"@jambff/ra-components@^1.11.0":
+  version "1.11.0"
+  resolved "https://registry.yarnpkg.com/@jambff/ra-components/-/ra-components-1.11.0.tgz#00e415285be0ad379a4bf2e887907606ecf4f5b9"
+  integrity sha512-cTrHbo2t1vbsxN8Zb+Ev3kLdclgkjbR7PYkv07p+zfBQNiy3DuA2ZsWXbClejYep8LaoL4ENQU/Hb/PjqoZXrg==
   dependencies:
+    browser-image-compression "^2.0.0"
     change-case "^4.1.2"
     matcher "^5.0.0"
+    param-case "^3.0.4"
     pluralize "^8.0.0"
     pretty-bytes "^6.0.0"
     react-dropzone "^14.2.3"
@@ -1271,6 +1273,13 @@ broadcast-channel@^3.4.1:
     oblivious-set "1.0.0"
     rimraf "3.0.2"
     unload "2.2.0"
+
+browser-image-compression@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/browser-image-compression/-/browser-image-compression-2.0.0.tgz#f421381a76d474d4da7dcd82810daf595b09bef6"
+  integrity sha512-kBlkZo13yOOfcmrPW0M0K/UdZPogIQj2gRvXIM3FktAnfW6VRq9aY2RI+F6O0x6DMj1Xm+WLGgWcFK8Fu/ddnw==
+  dependencies:
+    uzip "0.20201231.0"
 
 bufferutil@^4.0.1:
   version "4.0.7"
@@ -4594,6 +4603,11 @@ uuid@^8.3.2:
   version "8.3.2"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.3.2.tgz#80d5b5ced271bb9af6c445f21a1a04c606cefbe2"
   integrity sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==
+
+uzip@0.20201231.0:
+  version "0.20201231.0"
+  resolved "https://registry.yarnpkg.com/uzip/-/uzip-0.20201231.0.tgz#9e64b065b9a8ebf26eb7583fe8e77e1d9a15ed14"
+  integrity sha512-OZeJfZP+R0z9D6TmBgLq2LHzSSptGMGDGigGiEe0pr8UBe/7fdflgHlHBNDASTXB5jnFuxHpNaJywSg8YFeGng==
 
 validate-npm-package-license@^3.0.1:
   version "3.0.4"
