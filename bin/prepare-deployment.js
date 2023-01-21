@@ -27,7 +27,7 @@ const writeAppSpec = () => {
   const compiledContent = template({
     appEnv: argv.appEnv,
     subDomain: `${argv.subDomain}${
-      argv.appEnv === 'production' ? '' : 'staging'
+      argv.appEnv === 'production' ? '' : '-staging'
     }`,
   });
 
