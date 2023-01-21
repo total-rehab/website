@@ -3,7 +3,8 @@ import { Admin, Resource } from 'react-admin';
 import { LoginPage, createAuthProvider } from '@jambff/ra-supabase-next-auth';
 import FitnessCenter from '@mui/icons-material/FitnessCenter';
 import DirectionsRun from '@mui/icons-material/DirectionsRun';
-import CalendarMonth from '@mui/icons-material/CalendarMonth';
+import CalendarViewWeekIcon from '@mui/icons-material/CalendarViewWeek';
+import Summarize from '@mui/icons-material/Summarize';
 import Image from '@mui/icons-material/Image';
 import Category from '@mui/icons-material/Category';
 import { MediaLibraryProvider } from '@jambff/ra-components';
@@ -93,7 +94,7 @@ const App: FC = () => (
         list={ProgramList}
         create={ProgramCreate}
         edit={ProgramEdit}
-        icon={CalendarMonth}
+        icon={Summarize}
       />
       <Resource
         name="activities"
@@ -115,6 +116,13 @@ const App: FC = () => (
         create={TaxonomyCreate}
         edit={TaxonomyEdit}
         icon={FitnessCenter}
+      />
+      <Resource
+        name="phases"
+        list={TaxonomyList}
+        create={TaxonomyCreate}
+        edit={TaxonomyEdit}
+        icon={CalendarViewWeekIcon}
       />
       <Resource
         name="media"
