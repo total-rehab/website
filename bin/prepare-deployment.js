@@ -10,10 +10,12 @@ const isCI = require('is-ci');
 const { argv } = yargs(hideBin(process.argv));
 const requiredVars = ['appName', 'appEnv', 'subDomain'];
 
+console.log(argv);
+
 requiredVars.forEach((requiredVar) => {
   if (!(requiredVar in argv)) {
     throw new Error(
-      `The --${requiredVar} argument is required to prepare the app spec.`,
+      `The --${requiredVar} argument is required to prepare the app spec`,
     );
   }
 });
