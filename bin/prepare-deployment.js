@@ -26,7 +26,7 @@ const writeAppSpec = () => {
   const template = Handlebars.compile(source);
   const compiledContent = template({
     appEnv: argv.appEnv,
-    subDomain: argv.appEnv === 'production' ? 'api' : 'api-staging',
+    subDomain: argv.appEnv === 'production' ? 'admin' : 'admin-staging',
   });
 
   fs.writeFileSync(appSpecPath, Buffer.from(compiledContent));
