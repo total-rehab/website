@@ -20,7 +20,7 @@ jobs:
           COMMIT_HASH=$(git rev-parse HEAD)
           yarn prepare-deployment \
           --app-env ${{ github.ref_name }} \
-          --app-name total-rehab-admin-${{ github.ref_name }}
+          --app-name total-rehab-admin-${{ github.ref_name }} \
           --sub-domain admin
         env:
           DIGITALOCEAN_ACCESS_TOKEN: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
