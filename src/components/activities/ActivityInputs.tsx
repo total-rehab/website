@@ -6,7 +6,7 @@ import { FlexRow } from '../generic/FlexRow';
 
 export const ActivityInputs: FC = () => (
   <>
-    <TextInput source="title" validate={[required()]} fullWidth />
+    <TextInput source="name" validate={[required()]} fullWidth />
     <FlexRow>
       <MediaLibraryInput source="heroImageId" label="Hero Image" />
       <MediaLibraryInput source="thumbnailImageId" label="Thumbnail Image" />

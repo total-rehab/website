@@ -5,7 +5,7 @@ import { ListActions } from '../ListActions';
 export const ActivityList: FC = () => (
   <List actions={<ListActions />}>
     <Datagrid rowClick="edit">
-      <TextField source="title" />
+      <TextField source="name" />
       <DateField source="createdAt" showTime />
       <DateField source="updatedAt" showTime />
       <TextField source="id" textAlign="center" />
