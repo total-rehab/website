@@ -4,6 +4,7 @@ import { LoginPage, createAuthProvider } from '@jambff/ra-supabase-next-auth';
 import FitnessCenter from '@mui/icons-material/FitnessCenter';
 import DirectionsRun from '@mui/icons-material/DirectionsRun';
 import CalendarMonth from '@mui/icons-material/CalendarMonth';
+import CheckCircle from '@mui/icons-material/CheckCircle';
 import CalendarViewWeekIcon from '@mui/icons-material/CalendarViewWeek';
 import Summarize from '@mui/icons-material/Summarize';
 import Image from '@mui/icons-material/Image';
@@ -28,6 +29,9 @@ import { MediaEdit } from './media/MediaEdit';
 import { WeekList } from './weeks/WeekList';
 import { WeekCreate } from './weeks/WeekCreate';
 import { WeekEdit } from './weeks/WeekEdit';
+import { TaskList } from './tasks/TaskList';
+import { TaskCreate } from './tasks/TaskCreate';
+import { TaskEdit } from './tasks/TaskEdit';
 
 const supabase = createSupabaseClient();
 const authProvider = createAuthProvider(supabase);
@@ -106,6 +110,13 @@ const App: FC = () => (
         create={WeekCreate}
         edit={WeekEdit}
         icon={CalendarMonth}
+      />
+      <Resource
+        name="tasks"
+        list={TaskList}
+        create={TaskCreate}
+        edit={TaskEdit}
+        icon={CheckCircle}
       />
       <Resource
         name="activities"

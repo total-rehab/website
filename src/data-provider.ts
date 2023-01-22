@@ -40,17 +40,20 @@ type ListQuery = {
   sort?: Record<string, string>;
   filter?: Record<string, string>;
   q?: string;
+  meta?: Record<string, string>;
 };
 
 const getListQuery = ({
   pagination,
   sort,
   filter,
+  meta,
 }: GetListParams | GetManyReferenceParams) => {
   const { page, perPage } = pagination;
   const query: ListQuery = {
     limit: perPage,
     offset: (page - 1) * perPage,
+    meta,
   };
 
   if (Object.keys(sort)) {
@@ -58,6 +61,10 @@ const getListQuery = ({
   }
 
   const { q, ...filters } = filter;
+
+  if (meta?.filter) {
+    Object.assign(filters, meta.filter);
+  }
 
   if (q) {
     query.q = q;
@@ -88,6 +95,8 @@ export const getDataProvider = (
       const url = new URL(`/${resource}`, baseUrl);
 
       url.search = stringifyQuery(getListQuery(params));
+
+      console.log(params);
 
       const res = await fetch(url.href);
       const data = await res.json();

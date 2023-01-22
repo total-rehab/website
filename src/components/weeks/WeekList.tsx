@@ -3,15 +3,12 @@ import {
   AutocompleteInput,
   Datagrid,
   DateField,
-  FilterList,
-  FilterListItem,
   FunctionField,
   List,
   RaRecord,
   ReferenceInput,
   TextField,
 } from 'react-admin';
-import { Card, CardContent } from '@mui/material';
 import { ListActions } from '../ListActions';
 
 const filters = [
