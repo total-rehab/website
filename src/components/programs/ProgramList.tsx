@@ -1,14 +1,44 @@
 import { FC } from 'react';
-import { Datagrid, DateField, List, TextField } from 'react-admin';
+import {
+  Datagrid,
+  DateField,
+  FunctionField,
+  List,
+  NumberField,
+  RaRecord,
+  TextField,
+} from 'react-admin';
+import { sentenceCase } from 'change-case';
+import { Chip, useTheme } from '@mui/material';
 import { ListActions } from '../ListActions';
 
-export const ProgramList: FC = () => (
-  <List actions={<ListActions />} perPage={25}>
-    <Datagrid rowClick="edit">
-      <TextField source="title" />
-      <DateField source="createdAt" showTime />
-      <DateField source="updatedAt" showTime />
-      <TextField source="id" textAlign="center" />
-    </Datagrid>
-  </List>
-);
+export const ProgramList: FC = () => {
+  const theme = useTheme();
+
+  return (
+    <List actions={<ListActions />} perPage={25}>
+      <Datagrid rowClick="edit">
+        <TextField source="title" />
+        <DateField source="createdAt" showTime />
+        <DateField source="updatedAt" showTime />
+        <NumberField source="minimumAge" textAlign="center" />
+        <NumberField source="maximumAge" textAlign="center" />
+        <FunctionField
+          label="Activity Levels"
+          textAlign="center"
+          render={(record: RaRecord) =>
+            record.activityLevels.map((activityLevel: string) => (
+              <Chip
+                key={activityLevel}
+                label={sentenceCase(activityLevel)}
+                sx={{ margin: theme.spacing(0.5) }}
+              />
+            ))
+          }
+        />
+
+        <TextField source="id" textAlign="center" />
+      </Datagrid>
+    </List>
+  );
+};
