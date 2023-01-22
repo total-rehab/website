@@ -1,26 +1,14 @@
-import { Box } from '@mui/material';
 import { MediaLibraryInput, TextArrayInput } from '@jambff/ra-components';
 import { FC } from 'react';
 import {
-  Datagrid,
   NumberInput,
-  ReferenceManyField,
   required,
   SelectArrayInput,
-  TextField,
   TextInput,
 } from 'react-admin';
+
 import { FlexRow } from '../generic/FlexRow';
 import { EditorContent } from '../inputs/EditorContent';
-
-export const ProgramItems = () => (
-  <ReferenceManyField reference="programItems" target="author_id">
-    <Datagrid>
-      <TextField source="title" />
-      <TextField source="year" />
-    </Datagrid>
-  </ReferenceManyField>
-);
 
 export const ProgramInputs: FC = () => (
   <>
@@ -32,6 +20,7 @@ export const ProgramInputs: FC = () => (
     <FlexRow>
       <SelectArrayInput
         source="activityLevels"
+        validate={[required()]}
         choices={[
           { id: 'LIGHT', name: 'Light' },
           { id: 'MODERATE', name: 'Moderate' },

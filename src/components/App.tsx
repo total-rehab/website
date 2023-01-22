@@ -3,6 +3,7 @@ import { Admin, Resource } from 'react-admin';
 import { LoginPage, createAuthProvider } from '@jambff/ra-supabase-next-auth';
 import FitnessCenter from '@mui/icons-material/FitnessCenter';
 import DirectionsRun from '@mui/icons-material/DirectionsRun';
+import CalendarMonth from '@mui/icons-material/CalendarMonth';
 import CalendarViewWeekIcon from '@mui/icons-material/CalendarViewWeek';
 import Summarize from '@mui/icons-material/Summarize';
 import Image from '@mui/icons-material/Image';
@@ -24,6 +25,9 @@ import { SECONDARY_COLOR, theme } from '../theme';
 import { MediaList } from './media/MediaList';
 import { MediaCreate } from './media/MediaCreate';
 import { MediaEdit } from './media/MediaEdit';
+import { WeekList } from './weeks/WeekList';
+import { WeekCreate } from './weeks/WeekCreate';
+import { WeekEdit } from './weeks/WeekEdit';
 
 const supabase = createSupabaseClient();
 const authProvider = createAuthProvider(supabase);
@@ -95,6 +99,13 @@ const App: FC = () => (
         create={ProgramCreate}
         edit={ProgramEdit}
         icon={Summarize}
+      />
+      <Resource
+        name="weeks"
+        list={WeekList}
+        create={WeekCreate}
+        edit={WeekEdit}
+        icon={CalendarMonth}
       />
       <Resource
         name="activities"
