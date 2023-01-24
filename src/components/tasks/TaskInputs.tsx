@@ -15,7 +15,7 @@ import { FlexRow } from '../generic/FlexRow';
 export const TaskInputs: FC = () => {
   const record = useRecordContext();
   const theme = useTheme();
-  const { program } = record.week ?? {};
+  const { program } = record?.week ?? {};
 
   return (
     <>
