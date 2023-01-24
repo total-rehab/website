@@ -22,7 +22,11 @@ const filters = [
 ];
 
 export const WeekList: FC = () => (
-  <List actions={<ListActions />} perPage={25} filters={filters}>
+  <List
+    actions={<ListActions />}
+    perPage={25}
+    filters={filters}
+    queryOptions={{ meta: { include: { phase: true } } }}>
     <Datagrid rowClick="edit">
       <TextField source="weekNumber" />
       <FunctionField

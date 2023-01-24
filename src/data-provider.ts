@@ -66,6 +66,10 @@ const getListQuery = ({
     Object.assign(filters, meta.filter);
   }
 
+  if (meta?.include) {
+    Object.assign(query, { include: meta.include });
+  }
+
   if (q) {
     query.q = q;
   }
