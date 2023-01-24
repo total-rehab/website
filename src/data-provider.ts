@@ -34,13 +34,26 @@ const isIdObject = (
   item: number | string | { id: number | string },
 ): item is { id: number | string } => typeof item === 'object' && 'id' in item;
 
-type ListQuery = {
+type Query = {
+  include?: Record<string, string>;
+};
+
+type ListQuery = Query & {
   limit: number;
   offset: number;
   sort?: Record<string, string>;
   filter?: Record<string, string>;
   q?: string;
-  meta?: Record<string, string>;
+};
+
+const getQuery = ({ meta }: Omit<GetOneParams, 'id'>) => {
+  const query: Query = {};
+
+  if (meta?.include) {
+    query.include = meta.include;
+  }
+
+  return query;
 };
 
 const getListQuery = ({
@@ -53,7 +66,7 @@ const getListQuery = ({
   const query: ListQuery = {
     limit: perPage,
     offset: (page - 1) * perPage,
-    meta,
+    ...getQuery({ meta }),
   };
 
   if (Object.keys(sort)) {
@@ -64,10 +77,6 @@ const getListQuery = ({
 
   if (meta?.filter) {
     Object.assign(filters, meta.filter);
-  }
-
-  if (meta?.include) {
-    Object.assign(query, { include: meta.include });
   }
 
   if (q) {
@@ -100,8 +109,6 @@ export const getDataProvider = (
 
       url.search = stringifyQuery(getListQuery(params));
 
-      console.log(params);
-
       const res = await fetch(url.href);
       const data = await res.json();
 
@@ -116,6 +123,8 @@ export const getDataProvider = (
       params: GetOneParams,
     ): Promise<GetOneResult> => {
       const url = new URL(`/${resource}/${params.id}`, baseUrl);
+
+      url.search = stringifyQuery(getQuery(params));
 
       const res = await fetch(url.href);
       const data = await res.json();
