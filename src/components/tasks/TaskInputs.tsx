@@ -68,6 +68,7 @@ export const TaskInputs: FC = () => (
             </FlexRow>
             <CheckboxGroupInput
               source="days"
+              validate={required()}
               choices={Array(7)
                 .fill(null)
                 .map((_, i) => ({
