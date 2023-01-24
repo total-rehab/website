@@ -27,6 +27,10 @@ export const TaskInputs: FC = () => (
               label="Week Number"
               source="weekId"
               reference="weeks"
+              sort={{
+                field: 'weekNumber',
+                order: 'asc',
+              }}
               queryOptions={{
                 meta: { filter: { programId: formData.programId } },
               }}>
