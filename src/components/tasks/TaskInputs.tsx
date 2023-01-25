@@ -88,6 +88,9 @@ export const TaskInputs: FC = () => {
               <CheckboxGroupInput
                 source="days"
                 validate={required()}
+                parse={(values: number[]) =>
+                  values.filter((n) => [1, 2, 3, 4, 5, 6, 7].includes(n))
+                }
                 choices={Array(7)
                   .fill(null)
                   .map((_, i) => ({
