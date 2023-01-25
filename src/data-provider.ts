@@ -24,6 +24,12 @@ import {
 import { SupabaseClient } from '@supabase/supabase-js';
 import { createAuthenticatedFetch } from '@jambff/ra-supabase-next-auth';
 
+class InvalidResponseError extends Error {
+  constructor(statusCode: number) {
+    super(`Invalid response: ${statusCode}`);
+  }
+}
+
 const stringifyQuery = (queryParameters: any) =>
   qs.stringify(queryParameters, {
     arrayFormat: 'brackets',
@@ -94,6 +100,21 @@ const getListQuery = ({
   return query;
 };
 
+const getJsonResponse = async (res: {
+  status: Response['status'];
+  json: Response['json'];
+}) => {
+  const data = await res.json();
+
+  if (res.status >= 400) {
+    console.error(data);
+
+    throw new InvalidResponseError(res.status);
+  }
+
+  return data;
+};
+
 export const getDataProvider = (
   baseUrl: string,
   supabase: SupabaseClient,
@@ -110,7 +131,7 @@ export const getDataProvider = (
       url.search = stringifyQuery(getListQuery(params));
 
       const res = await fetch(url.href);
-      const data = await res.json();
+      const data = await getJsonResponse(res);
 
       return {
         data: data.items,
@@ -127,7 +148,7 @@ export const getDataProvider = (
       url.search = stringifyQuery(getQuery(params));
 
       const res = await fetch(url.href);
-      const data = await res.json();
+      const data = await getJsonResponse(res);
 
       return { data };
     },
@@ -147,7 +168,7 @@ export const getDataProvider = (
       url.search = stringifyQuery({ id });
 
       const res = await fetch(url.href);
-      const data = await res.json();
+      const data = await getJsonResponse(res);
 
       return { data: data.items };
     },
@@ -167,7 +188,7 @@ export const getDataProvider = (
       url.search = stringifyQuery(listQuery);
 
       const res = await fetch(url.href);
-      const data = await res.json();
+      const data = await getJsonResponse(res);
 
       return {
         data: data.items,
@@ -187,7 +208,7 @@ export const getDataProvider = (
         headers: { 'Content-Type': 'application/json' },
       });
 
-      const data = await res.json();
+      const data = await getJsonResponse(res);
 
       return { data };
     },
@@ -204,7 +225,7 @@ export const getDataProvider = (
         headers: { 'Content-Type': 'application/json' },
       });
 
-      const data = await res.json();
+      const data = await getJsonResponse(res);
 
       return { data };
     },
@@ -223,7 +244,7 @@ export const getDataProvider = (
         headers: { 'Content-Type': 'application/json' },
       });
 
-      const data = await res.json();
+      const data = await getJsonResponse(res);
 
       return { data: data.items };
     },
@@ -234,9 +255,13 @@ export const getDataProvider = (
     ): Promise<DeleteResult> => {
       const url = new URL(`/${resource}/${params.id}`, baseUrl);
 
-      await authenticatedFetch(url.href, {
+      const res = await authenticatedFetch(url.href, {
         method: 'DELETE',
       });
+
+      if (res.status >= 400) {
+        throw new Error(String(res.status));
+      }
 
       return { data: {} };
     },
@@ -249,9 +274,13 @@ export const getDataProvider = (
 
       url.search = stringifyQuery({ id: params.ids });
 
-      await authenticatedFetch(url.href, {
+      const res = await authenticatedFetch(url.href, {
         method: 'DELETE',
       });
+
+      if (res.status >= 400) {
+        throw new InvalidResponseError(res.status);
+      }
 
       return { data: params.ids };
     },
