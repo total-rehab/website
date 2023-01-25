@@ -91,7 +91,7 @@ export const TaskInputs: FC = () => {
                 choices={Array(7)
                   .fill(null)
                   .map((_, i) => ({
-                    id: i,
+                    id: i + 1,
                     name: `Day ${i + 1}`,
                   }))}
               />
