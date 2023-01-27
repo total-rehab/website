@@ -3,7 +3,7 @@ import { FC } from 'react';
 import { ActivityInputs } from './ActivityInputs';
 
 export const ActivityEdit: FC = () => (
-  <EditForm>
+  <EditForm queryOptions={{ meta: { include: { equipment: true } } }}>
     <ActivityInputs />
   </EditForm>
 );
