@@ -1,6 +1,12 @@
 import { MediaLibraryInput, TextArrayInput } from '@jambff/ra-components';
 import { FC } from 'react';
-import { ReferenceArrayInput, required, TextInput } from 'react-admin';
+import {
+  AutocompleteInput,
+  ReferenceArrayInput,
+  ReferenceInput,
+  required,
+  TextInput,
+} from 'react-admin';
 import { AutocompleteArrayOfObjectsInput } from '../generic/AutocompleteArrayOfObjectsInput';
 import { FlexRow } from '../generic/FlexRow';
 
@@ -12,7 +18,9 @@ export const ActivityInputs: FC = () => (
       <MediaLibraryInput source="heroImageId" label="Hero Image" />
       <MediaLibraryInput source="thumbnailImageId" label="Thumbnail Image" />
     </FlexRow>
-    <TextArrayInput source="instructions" />
+    <ReferenceInput label="Activity" source="modalityId" reference="modalities">
+      <AutocompleteInput optionText="name" fullWidth validate={required()} />
+    </ReferenceInput>
     <ReferenceArrayInput source="equipment" reference="equipment">
       <AutocompleteArrayOfObjectsInput
         fullWidth
@@ -20,5 +28,6 @@ export const ActivityInputs: FC = () => (
         optionText="name"
       />
     </ReferenceArrayInput>
+    <TextArrayInput source="instructions" />
   </>
 );

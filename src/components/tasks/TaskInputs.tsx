@@ -61,16 +61,6 @@ export const TaskInputs: FC = () => {
               </ReferenceInput>
               <ReferenceInput
                 label="Activity"
-                source="modalityId"
-                reference="modalities">
-                <AutocompleteInput
-                  optionText="name"
-                  fullWidth
-                  validate={required()}
-                />
-              </ReferenceInput>
-              <ReferenceInput
-                label="Activity"
                 source="activityId"
                 reference="activities">
                 <AutocompleteInput

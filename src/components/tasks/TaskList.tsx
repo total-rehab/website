@@ -15,7 +15,7 @@ export const TaskList: FC = () => (
     actions={<ListActions />}
     perPage={25}
     queryOptions={{
-      meta: { include: { modality: true, activity: true, week: true } },
+      meta: { include: { activity: true, week: true } },
     }}>
     <Datagrid rowClick="edit">
       <FunctionField
@@ -27,11 +27,6 @@ export const TaskList: FC = () => (
         label="Activity"
         textAlign="center"
         render={(record: RaRecord) => record.activity.name}
-      />
-      <FunctionField
-        label="Modality"
-        textAlign="center"
-        render={(record: RaRecord) => record.modality.name}
       />
       <TextField source="reps" textAlign="center" />
       <NumberField source="sets" textAlign="center" />

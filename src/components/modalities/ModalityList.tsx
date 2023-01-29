@@ -1,24 +1,11 @@
 import { FC } from 'react';
-import {
-  Datagrid,
-  DateField,
-  List,
-  ReferenceField,
-  TextField,
-} from 'react-admin';
+import { Datagrid, DateField, List, TextField } from 'react-admin';
 import { ListActions } from '../ListActions';
 
-export const ActivityList: FC = () => (
+export const ModalityList: FC = () => (
   <List actions={<ListActions />} perPage={25}>
     <Datagrid rowClick="edit">
       <TextField source="name" />
-      <ReferenceField
-        sortable={false}
-        source="modalityId"
-        reference="modalities"
-        sortBy="modality.name">
-        <TextField source="name" sortable={false} />
-      </ReferenceField>
       <DateField source="createdAt" showTime />
       <DateField source="updatedAt" showTime />
       <TextField source="id" textAlign="center" />

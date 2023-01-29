@@ -32,6 +32,9 @@ import { WeekEdit } from './weeks/WeekEdit';
 import { TaskList } from './tasks/TaskList';
 import { TaskCreate } from './tasks/TaskCreate';
 import { TaskEdit } from './tasks/TaskEdit';
+import { ModalityList } from './modalities/ModalityList';
+import { ModalityCreate } from './modalities/ModalityCreate';
+import { ModalityEdit } from './modalities/ModalityEdit';
 
 const supabase = createSupabaseClient();
 const authProvider = createAuthProvider(supabase);
@@ -127,9 +130,9 @@ const App: FC = () => (
       />
       <Resource
         name="modalities"
-        list={TaxonomyList}
-        create={TaxonomyCreate}
-        edit={TaxonomyEdit}
+        list={ModalityList}
+        create={ModalityCreate}
+        edit={ModalityEdit}
         icon={Category}
       />
       <Resource
