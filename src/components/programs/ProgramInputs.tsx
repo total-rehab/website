@@ -17,7 +17,7 @@ import {
 import { FlexRow } from '../generic/FlexRow';
 import { EditorContent } from '../inputs/EditorContent';
 
-const ageValidation = (
+const phaseValidation = (
   value: number,
   allValues: { phases: { phaseId: number }[] },
 ) => {
@@ -61,10 +61,14 @@ export const ProgramInputs: FC = () => (
             fullWidth
             label="Phase"
             optionText="name"
-            validate={[required(), ageValidation]}
+            validate={[required(), phaseValidation]}
           />
         </ReferenceInput>
-        <NumberInput fullWidth source="durationInWeeks" />
+        <NumberInput
+          fullWidth
+          source="durationInWeeks"
+          validate={[required()]}
+        />
       </StepFormIterator>
     </ArrayInput>
     <EditorContent source="content" fullWidth />
