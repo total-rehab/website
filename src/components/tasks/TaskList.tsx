@@ -15,14 +15,10 @@ export const TaskList: FC = () => (
     actions={<ListActions />}
     perPage={25}
     queryOptions={{
-      meta: { include: { activity: true, week: true } },
+      meta: { include: { activity: true } },
     }}>
     <Datagrid rowClick="edit">
-      <FunctionField
-        label="Week"
-        textAlign="center"
-        render={(record: RaRecord) => record.week.weekNumber}
-      />
+      <NumberField source="weekNumber" textAlign="center" />
       <FunctionField
         label="Activity"
         textAlign="center"

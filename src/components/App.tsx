@@ -26,9 +26,6 @@ import { SECONDARY_COLOR, theme } from '../theme';
 import { MediaList } from './media/MediaList';
 import { MediaCreate } from './media/MediaCreate';
 import { MediaEdit } from './media/MediaEdit';
-import { WeekList } from './weeks/WeekList';
-import { WeekCreate } from './weeks/WeekCreate';
-import { WeekEdit } from './weeks/WeekEdit';
 import { TaskList } from './tasks/TaskList';
 import { TaskCreate } from './tasks/TaskCreate';
 import { TaskEdit } from './tasks/TaskEdit';
@@ -106,13 +103,6 @@ const App: FC = () => (
         create={ProgramCreate}
         edit={ProgramEdit}
         icon={Summarize}
-      />
-      <Resource
-        name="weeks"
-        list={WeekList}
-        create={WeekCreate}
-        edit={WeekEdit}
-        icon={CalendarMonth}
       />
       <Resource
         name="tasks"

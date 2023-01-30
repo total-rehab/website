@@ -1,7 +1,14 @@
-import { MediaLibraryInput, TextArrayInput } from '@jambff/ra-components';
+import {
+  MediaLibraryInput,
+  TextArrayInput,
+  StepFormIterator,
+} from '@jambff/ra-components';
 import { FC } from 'react';
 import {
+  ArrayInput,
+  AutocompleteInput,
   NumberInput,
+  ReferenceInput,
   required,
   SelectArrayInput,
   TextInput,
@@ -9,6 +16,22 @@ import {
 
 import { FlexRow } from '../generic/FlexRow';
 import { EditorContent } from '../inputs/EditorContent';
+
+const ageValidation = (
+  value: number,
+  allValues: { phases: { phaseId: number }[] },
+) => {
+  const allPhaseIds = allValues.phases.map(({ phaseId }) => phaseId);
+  const duplicatePhaseIds = allPhaseIds.filter(
+    (item, index) => allPhaseIds.indexOf(item) !== index,
+  );
+
+  if (duplicatePhaseIds.includes(value)) {
+    return 'A phase should only be used once per program';
+  }
+
+  return undefined;
+};
 
 export const ProgramInputs: FC = () => (
   <>
@@ -30,7 +53,20 @@ export const ProgramInputs: FC = () => (
       <NumberInput source="minimumAge" />
       <NumberInput source="maximumAge" />
     </FlexRow>
-    <EditorContent source="content" fullWidth />
     <TextArrayInput source="features" addButtonText="Add feature" />
+    <ArrayInput source="phases">
+      <StepFormIterator inline addButtonText="Add phase">
+        <ReferenceInput source="phaseId" reference="phases">
+          <AutocompleteInput
+            fullWidth
+            label="Phase"
+            optionText="name"
+            validate={[required(), ageValidation]}
+          />
+        </ReferenceInput>
+        <NumberInput fullWidth source="durationInWeeks" />
+      </StepFormIterator>
+    </ArrayInput>
+    <EditorContent source="content" fullWidth />
   </>
 );

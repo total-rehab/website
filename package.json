@@ -16,7 +16,7 @@
     "prepare-deployment": "node ./bin/prepare-deployment.js"
   },
   "dependencies": {
-    "@jambff/ra-components": "^1.12.2",
+    "@jambff/ra-components": "^1.12.3",
     "@jambff/ra-supabase-next-auth": "^1.2.5",
     "@supabase/supabase-js": "^2.4.0",
     "app-root-path": "^3.1.0",

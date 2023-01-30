@@ -3,7 +3,7 @@ import { FC } from 'react';
 import { ProgramInputs } from './ProgramInputs';
 
 export const ProgramEdit: FC = () => (
-  <EditForm>
+  <EditForm queryOptions={{ meta: { include: { phases: true } } }}>
     <ProgramInputs />
   </EditForm>
 );
