@@ -1,13 +1,6 @@
 import { FC } from 'react';
-import {
-  Datagrid,
-  DateField,
-  FunctionField,
-  List,
-  NumberField,
-  RaRecord,
-  TextField,
-} from 'react-admin';
+import { Datagrid, DateField, List, NumberField, TextField } from 'react-admin';
+import { EntityField } from '../generic/EntityField';
 import { ListActions } from '../ListActions';
 
 export const TaskList: FC = () => (
@@ -19,10 +12,10 @@ export const TaskList: FC = () => (
     }}>
     <Datagrid rowClick="edit">
       <NumberField source="weekNumber" textAlign="center" />
-      <FunctionField
-        label="Activity"
-        textAlign="center"
-        render={(record: RaRecord) => record.activity.name}
+      <EntityField
+        source="activityId"
+        reference="activities"
+        itemSource="name"
       />
       <TextField source="reps" textAlign="center" />
       <NumberField source="sets" textAlign="center" />
