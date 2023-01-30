@@ -26,8 +26,8 @@ export const TaskList: FC = () => (
       />
       <TextField source="reps" textAlign="center" />
       <NumberField source="sets" textAlign="center" />
-      <DateField source="createdAt" showTime />
-      <DateField source="updatedAt" showTime />
+      <DateField source="createdAt" textAlign="center" showTime />
+      <DateField source="updatedAt" textAlign="center" showTime />
       <TextField source="id" textAlign="center" />
     </Datagrid>
   </List>

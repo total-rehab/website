@@ -6,8 +6,8 @@ export const ModalityList: FC = () => (
   <List actions={<ListActions />} perPage={25}>
     <Datagrid rowClick="edit">
       <TextField source="name" />
-      <DateField source="createdAt" showTime />
-      <DateField source="updatedAt" showTime />
+      <DateField source="createdAt" textAlign="center" showTime />
+      <DateField source="updatedAt" textAlign="center" showTime />
       <TextField source="id" textAlign="center" />
     </Datagrid>
   </List>

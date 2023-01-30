@@ -19,8 +19,6 @@ export const ProgramList: FC = () => {
     <List actions={<ListActions />} perPage={25}>
       <Datagrid rowClick="edit">
         <TextField source="title" />
-        <DateField source="createdAt" showTime />
-        <DateField source="updatedAt" showTime />
         <NumberField source="minimumAge" textAlign="center" />
         <NumberField source="maximumAge" textAlign="center" />
         <FunctionField
@@ -36,7 +34,8 @@ export const ProgramList: FC = () => {
             ))
           }
         />
-
+        <DateField source="createdAt" textAlign="center" showTime />
+        <DateField source="updatedAt" textAlign="center" showTime />
         <TextField source="id" textAlign="center" />
       </Datagrid>
     </List>

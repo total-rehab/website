@@ -8,8 +8,8 @@ export const MediaList: FC = () => (
     <Datagrid rowClick="edit">
       <MediaLibraryRecordImageField />
       <TextField source="title" />
-      <DateField source="createdAt" showTime />
-      <DateField source="updatedAt" showTime />
+      <DateField source="createdAt" textAlign="center" showTime />
+      <DateField source="updatedAt" textAlign="center" showTime />
       <TextField source="id" textAlign="center" />
     </Datagrid>
   </List>
