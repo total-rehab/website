@@ -29,6 +29,6 @@ export const ActivityInputs: FC = () => (
       />
     </ReferenceArrayInput>
     <TextArrayInput source="instructions" />
-    <TextArrayInput source="tips" />
+    <TextArrayInput source="tips" addButtonText="Add tip" />
   </>
 );
