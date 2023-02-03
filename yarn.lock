@@ -358,10 +358,10 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz#b520529ec21d8e5945a1851dfd1c32e94e39ff45"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
-"@jambff/ra-components@^1.14.0":
-  version "1.14.0"
-  resolved "https://registry.yarnpkg.com/@jambff/ra-components/-/ra-components-1.14.0.tgz#b58c75a357e7d70711278cc873a300c61590cbf5"
-  integrity sha512-kmFhmBuUCkKwHxyfFsk7mP6QnZWTJ/xWB+heDwr73Jmqk6EBI+XE/vPKvaTP9zlu5aX15Eig5HPnkmlv3nY83A==
+"@jambff/ra-components@^1.15.1":
+  version "1.15.1"
+  resolved "https://registry.yarnpkg.com/@jambff/ra-components/-/ra-components-1.15.1.tgz#52fe5db2987c2558526f7988147db3567552f692"
+  integrity sha512-wV/KjOvUUsB1VMyjbG00aHkQEmEznWBueQJyHyPxorhLr9oURNQKBFinK/zWDbcyismEvKeYvi+g8PR+UvTt6w==
   dependencies:
     browser-image-compression "^2.0.0"
     change-case "^4.1.2"
@@ -1563,6 +1563,11 @@ cosmiconfig@^7.0.0:
     parse-json "^5.0.0"
     path-type "^4.0.0"
     yaml "^1.10.0"
+
+cropperjs@^1.5.13:
+  version "1.5.13"
+  resolved "https://registry.yarnpkg.com/cropperjs/-/cropperjs-1.5.13.tgz#eb1682f01d17c70ed5244317091d745c9a249ef8"
+  integrity sha512-by7jKAo73y5/Do0K6sxdTKHgndY0NMjG2bEdgeJxycbcmHuCiMXqw8sxy5C5Y5WTOTcDGmbT7Sr5CgKOXR06OA==
 
 cross-fetch@^3.1.5:
   version "3.1.5"

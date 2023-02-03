@@ -16,11 +16,12 @@
     "prepare-deployment": "node ./bin/prepare-deployment.js"
   },
   "dependencies": {
-    "@jambff/ra-components": "^1.14.0",
+    "@jambff/ra-components": "^1.15.1",
     "@jambff/ra-supabase-next-auth": "^1.2.5",
     "@supabase/supabase-js": "^2.4.0",
     "app-root-path": "^3.1.0",
     "change-case": "^4.1.2",
+    "cropperjs": "^1.5.13",
     "js-cookie": "^3.0.1",
     "next": "13.1.1",
     "normalize.css": "^8.0.1",
