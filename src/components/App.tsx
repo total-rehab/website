@@ -28,9 +28,6 @@ import { MediaEdit } from './media/MediaEdit';
 import { TaskList } from './tasks/TaskList';
 import { TaskCreate } from './tasks/TaskCreate';
 import { TaskEdit } from './tasks/TaskEdit';
-import { ModalityList } from './modalities/ModalityList';
-import { ModalityCreate } from './modalities/ModalityCreate';
-import { ModalityEdit } from './modalities/ModalityEdit';
 
 const supabase = createSupabaseClient();
 const authProvider = createAuthProvider(supabase);
@@ -89,9 +86,9 @@ const App: FC = () => (
       />
       <Resource
         name="modalities"
-        list={ModalityList}
-        create={ModalityCreate}
-        edit={ModalityEdit}
+        list={TaxonomyList}
+        create={TaxonomyCreate}
+        edit={TaxonomyEdit}
         icon={Category}
       />
       <Resource
