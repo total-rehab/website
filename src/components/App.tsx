@@ -3,7 +3,6 @@ import { Admin, Resource } from 'react-admin';
 import { LoginPage, createAuthProvider } from '@jambff/ra-supabase-next-auth';
 import FitnessCenter from '@mui/icons-material/FitnessCenter';
 import DirectionsRun from '@mui/icons-material/DirectionsRun';
-import CalendarMonth from '@mui/icons-material/CalendarMonth';
 import CheckCircle from '@mui/icons-material/CheckCircle';
 import CalendarViewWeekIcon from '@mui/icons-material/CalendarViewWeek';
 import Summarize from '@mui/icons-material/Summarize';
@@ -39,34 +38,6 @@ const authProvider = createAuthProvider(supabase);
 const MEDIA_LIBRARY_BUCKET = 'images';
 const MEDIA_LIBRARY_BUCKET_FOLDER = 'public';
 
-const parseImageUrl = (url: string) => {
-  const { pathname } = new URL(url);
-  const fileName = pathname.split('/').pop();
-
-  return new URL(
-    `/${MEDIA_LIBRARY_BUCKET}/${MEDIA_LIBRARY_BUCKET_FOLDER}/${fileName}`,
-    process.env.IMAGE_RESIZER_BASE_URL,
-  ).href;
-};
-
-const formatImageUrl = (
-  url: string,
-  displayWidth: number = 300,
-  crop: number[] | null = null,
-) => {
-  const urlObject = new URL(url);
-
-  urlObject.searchParams.set('w', String(displayWidth));
-
-  if (crop) {
-    urlObject.search = `${urlObject.search}&crop=${crop
-      .map((value) => `${value}px`)
-      .join(',')}`;
-  }
-
-  return urlObject.href;
-};
-
 const App: FC = () => (
   <MediaLibraryProvider
     croppable
@@ -75,11 +46,9 @@ const App: FC = () => (
     resource="media"
     bucket={MEDIA_LIBRARY_BUCKET}
     bucketFolder={MEDIA_LIBRARY_BUCKET_FOLDER}
-    accept="image/*"
-    maxSize={10000000}
+    accept={['image/*', 'video/*']}
+    maxSize={50000000}
     aspectRatio="3 / 2"
-    formatImageUrl={formatImageUrl}
-    parseImageUrl={parseImageUrl}
     sort={{
       field: 'createdAt',
       order: 'desc',
