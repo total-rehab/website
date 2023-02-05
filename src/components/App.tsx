@@ -10,6 +10,7 @@ import Image from '@mui/icons-material/Image';
 import People from '@mui/icons-material/People';
 import Category from '@mui/icons-material/Category';
 import { MediaLibraryProvider } from '@jambff/ra-components';
+import { User } from '@supabase/supabase-js';
 import { getDataProvider } from '../data-provider';
 import { TaxonomyCreate } from './taxonomies/TaxonomyCreate';
 import { TaxonomyEdit } from './taxonomies/TaxonomyEdit';
@@ -34,7 +35,24 @@ import { UserCreate } from './users/UserCreate';
 import { UserEdit } from './users/UserEdit';
 
 const supabase = createSupabaseClient();
-const authProvider = createAuthProvider(supabase);
+const authProvider = createAuthProvider(supabase, {
+  getIdentity: async (supabaseUser: User) => {
+    const { data, error } = await supabase
+      .from('User')
+      .select('name, role')
+      .eq('guid', supabaseUser.id);
+
+    const { name, role } = data?.[0] ?? {};
+    const { id, email } = supabaseUser;
+
+    return {
+      id,
+      fullName: name ?? email,
+      email,
+      role,
+    };
+  },
+});
 
 const MEDIA_LIBRARY_BUCKET = 'images';
 const MEDIA_LIBRARY_BUCKET_FOLDER = 'public';
