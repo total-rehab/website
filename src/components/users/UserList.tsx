@@ -5,20 +5,11 @@ import { ListActions } from '../ListActions';
 export const UserList: FC = () => (
   <List actions={<ListActions />} perPage={25}>
     <Datagrid rowClick="edit">
-      <TextField source="email" sortable={false} />
-      <DateField
-        source="createdAt"
-        textAlign="center"
-        showTime
-        sortable={false}
-      />
-      <DateField
-        source="updatedAt"
-        textAlign="center"
-        showTime
-        sortable={false}
-      />
-      <TextField source="id" textAlign="center" sortable={false} />
+      <TextField source="email" />
+      <TextField source="role" />
+      <DateField source="createdAt" textAlign="center" showTime />
+      <DateField source="updatedAt" textAlign="center" showTime />
+      <TextField source="id" textAlign="center" />
     </Datagrid>
   </List>
 );
