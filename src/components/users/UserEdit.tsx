@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { EditForm } from '@jambff/ra-components';
-import { useRecordContext } from 'react-admin';
+import { SaveButton, Toolbar, useRecordContext } from 'react-admin';
 import { UserInputs } from './UserInputs';
 
 const UserTitle = () => {
@@ -9,8 +9,14 @@ const UserTitle = () => {
   return <span>User {record ? `${record.email}` : ''}</span>;
 };
 
+const UserEditToolbar = () => (
+  <Toolbar>
+    <SaveButton />
+  </Toolbar>
+);
+
 export const UserEdit: FC = () => (
-  <EditForm title={<UserTitle />}>
+  <EditForm title={<UserTitle />} form={{ toolbar: <UserEditToolbar /> }}>
     <UserInputs />
   </EditForm>
 );

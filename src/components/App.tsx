@@ -31,7 +31,6 @@ import { TaskList } from './tasks/TaskList';
 import { TaskCreate } from './tasks/TaskCreate';
 import { TaskEdit } from './tasks/TaskEdit';
 import { UserList } from './users/UserList';
-import { UserCreate } from './users/UserCreate';
 import { UserEdit } from './users/UserEdit';
 
 const supabase = createSupabaseClient();
@@ -135,13 +134,7 @@ const App: FC = () => (
         edit={MediaEdit}
         icon={Image}
       />
-      <Resource
-        name="users"
-        list={UserList}
-        create={UserCreate}
-        edit={UserEdit}
-        icon={People}
-      />
+      <Resource name="users" list={UserList} edit={UserEdit} icon={People} />
     </Admin>
   </MediaLibraryProvider>
 );
