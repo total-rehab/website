@@ -373,10 +373,10 @@
     react-easy-crop "^4.6.3"
     unfetch "^5.0.0"
 
-"@jambff/ra-supabase-next-auth@^1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@jambff/ra-supabase-next-auth/-/ra-supabase-next-auth-1.3.0.tgz#c17ab0ec4b3a60240f6963b22f4769a0e5a4e20e"
-  integrity sha512-4x+huN5dZkjWNYJBTTlMfbEz/tlqJ7HISkUOJoE08At828qaNS+B7bL0B5KuxYDYdD4e3qnHzxSx2Nay/PHLkA==
+"@jambff/ra-supabase-next-auth@^1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@jambff/ra-supabase-next-auth/-/ra-supabase-next-auth-1.5.0.tgz#04e04e9d492818e2574439df7b76d6bcdce3322c"
+  integrity sha512-inl4Ct6z5Xd8OgLoDG7foSsIZdFRPDWV0bJ5npT32I6h5JY7mhPovdrrSJljnREwYB2CPROn71inhoWxYgMAZg==
   dependencies:
     js-cookie "^3.0.1"
     qs "^6.11.0"

@@ -35,6 +35,7 @@ import { UserEdit } from './users/UserEdit';
 
 const supabase = createSupabaseClient();
 const authProvider = createAuthProvider(supabase, {
+  acceptedRoles: ['ADMIN'],
   getIdentity: async (supabaseUser: User) => {
     const { data, error } = await supabase
       .from('User')
