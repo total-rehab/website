@@ -7,6 +7,7 @@ import CheckCircle from '@mui/icons-material/CheckCircle';
 import CalendarViewWeekIcon from '@mui/icons-material/CalendarViewWeek';
 import Summarize from '@mui/icons-material/Summarize';
 import Image from '@mui/icons-material/Image';
+import People from '@mui/icons-material/People';
 import Category from '@mui/icons-material/Category';
 import { MediaLibraryProvider } from '@jambff/ra-components';
 import { getDataProvider } from '../data-provider';
@@ -28,6 +29,9 @@ import { MediaEdit } from './media/MediaEdit';
 import { TaskList } from './tasks/TaskList';
 import { TaskCreate } from './tasks/TaskCreate';
 import { TaskEdit } from './tasks/TaskEdit';
+import { UserList } from './users/UserList';
+import { UserCreate } from './users/UserCreate';
+import { UserEdit } from './users/UserEdit';
 
 const supabase = createSupabaseClient();
 const authProvider = createAuthProvider(supabase);
@@ -112,6 +116,13 @@ const App: FC = () => (
         create={MediaCreate}
         edit={MediaEdit}
         icon={Image}
+      />
+      <Resource
+        name="users"
+        list={UserList}
+        create={UserCreate}
+        edit={UserEdit}
+        icon={People}
       />
     </Admin>
   </MediaLibraryProvider>
