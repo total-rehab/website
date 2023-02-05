@@ -26,7 +26,7 @@ export const UserInputs: FC = () => {
         },
         {
           id: 'PRACTITIONER',
-          name: 'Editor',
+          name: 'Practitioner',
         },
         {
           id: 'USER',
