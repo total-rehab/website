@@ -130,7 +130,7 @@ export const getDataProvider = (
 
       url.search = stringifyQuery(getListQuery(params));
 
-      const res = await fetch(url.href);
+      const res = await authenticatedFetch(url.href);
       const data = await getJsonResponse(res);
 
       return {
@@ -147,7 +147,7 @@ export const getDataProvider = (
 
       url.search = stringifyQuery(getQuery(params));
 
-      const res = await fetch(url.href);
+      const res = await authenticatedFetch(url.href);
       const data = await getJsonResponse(res);
 
       return { data };
@@ -167,7 +167,7 @@ export const getDataProvider = (
 
       url.search = stringifyQuery({ id });
 
-      const res = await fetch(url.href);
+      const res = await authenticatedFetch(url.href);
       const data = await getJsonResponse(res);
 
       return { data: data.items };
@@ -187,7 +187,7 @@ export const getDataProvider = (
 
       url.search = stringifyQuery(listQuery);
 
-      const res = await fetch(url.href);
+      const res = await authenticatedFetch(url.href);
       const data = await getJsonResponse(res);
 
       return {
