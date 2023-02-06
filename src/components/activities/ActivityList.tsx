@@ -5,7 +5,7 @@ import { ListActions } from '../ListActions';
 
 export const ActivityList: FC = () => (
   <List actions={<ListActions />} perPage={25}>
-    <Datagrid rowClick="edit">
+    <Datagrid rowClick="edit" bulkActionButtons={false}>
       <TextField source="name" />
       <EntityField
         source="modalityId"
