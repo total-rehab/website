@@ -382,10 +382,10 @@
     ra-core "^4.7.2"
     unfetch "^4.0.2"
 
-"@jambff/ra-supabase-next-auth@^2.1.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@jambff/ra-supabase-next-auth/-/ra-supabase-next-auth-2.1.0.tgz#844799d679b378ec728a3ea63c12dc53220bf908"
-  integrity sha512-XiVfHE8wms0tPjWJ9kPDE2QJ3fwmJt7/qi1p2IkZdWaM8lVjCFqix1i+PafheKQmiLq6ETtf2/1Mh9S7DvPegg==
+"@jambff/ra-supabase-next-auth@^2.1.1":
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/@jambff/ra-supabase-next-auth/-/ra-supabase-next-auth-2.1.1.tgz#b12288254ea29b4bae4f01bff5cfe260c9274d6f"
+  integrity sha512-l6FrjsTaHBiKk976pNDl4nUYmfj8Y3tOjRdI7brL2yhY4wA166dGjhwe/FWa8SRWgXRNkvLs888e1RJhpXizxA==
   dependencies:
     js-cookie "^3.0.1"
 
