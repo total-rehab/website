@@ -3,7 +3,10 @@ import { FC } from 'react';
 import { GuideInputs } from './GuideInputs';
 
 export const GuideEdit: FC = () => (
-  <EditForm queryOptions={{ meta: { include: { phases: true } } }}>
+  <EditForm
+    queryOptions={{
+      meta: { include: { phases: true, programs: true, modalities: true } },
+    }}>
     <GuideInputs />
   </EditForm>
 );

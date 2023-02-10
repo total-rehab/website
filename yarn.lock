@@ -358,10 +358,10 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz#b520529ec21d8e5945a1851dfd1c32e94e39ff45"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
-"@jambff/ra-components@^1.17.2":
-  version "1.17.2"
-  resolved "https://registry.yarnpkg.com/@jambff/ra-components/-/ra-components-1.17.2.tgz#5c412da5744db855018df3669e7b21ab5af4773f"
-  integrity sha512-iViaI/znqrRzgNEOn6u4cLDy/e55+yDtfIgh+sJNL4ov0n8aSYXzWmnSjm4aSnV/QCoi7mTPZ9CI8zYGxxWndA==
+"@jambff/ra-components@^1.17.4":
+  version "1.17.4"
+  resolved "https://registry.yarnpkg.com/@jambff/ra-components/-/ra-components-1.17.4.tgz#df054b1708542a2aec8ee788c8a4298d638015c4"
+  integrity sha512-XMWfErLiAvWpflNYGHkBc4Grye8YWj/g0wNlhh8deElfSTnmMZWtnUoVOZLUqtkDkAzdwI0v4aM5kDX+QNT+YA==
   dependencies:
     browser-image-compression "^2.0.0"
     change-case "^4.1.2"
