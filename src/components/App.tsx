@@ -7,11 +7,17 @@ import CheckCircle from '@mui/icons-material/CheckCircle';
 import CalendarViewWeekIcon from '@mui/icons-material/CalendarViewWeek';
 import Summarize from '@mui/icons-material/Summarize';
 import Image from '@mui/icons-material/Image';
+import QuestionMark from '@mui/icons-material/QuestionMark';
 import People from '@mui/icons-material/People';
 import Category from '@mui/icons-material/Category';
-import { MediaLibraryProvider } from '@jambff/ra-components';
+import { FormProvider, MediaLibraryProvider } from '@jambff/ra-components';
 import { User } from '@supabase/supabase-js';
-import { getDataProvider } from '../data-provider';
+import { createAuthenticatedFetch } from '@jambff/supabase-auth-fetch';
+import {
+  createDataProvider,
+  isDataProviderError,
+} from '@jambff/ra-data-provider';
+import { sentenceCase } from 'change-case';
 import { TaxonomyCreate } from './taxonomies/TaxonomyCreate';
 import { TaxonomyEdit } from './taxonomies/TaxonomyEdit';
 import { TaxonomyList } from './taxonomies/TaxonomyList';
@@ -32,8 +38,17 @@ import { TaskCreate } from './tasks/TaskCreate';
 import { TaskEdit } from './tasks/TaskEdit';
 import { UserList } from './users/UserList';
 import { UserEdit } from './users/UserEdit';
+import { GuideList } from './guides/GuideList';
+import { GuideCreate } from './guides/GuideCreate';
+import { GuideEdit } from './guides/GuideEdit';
 
 const supabase = createSupabaseClient();
+const fetch = createAuthenticatedFetch(supabase);
+const dataProvider = createDataProvider(
+  process.env.API_BASE_URL ?? 'http://localhost:7000',
+  { fetch },
+);
+
 const authProvider = createAuthProvider(supabase, {
   acceptedRoles: ['ADMIN'],
   getIdentity: async (supabaseUser: User) => {
@@ -57,6 +72,26 @@ const authProvider = createAuthProvider(supabase, {
 const MEDIA_LIBRARY_BUCKET = 'images';
 const MEDIA_LIBRARY_BUCKET_FOLDER = 'public';
 
+const onFormError = (error: unknown): Record<string, string> => {
+  const formErrors: Record<string, string> = {};
+
+  if (!isDataProviderError(error)) {
+    throw error;
+  }
+
+  if (!error.errors) {
+    return formErrors;
+  }
+
+  return error.errors.reduce(
+    (acc, err) => ({
+      ...acc,
+      [err.property]: sentenceCase(err.message),
+    }),
+    formErrors,
+  );
+};
+
 const App: FC = () => (
   <MediaLibraryProvider
     croppable
@@ -76,67 +111,73 @@ const App: FC = () => (
       maxSizeMB: 1,
       maxWidthOrHeight: 1920,
     }}>
-    <Admin
-      theme={theme}
-      dataProvider={getDataProvider(
-        process.env.API_BASE_URL ?? 'http://localhost:7000',
-        supabase,
-      )}
-      authProvider={authProvider}
-      layout={Layout}
-      loginPage={<LoginPage background={SECONDARY_COLOR} />}>
-      <Resource
-        name="programs"
-        list={ProgramList}
-        create={ProgramCreate}
-        edit={ProgramEdit}
-        icon={Summarize}
-      />
-      <Resource
-        name="tasks"
-        list={TaskList}
-        create={TaskCreate}
-        edit={TaskEdit}
-        icon={CheckCircle}
-      />
-      <Resource
-        name="activities"
-        list={ActivityList}
-        create={ActivityCreate}
-        edit={ActivityEdit}
-        icon={DirectionsRun}
-      />
-      <Resource
-        name="modalities"
-        list={TaxonomyList}
-        create={TaxonomyCreate}
-        edit={TaxonomyEdit}
-        icon={Category}
-      />
-      <Resource
-        name="equipment"
-        list={TaxonomyList}
-        create={TaxonomyCreate}
-        edit={TaxonomyEdit}
-        icon={FitnessCenter}
-      />
-      <Resource
-        name="phases"
-        list={TaxonomyList}
-        create={TaxonomyCreate}
-        edit={TaxonomyEdit}
-        icon={CalendarViewWeekIcon}
-      />
-      <Resource
-        name="media"
-        options={{ label: 'Media Library' }}
-        list={MediaList}
-        create={MediaCreate}
-        edit={MediaEdit}
-        icon={Image}
-      />
-      <Resource name="users" list={UserList} edit={UserEdit} icon={People} />
-    </Admin>
+    <FormProvider onError={onFormError}>
+      <Admin
+        theme={theme}
+        dataProvider={dataProvider}
+        authProvider={authProvider}
+        layout={Layout}
+        loginPage={<LoginPage background={SECONDARY_COLOR} />}>
+        <Resource
+          name="programs"
+          list={ProgramList}
+          create={ProgramCreate}
+          edit={ProgramEdit}
+          icon={Summarize}
+        />
+        <Resource
+          name="tasks"
+          list={TaskList}
+          create={TaskCreate}
+          edit={TaskEdit}
+          icon={CheckCircle}
+        />
+        <Resource
+          name="activities"
+          list={ActivityList}
+          create={ActivityCreate}
+          edit={ActivityEdit}
+          icon={DirectionsRun}
+        />
+        <Resource
+          name="modalities"
+          list={TaxonomyList}
+          create={TaxonomyCreate}
+          edit={TaxonomyEdit}
+          icon={Category}
+        />
+        <Resource
+          name="equipment"
+          list={TaxonomyList}
+          create={TaxonomyCreate}
+          edit={TaxonomyEdit}
+          icon={FitnessCenter}
+        />
+        <Resource
+          name="phases"
+          list={TaxonomyList}
+          create={TaxonomyCreate}
+          edit={TaxonomyEdit}
+          icon={CalendarViewWeekIcon}
+        />
+        <Resource
+          name="media"
+          options={{ label: 'Media Library' }}
+          list={MediaList}
+          create={MediaCreate}
+          edit={MediaEdit}
+          icon={Image}
+        />
+        <Resource
+          name="guides"
+          list={GuideList}
+          create={GuideCreate}
+          edit={GuideEdit}
+          icon={QuestionMark}
+        />
+        <Resource name="users" list={UserList} edit={UserEdit} icon={People} />
+      </Admin>
+    </FormProvider>
   </MediaLibraryProvider>
 );
 

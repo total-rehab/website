@@ -358,10 +358,10 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz#b520529ec21d8e5945a1851dfd1c32e94e39ff45"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
-"@jambff/ra-components@^1.16.4":
-  version "1.16.4"
-  resolved "https://registry.yarnpkg.com/@jambff/ra-components/-/ra-components-1.16.4.tgz#43eb6b34b743bf9667d6244baa9d749d6d7fb692"
-  integrity sha512-vlv90aLwrecr2n6cyxIZUuiswglyGCpgAAie9i//YVRKTBbhNRwrxE4wtQRmTHi45uz2/16cwPuTYTTGELmp7w==
+"@jambff/ra-components@^1.17.2":
+  version "1.17.2"
+  resolved "https://registry.yarnpkg.com/@jambff/ra-components/-/ra-components-1.17.2.tgz#5c412da5744db855018df3669e7b21ab5af4773f"
+  integrity sha512-iViaI/znqrRzgNEOn6u4cLDy/e55+yDtfIgh+sJNL4ov0n8aSYXzWmnSjm4aSnV/QCoi7mTPZ9CI8zYGxxWndA==
   dependencies:
     browser-image-compression "^2.0.0"
     change-case "^4.1.2"
@@ -373,13 +373,27 @@
     react-easy-crop "^4.6.3"
     unfetch "^5.0.0"
 
-"@jambff/ra-supabase-next-auth@^1.5.6":
-  version "1.5.6"
-  resolved "https://registry.yarnpkg.com/@jambff/ra-supabase-next-auth/-/ra-supabase-next-auth-1.5.6.tgz#70395a807716108f7fe8d3f9f75973cbac8c5ffd"
-  integrity sha512-k4oKosk1N1d+Lh6xKxtsoXK254AeJS2JsA7Pn2KwpF53KwQX+Np1LfiyQ57CtC6BA6XGUAqFUHH8bo5vmjiJSg==
+"@jambff/ra-data-provider@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@jambff/ra-data-provider/-/ra-data-provider-1.2.0.tgz#fad3a7d845a52458dfb011bfb009f550c8696896"
+  integrity sha512-Gb7pFwA7ePXrFLUuTPpEhUXfyczFf4wb4j0h15bfnySKXky7Usg0lBOw8YUDVuBCFSn40GPGg+1Q/IgJRiBcjg==
+  dependencies:
+    qs "^6.11.0"
+    ra-core "^4.7.2"
+    unfetch "^4.0.2"
+
+"@jambff/ra-supabase-next-auth@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@jambff/ra-supabase-next-auth/-/ra-supabase-next-auth-2.1.0.tgz#844799d679b378ec728a3ea63c12dc53220bf908"
+  integrity sha512-XiVfHE8wms0tPjWJ9kPDE2QJ3fwmJt7/qi1p2IkZdWaM8lVjCFqix1i+PafheKQmiLq6ETtf2/1Mh9S7DvPegg==
   dependencies:
     js-cookie "^3.0.1"
-    qs "^6.11.0"
+
+"@jambff/supabase-auth-fetch@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@jambff/supabase-auth-fetch/-/supabase-auth-fetch-1.0.0.tgz#6156cf030ed97d493d2bfe1bc18599f8e21562f7"
+  integrity sha512-Wez91XaqxUnevRA7+wo/tn+rNkmw3KYEvw6YkXOJxZbGHBcIpnfLm2I4ZKCyfDUITPvvvebI5YPh1n2RjtGLCw==
+  dependencies:
     unfetch "^4.0.2"
 
 "@marionebl/sander@^0.6.0":
@@ -853,11 +867,6 @@
     "@tiptap/extension-strike" "^2.0.0-beta.209"
     "@tiptap/extension-text" "^2.0.0-beta.209"
 
-"@types/js-cookie@^3.0.2":
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/@types/js-cookie/-/js-cookie-3.0.2.tgz#451eaeece64c6bdac8b2dde0caab23b085899e0d"
-  integrity sha512-6+0ekgfusHftJNYpihfkMu8BWdeHs9EOJuGcSofErjstGPfPGEu9yTu4t460lTzzAMl2cM5zngQJqPMHbbnvYA==
-
 "@types/json-schema@^7.0.9":
   version "7.0.11"
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.11.tgz#d421b6c527a3037f7c84433fd2c4229e016863d3"
@@ -902,11 +911,6 @@
   version "15.7.5"
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.5.tgz#5f19d2b85a98e9558036f6a3cacc8819420f05cf"
   integrity sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==
-
-"@types/qs@^6.9.7":
-  version "6.9.7"
-  resolved "https://registry.yarnpkg.com/@types/qs/-/qs-6.9.7.tgz#63bb7d067db107cc1e457c303bc25d511febf6cb"
-  integrity sha512-FGa1F62FT09qcrueBA6qYTrJPVDzah9a+493+o2PCXsesWHIn27G98TsSMs3WPNbZIEj4+VJf6saSFpvD+3Zsw==
 
 "@types/react-dom@18.0.10":
   version "18.0.10"
@@ -1563,11 +1567,6 @@ cosmiconfig@^7.0.0:
     parse-json "^5.0.0"
     path-type "^4.0.0"
     yaml "^1.10.0"
-
-cropperjs@^1.5.13:
-  version "1.5.13"
-  resolved "https://registry.yarnpkg.com/cropperjs/-/cropperjs-1.5.13.tgz#eb1682f01d17c70ed5244317091d745c9a249ef8"
-  integrity sha512-by7jKAo73y5/Do0K6sxdTKHgndY0NMjG2bEdgeJxycbcmHuCiMXqw8sxy5C5Y5WTOTcDGmbT7Sr5CgKOXR06OA==
 
 cross-fetch@^3.1.5:
   version "3.1.5"
@@ -3710,6 +3709,22 @@ ra-core@^4.7.0:
   version "4.7.0"
   resolved "https://registry.yarnpkg.com/ra-core/-/ra-core-4.7.0.tgz#2ecefdb7bfe284da0fa5339754a1b5626400d5b0"
   integrity sha512-BqryOzTwuGd5Qn7Q5JLnipgWbhuNbIbK5Y9Kq0BQTNJTr8E8KxwgxduOyQatR4j8Gx8klrZrzZkQDGKlE4287g==
+  dependencies:
+    clsx "^1.1.1"
+    date-fns "^2.19.0"
+    eventemitter3 "^4.0.7"
+    inflection "~1.12.0"
+    jsonexport "^3.2.0"
+    lodash "~4.17.5"
+    prop-types "^15.6.1"
+    query-string "^7.1.1"
+    react-is "^17.0.2"
+    react-query "^3.32.1"
+
+ra-core@^4.7.2:
+  version "4.7.2"
+  resolved "https://registry.yarnpkg.com/ra-core/-/ra-core-4.7.2.tgz#fdfe127da3aa04ff5b53d265ca3a00d6590b77ad"
+  integrity sha512-05PPxlcHvAgDFRlos3WwR52FA9jFyn1IXQYetvFksyah/1mulSVptXrzG3LdWBE/XazsgHi5JT7G8BdqxJyGzw==
   dependencies:
     clsx "^1.1.1"
     date-fns "^2.19.0"
