@@ -9,7 +9,7 @@ domains:
 - domain: {{subDomain}}.total-rehab.co.uk
   type: PRIMARY
 services:
-- name: vibefind-admin
+- name: admin
   build_command: APP_ENV={{appEnv}} yarn build
   environment_slug: node-js
   envs:
