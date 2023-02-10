@@ -5,7 +5,6 @@ import {
   useGetIdentity,
   useRecordContext,
 } from 'react-admin';
-import { Typography } from '@mui/material';
 
 export const UserInputs: FC = () => {
   const record = useRecordContext();
