@@ -1,5 +1,4 @@
 import qs, { IStringifyOptions } from 'qs';
-import fetch from 'unfetch';
 import {
   CreateParams,
   CreateResult,
@@ -24,9 +23,18 @@ import {
 import { SupabaseClient } from '@supabase/supabase-js';
 import { createAuthenticatedFetch } from '@jambff/ra-supabase-next-auth';
 
-class InvalidResponseError extends Error {
-  constructor(statusCode: number) {
+type ValidationErrors = {
+  constraint: string;
+  message: string;
+  property: string;
+};
+
+export class InvalidResponseError extends Error {
+  errors?: ValidationErrors[];
+
+  constructor(statusCode: number, errors?: ValidationErrors[]) {
     super(`Invalid response: ${statusCode}`);
+    this.errors = errors;
   }
 }
 
@@ -107,9 +115,7 @@ const getJsonResponse = async (res: {
   const data = await res.json();
 
   if (res.status >= 400) {
-    console.error(data);
-
-    throw new InvalidResponseError(res.status);
+    throw new InvalidResponseError(res.status, data.errors);
   }
 
   return data;
@@ -201,7 +207,6 @@ export const getDataProvider = (
       params: CreateParams,
     ): Promise<CreateResult> => {
       const url = new URL(`/${resource}`, baseUrl);
-
       const res = await authenticatedFetch(url.href, {
         method: 'POST',
         body: JSON.stringify(params.data),
