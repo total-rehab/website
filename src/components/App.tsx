@@ -72,7 +72,7 @@ const authProvider = createAuthProvider(supabase, {
 const MEDIA_LIBRARY_BUCKET = 'images';
 const MEDIA_LIBRARY_BUCKET_FOLDER = 'public';
 
-const onFormError = (error: unknown): Record<string, string> => {
+const onFormError = async (error: unknown): Promise<Record<string, string>> => {
   const formErrors: Record<string, string> = {};
 
   if (!isDataProviderError(error)) {
