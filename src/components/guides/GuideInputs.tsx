@@ -28,13 +28,6 @@ export const GuideInputs: FC = () => (
           optionText="name"
         />
       </ReferenceArrayInput>
-      <ReferenceArrayInput source="modalities" reference="modalities">
-        <AutocompleteArrayOfObjectsInput
-          fullWidth
-          label="Modalities"
-          optionText="name"
-        />
-      </ReferenceArrayInput>
     </FlexRow>
     <EditorContent source="content" fullWidth />
   </>
