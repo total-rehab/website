@@ -5,7 +5,7 @@ import { GuideInputs } from './GuideInputs';
 export const GuideEdit: FC = () => (
   <EditForm
     queryOptions={{
-      meta: { include: { phases: true, programs: true, modalities: true } },
+      meta: { include: { phases: true, programs: true } },
     }}>
     <GuideInputs />
   </EditForm>
