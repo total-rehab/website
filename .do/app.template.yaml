@@ -1,4 +1,4 @@
-name: total-rehab-admin-{{appEnv}}
+name: total-rehab-website-{{appEnv}}
 region: lon
 alerts:
 - disabled: true
@@ -9,7 +9,7 @@ domains:
 - domain: {{subDomain}}.total-rehab.co.uk
   type: PRIMARY
 services:
-- name: admin
+- name: website
   build_command: APP_ENV={{appEnv}} yarn build
   environment_slug: node-js
   envs:
@@ -27,7 +27,7 @@ services:
     value: "3000"
   github:
     branch: {{appEnv}}
-    repo: total-rehab/admin
+    repo: total-rehab/website
   http_port: 3000
   health_check:
     http_path: /healthcheck
