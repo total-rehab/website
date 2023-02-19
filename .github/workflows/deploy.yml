@@ -24,7 +24,7 @@ jobs:
           COMMIT_HASH=$(git rev-parse HEAD)
           yarn prepare-deployment \
           --app-env ${{ github.ref_name }} \
-          --app-name total-rehab-admin-${{ github.ref_name }} \
+          --app-name total-rehab-website-${{ github.ref_name }} \
           --staging-sub-domain staging \
           --production-sub-domain www
         env:
