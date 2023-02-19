@@ -26,7 +26,7 @@ services:
     scope: RUN_TIME
     value: "3000"
   github:
-    branch: {{appEnv}}
+    branch: main
     repo: total-rehab/website
   http_port: 3000
   health_check:
