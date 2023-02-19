@@ -8,7 +8,12 @@ const { hideBin } = require('yargs/helpers');
 const isCI = require('is-ci');
 
 const { argv } = yargs(hideBin(process.argv));
-const requiredVars = ['appName', 'appEnv', 'subDomain'];
+const requiredVars = [
+  'appName',
+  'appEnv',
+  'stagingSubDomain',
+  'productionSubDomain',
+];
 
 requiredVars.forEach((requiredVar) => {
   if (!(requiredVar in argv)) {
@@ -26,9 +31,10 @@ const writeAppSpec = () => {
   const template = Handlebars.compile(source);
   const compiledContent = template({
     appEnv: argv.appEnv,
-    subDomain: `${argv.subDomain}${
-      argv.appEnv === 'production' ? '' : '-staging'
-    }`,
+    subDomain:
+      argv.appEnv === 'production'
+        ? argv.productionSubDomain
+        : argv.stagingSubDomain,
   });
 
   fs.writeFileSync(appSpecPath, Buffer.from(compiledContent));
