@@ -28,8 +28,8 @@ jobs:
         run: |
           COMMIT_HASH=$(git rev-parse HEAD)
           yarn prepare-deployment \
-          --app-env ${{ github.ref_name }} \
-          --app-name total-rehab-website-${{ github.ref_name }} \
+          --app-env ${{ inputs.environment }} \
+          --app-name total-rehab-website-${{ inputs.environment }} \
           --staging-sub-domain staging \
           --production-sub-domain www
         env:
