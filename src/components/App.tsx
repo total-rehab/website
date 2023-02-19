@@ -113,6 +113,7 @@ const App: FC = () => (
     }}>
     <FormProvider onError={onFormError}>
       <Admin
+        basename="/admin"
         theme={theme}
         dataProvider={dataProvider}
         authProvider={authProvider}
