@@ -50,3 +50,16 @@ environment variables. These can be retrieved from the Supabase dashboard.
 To enable image uploads you will need to make sure that Supabase storage has
 a public bucket called "images", containing a filter called "public" for a given
 environment.
+
+## Deployments
+
+We deploy to the staging environment when a change is merged into the `main`
+branch, which is set as the default branch in GitHub. To deploy to production
+[manually trigger](https://docs.github.com/en/actions/managing-workflow-runs/manually-running-a-workflow)
+the `Deploy` workflow, selecting "production" as the environment.
+
+If you're not sure what version of the code is currently running in a given
+environment see the API `/healthcheck` endpoint, which exposes a `version` that
+contains the current commit hash. Before deploying to production it is worth
+checking this `version` to make sure we are running the latest code and are
+happy that it has been sufficiently tested.
