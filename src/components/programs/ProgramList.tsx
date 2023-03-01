@@ -23,15 +23,13 @@ export const ProgramList: FC = () => {
         <FunctionField
           label="Activity Levels"
           textAlign="center"
-          render={(record: RaRecord) =>
-            record.activityLevels.map((activityLevel: string) => (
-              <Chip
-                key={activityLevel}
-                label={sentenceCase(activityLevel)}
-                sx={{ margin: theme.spacing(0.5) }}
-              />
-            ))
-          }
+          render={(record: RaRecord) => (
+            <Chip
+              key={record.activityLevel}
+              label={sentenceCase(record.activityLevel)}
+              sx={{ margin: theme.spacing(0.5) }}
+            />
+          )}
         />
         <DateField source="createdAt" textAlign="center" showTime />
         <DateField source="updatedAt" textAlign="center" showTime />

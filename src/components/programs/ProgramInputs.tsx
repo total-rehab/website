@@ -10,7 +10,7 @@ import {
   NumberInput,
   ReferenceInput,
   required,
-  SelectArrayInput,
+  SelectInput,
   TextInput,
 } from 'react-admin';
 
@@ -41,8 +41,8 @@ export const ProgramInputs: FC = () => (
       <MediaLibraryInput source="thumbnailImageId" label="Thumbnail Image" />
     </FlexRow>
     <FlexRow>
-      <SelectArrayInput
-        source="activityLevels"
+      <SelectInput
+        source="activityLevel"
         validate={[required()]}
         choices={[
           { id: 'LIGHT', name: 'Light' },
