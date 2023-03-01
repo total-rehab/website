@@ -51,7 +51,6 @@ export const ProgramInputs: FC = () => (
         ]}
       />
       <NumberInput source="minimumAge" />
-      <NumberInput source="maximumAge" />
     </FlexRow>
     <TextArrayInput source="features" addButtonText="Add feature" />
     <ArrayInput source="phases">

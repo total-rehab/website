@@ -20,7 +20,6 @@ export const ProgramList: FC = () => {
       <Datagrid rowClick="edit">
         <TextField source="title" />
         <NumberField source="minimumAge" textAlign="center" />
-        <NumberField source="maximumAge" textAlign="center" />
         <FunctionField
           label="Activity Levels"
           textAlign="center"
