@@ -1,3 +1,4 @@
+import { sentenceCase } from 'change-case';
 import { FC } from 'react';
 import {
   AutocompleteInput,
@@ -6,13 +7,22 @@ import {
   TextInput,
   required,
   CheckboxGroupInput,
+  RaRecord,
 } from 'react-admin';
 import { FlexRow } from '../generic/FlexRow';
 
 export const TaskInputs: FC = () => (
   <>
     <ReferenceInput label="Program" source="programId" reference="programs">
-      <AutocompleteInput optionText="title" fullWidth validate={required()} />
+      <AutocompleteInput
+        optionText={(record: RaRecord) =>
+          `${record.title} - ${
+            record.isForOver60s ? 'Over 60s' : 'Under 60s'
+          } - ${sentenceCase(record.activityLevel)}`
+        }
+        fullWidth
+        validate={required()}
+      />
     </ReferenceInput>
     <ReferenceInput label="Activity" source="activityId" reference="activities">
       <AutocompleteInput optionText="name" fullWidth validate={required()} />
