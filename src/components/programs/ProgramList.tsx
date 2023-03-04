@@ -5,7 +5,6 @@ import {
   DateField,
   FunctionField,
   List,
-  NumberField,
   RaRecord,
   TextField,
 } from 'react-admin';
