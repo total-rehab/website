@@ -51,7 +51,7 @@ export const ProgramInputs: FC = () => (
           { id: 'INTENSIVE', name: 'Intensive' },
         ]}
       />
-      <BooleanInput source="isForOver60s" />
+      <BooleanInput label="Is over 60s program" source="isForOver60s" />
     </FlexRow>
     <TextArrayInput source="features" addButtonText="Add feature" />
     <ArrayInput source="phases">
