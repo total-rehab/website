@@ -14,7 +14,7 @@ import {
   SelectInput,
   TextInput,
 } from 'react-admin';
-
+import { useTheme } from '@mui/material';
 import { FlexRow } from '../generic/FlexRow';
 import { EditorContent } from '../inputs/EditorContent';
 
@@ -34,43 +34,47 @@ const phaseValidation = (
   return undefined;
 };
 
-export const ProgramInputs: FC = () => (
-  <>
-    <TextInput source="title" validate={[required()]} fullWidth />
-    <FlexRow>
-      <MediaLibraryInput source="heroImageId" label="Hero Image" />
-      <MediaLibraryInput source="thumbnailImageId" label="Thumbnail Image" />
-    </FlexRow>
-    <FlexRow>
-      <SelectInput
-        source="activityLevel"
-        validate={[required()]}
-        choices={[
-          { id: 'LIGHT', name: 'Light' },
-          { id: 'MODERATE', name: 'Moderate' },
-          { id: 'INTENSIVE', name: 'Intensive' },
-        ]}
-      />
-      <BooleanInput label="Is over 60s program" source="isForOver60s" />
-    </FlexRow>
-    <TextArrayInput source="features" addButtonText="Add feature" />
-    <ArrayInput source="phases">
-      <StepFormIterator inline addButtonText="Add phase">
-        <ReferenceInput source="phaseId" reference="phases">
-          <AutocompleteInput
-            fullWidth
-            label="Phase"
-            optionText="name"
-            validate={[required(), phaseValidation]}
-          />
-        </ReferenceInput>
-        <NumberInput
-          fullWidth
-          source="durationInWeeks"
+export const ProgramInputs: FC = () => {
+  const { spacing } = useTheme();
+
+  return (
+    <>
+      <TextInput source="title" validate={[required()]} fullWidth />
+      <FlexRow>
+        <MediaLibraryInput source="heroImageId" label="Hero Image" />
+        <MediaLibraryInput source="thumbnailImageId" label="Thumbnail Image" />
+      </FlexRow>
+      <FlexRow>
+        <SelectInput
+          source="activityLevel"
           validate={[required()]}
+          choices={[
+            { id: 'LIGHT', name: 'Light' },
+            { id: 'MODERATE', name: 'Moderate' },
+            { id: 'INTENSIVE', name: 'Intensive' },
+          ]}
         />
-      </StepFormIterator>
-    </ArrayInput>
-    <EditorContent source="content" fullWidth />
-  </>
-);
+        <BooleanInput label="Is over 60s program" source="isForOver60s" />
+      </FlexRow>
+      <TextArrayInput source="features" addButtonText="Add feature" />
+      <ArrayInput source="phases" sx={{ marginBottom: spacing(4) }}>
+        <StepFormIterator inline addButtonText="Add phase">
+          <ReferenceInput source="phaseId" reference="phases">
+            <AutocompleteInput
+              fullWidth
+              label="Phase"
+              optionText="name"
+              validate={[required(), phaseValidation]}
+            />
+          </ReferenceInput>
+          <NumberInput
+            fullWidth
+            source="durationInWeeks"
+            validate={[required()]}
+          />
+        </StepFormIterator>
+      </ArrayInput>
+      <EditorContent source="content" fullWidth />
+    </>
+  );
+};
