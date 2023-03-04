@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import {
+  BooleanField,
   Datagrid,
   DateField,
   FunctionField,
@@ -19,7 +20,11 @@ export const ProgramList: FC = () => {
     <List actions={<ListActions />} perPage={25}>
       <Datagrid rowClick="edit">
         <TextField source="title" />
-        <NumberField source="minimumAge" textAlign="center" />
+        <BooleanField
+          label="Over 60s"
+          source="isForOver60s"
+          textAlign="center"
+        />
         <FunctionField
           label="Activity Levels"
           textAlign="center"
