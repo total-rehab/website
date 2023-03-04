@@ -5,6 +5,7 @@ import {
 } from '@jambff/ra-components';
 import { FC } from 'react';
 import {
+  BooleanInput,
   ArrayInput,
   AutocompleteInput,
   NumberInput,
@@ -50,7 +51,7 @@ export const ProgramInputs: FC = () => (
           { id: 'INTENSIVE', name: 'Intensive' },
         ]}
       />
-      <NumberInput source="minimumAge" />
+      <BooleanInput source="isForOver60s" />
     </FlexRow>
     <TextArrayInput source="features" addButtonText="Add feature" />
     <ArrayInput source="phases">
