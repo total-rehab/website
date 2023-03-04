@@ -1,8 +1,9 @@
 import { FC } from 'react';
-import { Datagrid, DateField, List, TextField, TopToolbar } from 'react-admin';
+import { Datagrid, DateField, List, TextField } from 'react-admin';
+import { ListActions } from '../ListActions';
 
 export const UserList: FC = () => (
-  <List actions={<TopToolbar />} perPage={25}>
+  <List actions={<ListActions />} perPage={25}>
     <Datagrid rowClick="edit" bulkActionButtons={false}>
       <TextField source="email" />
       <TextField source="role" />

@@ -41,6 +41,7 @@ import { UserEdit } from './users/UserEdit';
 import { GuideList } from './guides/GuideList';
 import { GuideCreate } from './guides/GuideCreate';
 import { GuideEdit } from './guides/GuideEdit';
+import { UserCreate } from './users/UserCreate';
 
 const supabase = createSupabaseClient();
 const fetch = createAuthenticatedFetch(supabase);
@@ -176,7 +177,13 @@ const App: FC = () => (
           edit={GuideEdit}
           icon={QuestionMark}
         />
-        <Resource name="users" list={UserList} edit={UserEdit} icon={People} />
+        <Resource
+          name="users"
+          list={UserList}
+          edit={UserEdit}
+          create={UserCreate}
+          icon={People}
+        />
       </Admin>
     </FormProvider>
   </MediaLibraryProvider>
