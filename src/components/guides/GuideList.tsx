@@ -1,9 +1,13 @@
 import { FC } from 'react';
-import { Datagrid, DateField, List, TextField } from 'react-admin';
+import { Datagrid, DateField, List, TextField, TextInput } from 'react-admin';
 import { ListActions } from '../ListActions';
 
+const filters = [
+  <TextInput key="search" label="Search by title" source="q" alwaysOn />,
+];
+
 export const GuideList: FC = () => (
-  <List actions={<ListActions />} perPage={25}>
+  <List actions={<ListActions hasFilters />} perPage={25} filters={filters}>
     <Datagrid rowClick="edit">
       <TextField source="title" />
       <DateField source="createdAt" textAlign="center" showTime />

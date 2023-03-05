@@ -1,22 +1,39 @@
 import { FC } from 'react';
 import {
   BooleanField,
+  BooleanInput,
   Datagrid,
   DateField,
   FunctionField,
   List,
   RaRecord,
+  SelectInput,
   TextField,
+  TextInput,
 } from 'react-admin';
 import { sentenceCase } from 'change-case';
 import { Chip, useTheme } from '@mui/material';
 import { ListActions } from '../ListActions';
 
+const filters = [
+  <TextInput key="search" label="Search by title" source="q" alwaysOn />,
+  <SelectInput
+    key="activityLevel"
+    source="activityLevel"
+    choices={[
+      { id: 'LIGHT', name: 'Light' },
+      { id: 'MODERATE', name: 'Moderate' },
+      { id: 'INTENSIVE', name: 'Intensive' },
+    ]}
+  />,
+  <BooleanInput key="over60s" label="Over 60s" source="isForOver60s" />,
+];
+
 export const ProgramList: FC = () => {
   const theme = useTheme();
 
   return (
-    <List actions={<ListActions />} perPage={25}>
+    <List actions={<ListActions hasFilters />} perPage={25} filters={filters}>
       <Datagrid rowClick="edit">
         <TextField source="title" />
         <BooleanField

@@ -1,19 +1,42 @@
 import { FC } from 'react';
 import {
+  AutocompleteInput,
   Datagrid,
   DateField,
   List,
   NumberField,
+  NumberInput,
   RaRecord,
+  ReferenceInput,
   TextField,
 } from 'react-admin';
 import { sentenceCase } from 'change-case';
 import { EntityField } from '../generic/EntityField';
 import { ListActions } from '../ListActions';
 
+const filters = [
+  <ReferenceInput
+    alwaysOn
+    key="program"
+    source="programId"
+    reference="programs">
+    <AutocompleteInput
+      sx={{ width: 300 }}
+      label="Select a program"
+      optionText={(record: RaRecord) =>
+        `${record.title} - ${
+          record.isForOver60s ? 'Over 60s' : 'Under 60s'
+        } - ${sentenceCase(record.activityLevel)}`
+      }
+    />
+  </ReferenceInput>,
+  <NumberInput key="week" source="weekNumber" />,
+];
+
 export const TaskList: FC = () => (
   <List
-    actions={<ListActions />}
+    actions={<ListActions hasFilters />}
+    filters={filters}
     perPage={25}
     queryOptions={{
       meta: { include: { activity: true } },

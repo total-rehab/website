@@ -1,10 +1,25 @@
 import { FC } from 'react';
-import { Datagrid, DateField, List, TextField } from 'react-admin';
+import {
+  AutocompleteInput,
+  Datagrid,
+  DateField,
+  List,
+  ReferenceInput,
+  TextField,
+  TextInput,
+} from 'react-admin';
 import { EntityField } from '../generic/EntityField';
 import { ListActions } from '../ListActions';
 
+const filters = [
+  <TextInput key="search" label="Search by name" source="q" alwaysOn />,
+  <ReferenceInput key="modality" source="modalityId" reference="modalities">
+    <AutocompleteInput label="Modality" optionText="name" />
+  </ReferenceInput>,
+];
+
 export const ActivityList: FC = () => (
-  <List actions={<ListActions />} perPage={25}>
+  <List actions={<ListActions hasFilters />} perPage={25} filters={filters}>
     <Datagrid rowClick="edit" bulkActionButtons={false}>
       <TextField source="name" />
       <EntityField

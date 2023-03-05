@@ -1,6 +1,12 @@
 import { MediaLibraryInput } from '@jambff/ra-components';
+import { sentenceCase } from 'change-case';
 import { FC } from 'react';
-import { ReferenceArrayInput, required, TextInput } from 'react-admin';
+import {
+  RaRecord,
+  ReferenceArrayInput,
+  required,
+  TextInput,
+} from 'react-admin';
 import { AutocompleteArrayOfObjectsInput } from '../generic/AutocompleteArrayOfObjectsInput';
 
 import { FlexRow } from '../generic/FlexRow';
@@ -18,7 +24,11 @@ export const GuideInputs: FC = () => (
         <AutocompleteArrayOfObjectsInput
           fullWidth
           label="Programs"
-          optionText="title"
+          optionText={(record: RaRecord) =>
+            `${record.title} - ${
+              record.isForOver60s ? 'Over 60s' : 'Under 60s'
+            } - ${sentenceCase(record.activityLevel)}`
+          }
         />
       </ReferenceArrayInput>
       <ReferenceArrayInput source="phases" reference="phases">
