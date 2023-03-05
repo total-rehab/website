@@ -1,10 +1,15 @@
 import { FC } from 'react';
-import { ReferenceField, TextField } from 'react-admin';
+import {
+  FunctionField,
+  RaRecord,
+  ReferenceField,
+  TextField,
+} from 'react-admin';
 
 type EntityFieldProps = {
   source: string;
   reference: string;
-  itemSource: string;
+  itemSource: string | ((record: RaRecord) => string);
 };
 
 export const EntityField: FC<EntityFieldProps> = ({
@@ -13,6 +18,10 @@ export const EntityField: FC<EntityFieldProps> = ({
   itemSource,
 }: EntityFieldProps) => (
   <ReferenceField source={source} reference={reference}>
-    <TextField source={itemSource} />
+    {typeof itemSource === 'string' ? (
+      <TextField source={itemSource} />
+    ) : (
+      <FunctionField render={itemSource} />
+    )}
   </ReferenceField>
 );

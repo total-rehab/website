@@ -1,5 +1,13 @@
 import { FC } from 'react';
-import { Datagrid, DateField, List, NumberField, TextField } from 'react-admin';
+import {
+  Datagrid,
+  DateField,
+  List,
+  NumberField,
+  RaRecord,
+  TextField,
+} from 'react-admin';
+import { sentenceCase } from 'change-case';
 import { EntityField } from '../generic/EntityField';
 import { ListActions } from '../ListActions';
 
@@ -11,6 +19,15 @@ export const TaskList: FC = () => (
       meta: { include: { activity: true } },
     }}>
     <Datagrid rowClick="edit">
+      <EntityField
+        source="programId"
+        reference="programs"
+        itemSource={(record: RaRecord) =>
+          `${record.title} - ${
+            record.isForOver60s ? 'Over 60s' : 'Under 60s'
+          } - ${sentenceCase(record.activityLevel ?? '')}`
+        }
+      />
       <NumberField source="weekNumber" textAlign="center" />
       <EntityField
         source="activityId"
