@@ -373,10 +373,10 @@
     react-easy-crop "^4.6.3"
     unfetch "^5.0.0"
 
-"@jambff/ra-data-provider@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@jambff/ra-data-provider/-/ra-data-provider-1.2.0.tgz#fad3a7d845a52458dfb011bfb009f550c8696896"
-  integrity sha512-Gb7pFwA7ePXrFLUuTPpEhUXfyczFf4wb4j0h15bfnySKXky7Usg0lBOw8YUDVuBCFSn40GPGg+1Q/IgJRiBcjg==
+"@jambff/ra-data-provider@^1.2.1":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@jambff/ra-data-provider/-/ra-data-provider-1.2.1.tgz#6a137bf1e4abaf61c5183b696819260c5512ee63"
+  integrity sha512-ap1XZrMiadvr57BEIlmq5s0YeE9xb9NTe+ePZ1EFFmZ2HTtZZdMRc5tc59RHKQtbHS1KgVAQVJGpXuoszLHAmQ==
   dependencies:
     qs "^6.11.0"
     ra-core "^4.7.2"

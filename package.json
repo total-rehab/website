@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@jambff/ra-components": "^1.17.4",
-    "@jambff/ra-data-provider": "^1.2.0",
+    "@jambff/ra-data-provider": "^1.2.1",
     "@jambff/ra-supabase-next-auth": "^2.1.2",
     "@jambff/supabase-auth-fetch": "^1.0.0",
     "@supabase/supabase-js": "^2.4.0",

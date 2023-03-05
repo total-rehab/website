@@ -28,6 +28,7 @@ import { ActivityEdit } from './activities/ActivityEdit';
 import { ProgramList } from './programs/ProgramList';
 import { ProgramCreate } from './programs/ProgramCreate';
 import { ProgramEdit } from './programs/ProgramEdit';
+import { ProgramShow } from './programs/ProgramShow';
 import { createSupabaseClient } from '../supabase';
 import { SECONDARY_COLOR, theme } from '../theme';
 import { MediaList } from './media/MediaList';
@@ -125,6 +126,7 @@ const App: FC = () => (
           list={ProgramList}
           create={ProgramCreate}
           edit={ProgramEdit}
+          show={ProgramShow}
           icon={Summarize}
         />
         <Resource
