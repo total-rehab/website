@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* For the rich text editor */
 .ProseMirror {
   min-height: 300px;
