@@ -3,6 +3,7 @@ import {
   AutocompleteInput,
   Datagrid,
   DateField,
+  FunctionField,
   List,
   NumberField,
   NumberInput,
@@ -59,6 +60,11 @@ export const TaskList: FC = () => (
       />
       <TextField source="reps" textAlign="center" />
       <NumberField source="sets" textAlign="center" />
+      <FunctionField
+        label="Days"
+        textAlign="center"
+        render={(record: RaRecord) => record.days.join()}
+      />
       <DateField source="createdAt" textAlign="center" showTime />
       <DateField source="updatedAt" textAlign="center" showTime />
       <TextField source="id" textAlign="center" />
