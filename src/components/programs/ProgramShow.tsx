@@ -21,7 +21,7 @@ export const ProgramShow = () => (
         <TextField source="activityLevel" />
       </TabbedShowLayout.Tab>
       <TabbedShowLayout.Tab label="content">
-        <RichTextField source="content" label={false} />
+        <RichTextField className="prose" source="content" label={false} />
       </TabbedShowLayout.Tab>
       <TabbedShowLayout.Tab label="tasks" path="tasks">
         <ReferenceManyField reference="tasks" target="programId" label={false}>

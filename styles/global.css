@@ -6,3 +6,7 @@
 .ProseMirror {
   min-height: 300px;
 }
+
+.ProseMirror > * {
+  margin-top: 10px;
+}

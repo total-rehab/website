@@ -16,6 +16,7 @@ export const EditorContent: FC<EditorContentProps> = (
 ) => (
   <RichTextInput
     {...props}
+    className="prose max-w-none"
     toolbar={
       <div style={{ alignSelf: 'flex-start' }}>
         <RichTextInputToolbar>
