@@ -63,7 +63,7 @@ export const TaskList: FC = () => (
       <FunctionField
         label="Days"
         textAlign="center"
-        render={(record: RaRecord) => record.days.join()}
+        render={(record: RaRecord) => record.days.sort().join()}
       />
       <DateField source="createdAt" textAlign="center" showTime />
       <DateField source="updatedAt" textAlign="center" showTime />
