@@ -43,15 +43,6 @@ export const TaskList: FC = () => (
       meta: { include: { activity: true } },
     }}>
     <Datagrid rowClick="edit">
-      <EntityField
-        source="programId"
-        reference="programs"
-        itemSource={(record: RaRecord) =>
-          `${record.title} - ${
-            record.isForOver60s ? 'Over 60s' : 'Under 60s'
-          } - ${sentenceCase(record.activityLevel ?? '')}`
-        }
-      />
       <NumberField source="weekNumber" textAlign="center" />
       <EntityField
         source="activityId"
@@ -64,6 +55,15 @@ export const TaskList: FC = () => (
         label="Days"
         textAlign="center"
         render={(record: RaRecord) => record.days.sort().join()}
+      />
+      <EntityField
+        source="programId"
+        reference="programs"
+        itemSource={(record: RaRecord) =>
+          `${record.title} - ${
+            record.isForOver60s ? 'Over 60s' : 'Under 60s'
+          } - ${sentenceCase(record.activityLevel ?? '')}`
+        }
       />
       <DateField source="createdAt" textAlign="center" showTime />
       <DateField source="updatedAt" textAlign="center" showTime />
