@@ -1,12 +1,10 @@
 import {
   Show,
   TextField,
-  DateField,
   RichTextField,
   TabbedShowLayout,
   ReferenceManyField,
   Datagrid,
-  EditButton,
   BooleanField,
   NumberField,
 } from 'react-admin';
