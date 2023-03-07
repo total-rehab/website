@@ -9,14 +9,8 @@ const UserTitle = () => {
   return <span>User {record ? `${record.email}` : ''}</span>;
 };
 
-const UserEditToolbar = () => (
-  <Toolbar>
-    <SaveButton />
-  </Toolbar>
-);
-
 export const UserEdit: FC = () => (
-  <EditForm title={<UserTitle />} form={{ toolbar: <UserEditToolbar /> }}>
+  <EditForm title={<UserTitle />}>
     <UserInputs />
   </EditForm>
 );
