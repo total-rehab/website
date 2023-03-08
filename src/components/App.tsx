@@ -1,6 +1,7 @@
 import { FC } from 'react';
-import { Admin, Resource } from 'react-admin';
+import { Admin, CustomRoutes, Resource } from 'react-admin';
 import { LoginPage, createAuthProvider } from '@jambff/ra-supabase-next-auth';
+import { Route } from 'react-router-dom';
 import FitnessCenter from '@mui/icons-material/FitnessCenter';
 import DirectionsRun from '@mui/icons-material/DirectionsRun';
 import CheckCircle from '@mui/icons-material/CheckCircle';
@@ -43,6 +44,7 @@ import { GuideList } from './guides/GuideList';
 import { GuideCreate } from './guides/GuideCreate';
 import { GuideEdit } from './guides/GuideEdit';
 import { UserCreate } from './users/UserCreate';
+import { TaskBulkCreate } from './tasks/TaskBulkCreate';
 
 const supabase = createSupabaseClient();
 const fetch = createAuthenticatedFetch(supabase);
@@ -186,6 +188,9 @@ const App: FC = () => (
           create={UserCreate}
           icon={People}
         />
+        <CustomRoutes>
+          <Route path="bulk-create/tasks" element={<TaskBulkCreate />} />
+        </CustomRoutes>
       </Admin>
     </FormProvider>
   </MediaLibraryProvider>

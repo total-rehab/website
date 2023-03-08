@@ -10,6 +10,7 @@ import {
   RaRecord,
   ReferenceInput,
   TextField,
+  Toolbar,
 } from 'react-admin';
 import { sentenceCase } from 'change-case';
 import { EntityField } from '../generic/EntityField';
@@ -36,7 +37,7 @@ const filters = [
 
 export const TaskList: FC = () => (
   <List
-    actions={<ListActions hasFilters />}
+    actions={<ListActions hasFilters hasBulkCreate />}
     filters={filters}
     perPage={25}
     queryOptions={{

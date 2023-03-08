@@ -1,5 +1,5 @@
 import { sentenceCase } from 'change-case';
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 import {
   AutocompleteInput,
   NumberInput,
@@ -11,10 +11,19 @@ import {
 } from 'react-admin';
 import { FlexRow } from '../generic/FlexRow';
 
-export const TaskInputs: FC = () => (
+type TaskInputsProps = {
+  children?: ReactNode;
+  onProgramIdChange?: (programId: number) => void;
+};
+
+export const TaskInputs: FC<TaskInputsProps> = ({
+  children,
+  onProgramIdChange,
+}: TaskInputsProps) => (
   <>
     <ReferenceInput label="Program" source="programId" reference="programs">
       <AutocompleteInput
+        onChange={onProgramIdChange}
         optionText={(record: RaRecord) =>
           `${record.title} - ${
             record.isForOver60s ? 'Over 60s' : 'Under 60s'
@@ -24,16 +33,17 @@ export const TaskInputs: FC = () => (
         validate={required()}
       />
     </ReferenceInput>
+    {children}
     <ReferenceInput label="Activity" source="activityId" reference="activities">
       <AutocompleteInput optionText="name" fullWidth validate={required()} />
     </ReferenceInput>
     <FlexRow>
+      <NumberInput source="weekNumber" validate={required()} />
       <NumberInput source="sets" />
       <TextInput source="reps" />
       <TextInput source="restPeriod" />
       <TextInput source="frequency" />
     </FlexRow>
-    <NumberInput source="weekNumber" validate={required()} fullWidth />
     <CheckboxGroupInput
       source="days"
       validate={required()}
