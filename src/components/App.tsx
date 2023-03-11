@@ -46,6 +46,7 @@ import { GuideCreate } from './guides/GuideCreate';
 import { GuideEdit } from './guides/GuideEdit';
 import { UserCreate } from './users/UserCreate';
 import { TaskBulkCreate } from './tasks/TaskBulkCreate';
+import { Dashboard } from './dashboard/Dashboard';
 
 const supabase = createSupabaseClient();
 const fetch = createAuthenticatedFetch(supabase);
@@ -123,6 +124,7 @@ const App: FC = () => (
         dataProvider={dataProvider}
         authProvider={authProvider}
         layout={Layout}
+        dashboard={Dashboard}
         loginPage={<LoginPage background={SECONDARY_COLOR} />}>
         <Resource
           name="programs"

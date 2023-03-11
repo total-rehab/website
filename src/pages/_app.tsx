@@ -3,9 +3,14 @@ import '../../styles/global.css';
 
 import { NextPage } from 'next';
 import { AppProps } from 'next/app';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-const App: NextPage<AppProps> = ({ Component, pageProps }: AppProps) => {
-  return <Component {...pageProps} />;
-};
+const queryClient = new QueryClient();
+
+const App: NextPage<AppProps> = ({ Component, pageProps }: AppProps) => (
+  <QueryClientProvider client={queryClient}>
+    <Component {...pageProps} />
+  </QueryClientProvider>
+);
 
 export default App;
