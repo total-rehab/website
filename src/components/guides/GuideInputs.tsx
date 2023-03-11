@@ -1,5 +1,5 @@
-import { MediaLibraryInput } from '@jambff/ra-components';
 import { sentenceCase } from 'change-case';
+import { MediaLibraryInput } from 'ra-supabase-media-library';
 import { FC } from 'react';
 import {
   RaRecord,

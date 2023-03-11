@@ -11,7 +11,7 @@ import Image from '@mui/icons-material/Image';
 import QuestionMark from '@mui/icons-material/QuestionMark';
 import People from '@mui/icons-material/People';
 import Category from '@mui/icons-material/Category';
-import { FormProvider, MediaLibraryProvider } from '@jambff/ra-components';
+import { FormProvider } from '@jambff/ra-components';
 import { User } from '@supabase/supabase-js';
 import { createAuthenticatedFetch } from '@jambff/supabase-auth-fetch';
 import {
@@ -19,6 +19,7 @@ import {
   isDataProviderError,
 } from '@jambff/ra-data-provider';
 import { sentenceCase } from 'change-case';
+import { MediaLibraryProvider } from 'ra-supabase-media-library';
 import { TaxonomyCreate } from './taxonomies/TaxonomyCreate';
 import { TaxonomyEdit } from './taxonomies/TaxonomyEdit';
 import { TaxonomyList } from './taxonomies/TaxonomyList';

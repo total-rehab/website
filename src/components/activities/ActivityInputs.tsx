@@ -1,4 +1,5 @@
-import { MediaLibraryInput, TextArrayInput } from '@jambff/ra-components';
+import { TextArrayInput } from '@jambff/ra-components';
+import { MediaLibraryInput } from 'ra-supabase-media-library';
 import { FC } from 'react';
 import {
   AutocompleteInput,

@@ -16,7 +16,7 @@
     "prepare-deployment": "node ./bin/prepare-deployment.js"
   },
   "dependencies": {
-    "@jambff/ra-components": "^1.17.4",
+    "@jambff/ra-components": "^2.0.0",
     "@jambff/ra-data-provider": "^1.2.1",
     "@jambff/ra-supabase-next-auth": "^2.1.2",
     "@jambff/supabase-auth-fetch": "^1.0.0",
@@ -28,6 +28,7 @@
     "normalize.css": "^8.0.1",
     "pluralize": "^8.0.0",
     "ra-input-rich-text": "^4.7.0",
+    "ra-supabase-media-library": "^1.0.0",
     "react": "18.2.0",
     "react-admin": "^4.7.0",
     "react-dom": "18.2.0",

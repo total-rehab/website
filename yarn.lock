@@ -358,20 +358,13 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz#b520529ec21d8e5945a1851dfd1c32e94e39ff45"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
-"@jambff/ra-components@^1.17.4":
-  version "1.17.4"
-  resolved "https://registry.yarnpkg.com/@jambff/ra-components/-/ra-components-1.17.4.tgz#df054b1708542a2aec8ee788c8a4298d638015c4"
-  integrity sha512-XMWfErLiAvWpflNYGHkBc4Grye8YWj/g0wNlhh8deElfSTnmMZWtnUoVOZLUqtkDkAzdwI0v4aM5kDX+QNT+YA==
+"@jambff/ra-components@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@jambff/ra-components/-/ra-components-2.0.0.tgz#c67f6d099baafce7e5e7c85e97d11742f3333944"
+  integrity sha512-9+miyE+UhOIWXbTDVaPT/nsv3IcAtAgiIv42fQNs0JQKrKJzP4Y5afXN4p7lxI5cVZ8MQ/yTlGeyk3pvb5jWSQ==
   dependencies:
-    browser-image-compression "^2.0.0"
     change-case "^4.1.2"
-    matcher "^5.0.0"
-    param-case "^3.0.4"
     pluralize "^8.0.0"
-    pretty-bytes "^6.0.0"
-    react-dropzone "^14.2.3"
-    react-easy-crop "^4.6.3"
-    unfetch "^5.0.0"
 
 "@jambff/ra-data-provider@^1.2.1":
   version "1.2.1"
@@ -4073,6 +4066,19 @@ ra-language-english@^4.7.0:
   integrity sha512-vRu43vyULdWXzjyTBJP/lF+7WOJmZnhG/q+muY74o+bHsb4ZJZhdY1j2ZdLUtaLgtD6DKz/N4AoTTwgLK7gFGg==
   dependencies:
     ra-core "^4.7.0"
+
+ra-supabase-media-library@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/ra-supabase-media-library/-/ra-supabase-media-library-1.0.0.tgz#ee94d38a0bed33a81ddf339e2d6fb7229ac4d7f6"
+  integrity sha512-lKN3K+MlUszfNAYG1a0RUEvj8mYfWMYHpkOnrxL7YkLLjV/i5atuWjuhqrAgjPSQYxsWqCnuuJvdrhNUHYU0qQ==
+  dependencies:
+    browser-image-compression "^2.0.0"
+    matcher "^5.0.0"
+    param-case "^3.0.4"
+    pretty-bytes "^6.0.0"
+    react-dropzone "^14.2.3"
+    react-easy-crop "^4.6.3"
+    unfetch "^5.0.0"
 
 ra-ui-materialui@^4.7.0:
   version "4.7.0"

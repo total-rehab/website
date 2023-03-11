@@ -1,4 +1,4 @@
-import { MediaLibraryRecordImageField } from '@jambff/ra-components';
+import { MediaLibraryRecordImageField } from 'ra-supabase-media-library';
 import { FC } from 'react';
 import { required, TextInput } from 'react-admin';
 

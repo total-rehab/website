@@ -1,8 +1,4 @@
-import {
-  MediaLibraryInput,
-  TextArrayInput,
-  StepFormIterator,
-} from '@jambff/ra-components';
+import { TextArrayInput, StepFormIterator } from '@jambff/ra-components';
 import { FC } from 'react';
 import {
   BooleanInput,
@@ -15,6 +11,7 @@ import {
   TextInput,
 } from 'react-admin';
 import { useTheme } from '@mui/material';
+import { MediaLibraryInput } from 'ra-supabase-media-library';
 import { FlexRow } from '../generic/FlexRow';
 import { EditorContent } from '../inputs/EditorContent';
 
