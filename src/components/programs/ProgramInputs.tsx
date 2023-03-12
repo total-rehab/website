@@ -72,6 +72,10 @@ export const ProgramInputs: FC = () => {
         </StepFormIterator>
       </ArrayInput>
       <EditorContent source="content" fullWidth />
+      <BooleanInput
+        source="published"
+        helperText="Programs that are not published will not appear in the app."
+      />
     </>
   );
 };

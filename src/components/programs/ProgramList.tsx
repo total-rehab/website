@@ -27,6 +27,7 @@ const filters = [
     ]}
   />,
   <BooleanInput key="over60s" label="Over 60s" source="isForOver60s" />,
+  <BooleanInput key="published" source="published" />,
 ];
 
 export const ProgramList: FC = () => {
@@ -52,6 +53,7 @@ export const ProgramList: FC = () => {
             />
           )}
         />
+        <BooleanField source="published" textAlign="center" />
         <DateField source="createdAt" textAlign="center" showTime />
         <DateField source="updatedAt" textAlign="center" showTime />
         <TextField source="id" textAlign="center" />
