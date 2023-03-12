@@ -48,6 +48,10 @@ import { UserCreate } from './users/UserCreate';
 import { TaskBulkCreate } from './tasks/TaskBulkCreate';
 import { Dashboard } from './dashboard/Dashboard';
 
+type AppProps = {
+  appEnv: 'staging' | 'production';
+};
+
 const supabase = createSupabaseClient();
 const fetch = createAuthenticatedFetch(supabase);
 const dataProvider = createDataProvider(
@@ -98,7 +102,7 @@ const onFormError = async (error: unknown): Promise<Record<string, string>> => {
   );
 };
 
-const App: FC = () => (
+const App: FC<AppProps> = ({ appEnv }: AppProps) => (
   <MediaLibraryProvider
     croppable
     convertFileName
@@ -107,7 +111,8 @@ const App: FC = () => (
     bucket={MEDIA_LIBRARY_BUCKET}
     bucketFolder={MEDIA_LIBRARY_BUCKET_FOLDER}
     accept={['image/*', 'video/*']}
-    maxSize={50000000}
+    // 1GB in production, 50MB in staging (due to Supabase limits for different tiers)
+    maxSize={appEnv === 'production' ? 1000000000 : 50000000}
     aspectRatio="3 / 2"
     sort={{
       field: 'createdAt',
