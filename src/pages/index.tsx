@@ -11,20 +11,20 @@ const HomePage: NextPage = () => {
       >
         <MainNav activeClassName="text-gray-500 font-bold" />
 
-        <div className="container pt-24 md:pt-48 px-6 mx-auto flex flex-wrap flex-col md:flex-row items-center">
-          <div className="flex flex-col w-full lg:w-3/5 xl:w-3/5 xxl:w-2/5 justify-center lg:items-start overflow-y-hidden">
-            <h1 className="mb-3 text-3xl sm:text-4xl md:text-5xl text-primary-dark font-bold text-center md:text-left ">
+        <div className="container px-6 mx-auto flex flex-wrap flex-col md:flex-row items-center">
+          <div className="flex flex-col w-full lg:w-3/5 xl:w-3/5 xxl:w-2/5 justify-center lg:items-start overflow-y-hidden pt-8 sm:pt-24 lg:pt-40">
+            <h1 className="mb-3 text-3xl sm:text-4xl md:text-5xl text-primary-dark font-bold text-center lg:text-left ">
               Post-operation and sports rehabilitation programs.
             </h1>
 
-            <p className="leading-normal text-xl md:text-2xl mb-8 md:mb-10 text-center md:text-left">
+            <p className="leading-normal text-xl md:text-2xl mb-8 md:mb-10 text-center lg:text-left">
               Designed with you in mind.
             </p>
 
-            <p className="font-bold pb-2 text-center md:text-left">
+            <p className="font-bold pb-2 text-center lg:text-left">
               Download the app:
             </p>
-            <div className="flex w-full justify-center md:justify-start pb-24 lg:pb-0 flex-col items-center md:items-left md:flex-row">
+            <div className="flex w-full justify-center lg:justify-start pb-24 lg:pb-0 flex-col items-center md:items-left md:flex-row">
               <a
                 href="/"
                 className="flex flex-1 md:pr-4 sm:flex-none mb-2 md:mb-0">
@@ -48,9 +48,32 @@ const HomePage: NextPage = () => {
             </div>
           </div>
 
-          {/* <div className="w-full xl:w-3/5 py-6 overflow-y-hidden">
-            <img className="w-5/6 mx-auto lg:mr-0" src="devices.svg" />
-          </div> */}
+          <div className="w-full lg:w-2/5 xl:w-2/5 xxl:w-3/5 mt-8 lg:mt-12 hidden lg:flex relative">
+            <div className="absolute left-[-25%] hidden xl:block pt-8">
+              <Image
+                alt=""
+                src="/images/schedule-mock-up.png"
+                width={500}
+                height={500}
+              />
+            </div>
+            <div className="absolute right-0 xl:right-[-10%] hidden xl:block pt-8">
+              <Image
+                alt=""
+                src="/images/ankle-support-mock-up.png"
+                width={500}
+                height={500}
+              />
+            </div>
+            <div className="z-10 scale-125 xl:scale-105 pt-8">
+              <Image
+                alt=""
+                src="/images/ankle-and-foot-mock-up.png"
+                width={500}
+                height={500}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </main>
