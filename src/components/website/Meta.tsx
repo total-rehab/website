@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 const SITE_TITLE = 'Total Rehab';
 const CANONICAL_BASE_URL = 'https://www.total-rehab.co.uk';
 
-type MetaProps = {
+export type MetaProps = {
   title: string;
   description?: string;
   image: {

@@ -10,7 +10,6 @@ const queryClient = new QueryClient();
 
 const App: NextPage<AppProps> = ({ Component, pageProps }: AppProps) => (
   <QueryClientProvider client={queryClient}>
-    <MainNav activeClassName="text-gray-500 font-bold" />
     <Component {...pageProps} />
   </QueryClientProvider>
 );

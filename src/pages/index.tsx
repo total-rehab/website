@@ -1,20 +1,23 @@
 import { NextPage } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import { MainNav } from '../components/website/MainNav';
 import { Meta } from '../components/website/Meta';
+import { Page } from '../components/website/Page';
 
 const HomePage: NextPage = () => {
   return (
-    <>
-      <Meta
-        title="Home"
-        description="Post-operation and sports rehabilitation programs, designed with you in mind."
-        image={{
+    <Page
+      meta={{
+        title: 'Home',
+        description:
+          'Post-operation and sports rehabilitation programs, designed with you in mind.',
+        image: {
           src: 'https://www.total-rehab.co.uk/_next/image?url=%2Fimages%2Flogo-mountains.png&w=1200&q=100',
           width: 1024,
           height: 500,
-        }}
-      />
+        },
+      }}>
       <main>
         <header className="container px-6 mx-auto flex flex-wrap flex-col md:flex-row items-center">
           <div className="flex flex-col w-full lg:w-3/5 xl:w-3/5 justify-center lg:items-start overflow-y-hidden pt-8 sm:pt-24 lg:pt-40">
@@ -81,7 +84,7 @@ const HomePage: NextPage = () => {
           </div>
         </header>
       </main>
-    </>
+    </Page>
   );
 };
 
