@@ -1,5 +1,6 @@
 import { NextPage } from 'next';
 import Image from 'next/image';
+import Link from 'next/link';
 import { MainNav } from '../components/website/MainNav';
 
 const HomePage: NextPage = () => {
@@ -25,7 +26,7 @@ const HomePage: NextPage = () => {
               Download the app:
             </p>
             <div className="flex w-full justify-center lg:justify-start pb-24 lg:pb-0 flex-col items-center md:items-left md:flex-row">
-              <a
+              <Link
                 href="/"
                 className="flex flex-1 md:pr-4 sm:flex-none mb-2 md:mb-0">
                 <Image
@@ -34,7 +35,7 @@ const HomePage: NextPage = () => {
                   width={241}
                   height={73}
                 />
-              </a>
+              </Link>
               <a
                 className="flex flex-1 sm:flex-none"
                 href="https://play.google.com/store/apps/details?id=uk.co.totalrehab.app">
