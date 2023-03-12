@@ -1,7 +1,6 @@
 import { NextPage } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { MainNav } from '../components/website/MainNav';
 import { Meta } from '../components/website/Meta';
 
 const HomePage: NextPage = () => {
@@ -10,6 +9,11 @@ const HomePage: NextPage = () => {
       <Meta
         title="Home"
         description="Post-operation and sports rehabilitation programs, designed with you in mind."
+        image={{
+          src: 'https://www.total-rehab.co.uk/_next/image?url=%2Fimages%2Flogo-mountains.png&w=1200&q=100',
+          width: 1024,
+          height: 500,
+        }}
       />
       <main>
         <header className="container px-6 mx-auto flex flex-wrap flex-col md:flex-row items-center">

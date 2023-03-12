@@ -1,4 +1,3 @@
-import { ApiComponents } from '@jambff/oac';
 import NextHead from 'next/head';
 import { useRouter } from 'next/router';
 
@@ -8,7 +7,11 @@ const CANONICAL_BASE_URL = 'https://www.total-rehab.co.uk';
 type MetaProps = {
   title: string;
   description?: string;
-  image?: ApiComponents['Program']['heroImage'];
+  image: {
+    src: string;
+    width: number;
+    height: number;
+  };
 };
 
 export const Meta = ({ title, description, image }: MetaProps) => {
@@ -28,17 +31,9 @@ export const Meta = ({ title, description, image }: MetaProps) => {
       {description && <meta name="og:description" content={description} />}
       <meta name="og:site_name" content={SITE_TITLE} />
       <meta name="og:url" content={canonicalUrl} />
-      {image?.src && (
-        <>
-          <meta name="og:image" content={image.src} />
-          {image.width && (
-            <meta name="og:image:width" content={String(image.width)} />
-          )}
-          {image.height && (
-            <meta name="og:image:height" content={String(image.width)} />
-          )}
-        </>
-      )}
+      <meta name="og:image" content={image.src} />
+      <meta name="og:image:width" content={String(image.width)} />
+      <meta name="og:image:height" content={String(image.width)} />
     </NextHead>
   );
 };
