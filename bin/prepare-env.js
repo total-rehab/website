@@ -21,6 +21,8 @@ if (appEnvConfigPath) {
 
 const { execSync } = require('child_process');
 
-execSync(`yarn oac ${process.env.API_BASE_URL}/docs.json`, {
-  stdio: [0, 1, 2],
-});
+if (process.env.API_BASE_URL) {
+  execSync(`yarn oac ${process.env.API_BASE_URL}/docs.json`, {
+    stdio: [0, 1, 2],
+  });
+}
