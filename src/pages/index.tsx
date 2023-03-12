@@ -2,18 +2,18 @@ import { NextPage } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { MainNav } from '../components/website/MainNav';
+import { Meta } from '../components/website/Meta';
 
 const HomePage: NextPage = () => {
   return (
-    <main>
-      <div
-        className="h-screen pb-14 bg-right bg-cover"
-        // style="background-image:url('bg.svg');"
-      >
-        <MainNav activeClassName="text-gray-500 font-bold" />
-
-        <div className="container px-6 mx-auto flex flex-wrap flex-col md:flex-row items-center">
-          <div className="flex flex-col w-full lg:w-3/5 xl:w-3/5 xxl:w-2/5 justify-center lg:items-start overflow-y-hidden pt-8 sm:pt-24 lg:pt-40">
+    <>
+      <Meta
+        title="Home"
+        description="Post-operation and sports rehabilitation programs, designed with you in mind."
+      />
+      <main>
+        <header className="container px-6 mx-auto flex flex-wrap flex-col md:flex-row items-center">
+          <div className="flex flex-col w-full lg:w-3/5 xl:w-3/5 justify-center lg:items-start overflow-y-hidden pt-8 sm:pt-24 lg:pt-40">
             <h1 className="mb-3 text-3xl sm:text-4xl md:text-5xl text-primary-dark font-bold text-center lg:text-left ">
               Post-operation and sports rehabilitation programs.
             </h1>
@@ -49,7 +49,7 @@ const HomePage: NextPage = () => {
             </div>
           </div>
 
-          <div className="w-full lg:w-2/5 xl:w-2/5 xxl:w-3/5 mt-8 lg:mt-12 hidden lg:flex relative">
+          <div className="w-full lg:w-2/5 xl:w-2/5 mt-8 lg:mt-12 hidden lg:flex relative">
             <div className="absolute left-[-25%] hidden xl:block pt-8">
               <Image
                 alt=""
@@ -58,7 +58,7 @@ const HomePage: NextPage = () => {
                 height={500}
               />
             </div>
-            <div className="absolute right-0 xl:right-[-10%] hidden xl:block pt-8">
+            <div className="absolute right-0 xl:right-[-10%] hidden 2xl:block pt-8">
               <Image
                 alt=""
                 src="/images/ankle-support-mock-up.png"
@@ -75,9 +75,9 @@ const HomePage: NextPage = () => {
               />
             </div>
           </div>
-        </div>
-      </div>
-    </main>
+        </header>
+      </main>
+    </>
   );
 };
 
