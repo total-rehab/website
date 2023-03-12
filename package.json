@@ -9,6 +9,7 @@
     "predev": "yarn prepare-env",
     "prebuild": "yarn prepare-env && yarn set-app-version",
     "prestart": "yarn prepare-env",
+    "postinstall": "yarn prepare-env",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx,.json .",
     "set-app-version": "echo \"APP_VERSION=$(git rev-parse HEAD)\" >> .env",
     "typecheck": "tsc --noEmit",
