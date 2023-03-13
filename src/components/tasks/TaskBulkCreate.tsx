@@ -62,8 +62,10 @@ export const TaskBulkCreate: FC = () => {
                 reference="activities"
                 itemSource="name"
               />
-              <TextField source="reps" textAlign="center" />
               <NumberField source="sets" textAlign="center" />
+              <TextField source="reps" textAlign="center" />
+              <TextField source="restPeriod" textAlign="center" />
+              <TextField source="frequency" textAlign="center" />
               <FunctionField
                 label="Days"
                 textAlign="center"
