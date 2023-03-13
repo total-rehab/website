@@ -12,10 +12,19 @@ import {
   useNotify,
   useRefresh,
 } from 'react-admin';
-import { useTheme, Divider } from '@mui/material';
+import { Box, Typography, useTheme, Divider } from '@mui/material';
 import { useFormContext } from '@jambff/ra-components/dist/forms/FormProvider';
 import { EntityField } from '../generic/EntityField';
 import { TaskCreate } from './TaskCreate';
+
+const EmptyListPlaceholder = () => (
+  <Box textAlign="center" m={1} sx={{ width: '100%' }}>
+    <Typography variant="body1" paragraph>
+      Create tasks for the selected program and week by filling in the fields
+      below.
+    </Typography>
+  </Box>
+);
 
 export const TaskBulkCreate: FC = () => {
   const { spacing } = useTheme();
@@ -44,7 +53,8 @@ export const TaskBulkCreate: FC = () => {
               weekNumber: selectedWeekNumber,
             }}
             actions={false}
-            sx={{ width: '100%' }}>
+            sx={{ width: '100%' }}
+            empty={<EmptyListPlaceholder />}>
             <Datagrid rowClick="edit" bulkActionButtons={false}>
               <NumberField source="weekNumber" textAlign="center" />
               <EntityField
