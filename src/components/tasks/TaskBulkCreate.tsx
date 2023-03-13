@@ -22,6 +22,7 @@ export const TaskBulkCreate: FC = () => {
   const notify = useNotify();
   const refresh = useRefresh();
   const [selectedProgramId, setSelectedProgramId] = useState<number>();
+  const [selectedWeekNumber, setSelectedWeekNumber] = useState<number>();
   const { onError } = useFormContext();
 
   const onSuccess = useCallback(() => {
@@ -33,12 +34,15 @@ export const TaskBulkCreate: FC = () => {
     <ResourceContextProvider value="tasks">
       <TaskCreate
         mutationOptions={{ onSuccess, onError }}
-        onProgramIdChange={(programId: number) => {
-          setSelectedProgramId(programId);
-        }}>
+        onProgramIdChange={setSelectedProgramId}
+        onWeekChange={setSelectedWeekNumber}>
         {selectedProgramId && (
           <List
-            filter={{ programId: selectedProgramId }}
+            perPage={50}
+            filter={{
+              programId: selectedProgramId,
+              weekNumber: selectedWeekNumber,
+            }}
             actions={false}
             sx={{ width: '100%' }}>
             <Datagrid rowClick="edit" bulkActionButtons={false}>

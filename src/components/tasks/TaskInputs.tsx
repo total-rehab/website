@@ -14,11 +14,13 @@ import { FlexRow } from '../generic/FlexRow';
 type TaskInputsProps = {
   children?: ReactNode;
   onProgramIdChange?: (programId: number) => void;
+  onWeekChange?: (week: number) => void;
 };
 
 export const TaskInputs: FC<TaskInputsProps> = ({
   children,
   onProgramIdChange,
+  onWeekChange,
 }: TaskInputsProps) => (
   <>
     <ReferenceInput label="Program" source="programId" reference="programs">
@@ -33,12 +35,20 @@ export const TaskInputs: FC<TaskInputsProps> = ({
         validate={required()}
       />
     </ReferenceInput>
+    <NumberInput
+      fullWidth
+      source="weekNumber"
+      validate={required()}
+      onChange={(evt) => {
+        console.log(evt);
+        onWeekChange?.(evt.target.value);
+      }}
+    />
     {children}
     <ReferenceInput label="Activity" source="activityId" reference="activities">
       <AutocompleteInput optionText="name" fullWidth validate={required()} />
     </ReferenceInput>
     <FlexRow>
-      <NumberInput source="weekNumber" validate={required()} />
       <NumberInput source="sets" />
       <TextInput source="reps" />
       <TextInput source="restPeriod" />
