@@ -1,3 +1,4 @@
+import cn from 'classnames';
 import Image from 'next/image';
 import Link from 'next/link';
 import type { FC, ReactNode } from 'react';
@@ -5,12 +6,14 @@ import type { FC, ReactNode } from 'react';
 type HeaderProps = {
   title: string;
   description?: string;
+  descriptionClassName?: string;
   image: ReactNode;
 };
 
 export const Header: FC<HeaderProps> = ({
   title,
   description,
+  descriptionClassName,
   image,
 }: HeaderProps) => (
   <header className="bg-on-surface-regular">
@@ -22,7 +25,11 @@ export const Header: FC<HeaderProps> = ({
           </h1>
 
           {description && (
-            <p className="mt-3 leading-normal text-xl md:text-2xl text-center lg:text-left xl:w-[65%]">
+            <p
+              className={cn(
+                'mt-3 leading-normal text-xl md:text-2xl text-center lg:text-left',
+                descriptionClassName,
+              )}>
               {description}
             </p>
           )}
@@ -37,6 +44,7 @@ export const Header: FC<HeaderProps> = ({
               src="images/app-store.svg"
               width={241}
               height={73}
+              sizes="241px"
             />
           </Link>
           <a
@@ -47,12 +55,13 @@ export const Header: FC<HeaderProps> = ({
               src="images/play-store.svg"
               width={241}
               height={73}
+              sizes="241px"
             />
           </a>
         </div>
       </div>
 
-      <div className="w-full lg:w-2/5 xl:w-2/5 mt-8 lg:mt-12 mb-8 lg:mb-12 hidden lg:flex relative">
+      <div className="w-full lg:w-2/5 xl:w-2/5 mb-8 lg:mb-12 hidden lg:flex relative justify-center">
         {image}
       </div>
     </div>
