@@ -1,6 +1,7 @@
 import { NextPage } from 'next';
 import Image from 'next/image';
 import { Page } from '../components/website/Page';
+import { UkcaBar } from '../components/website/UkcaBar';
 
 const ProgramsPage: NextPage = () => (
   <Page
@@ -17,7 +18,7 @@ const ProgramsPage: NextPage = () => (
         />
       </div>
     }>
-    {null}
+    <UkcaBar />
   </Page>
 );
 

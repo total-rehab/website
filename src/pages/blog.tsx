@@ -2,6 +2,7 @@ import { NextPage } from 'next';
 import Image from 'next/image';
 import { Header } from '../components/website/Header';
 import { Page } from '../components/website/Page';
+import { UkcaBar } from '../components/website/UkcaBar';
 
 const TITLE = 'Injury resources';
 const DESCRIPTION =
@@ -22,7 +23,7 @@ const BlogPage: NextPage = () => (
         />
       </div>
     }>
-    {null}
+    <UkcaBar />
   </Page>
 );
 

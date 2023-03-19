@@ -2,6 +2,7 @@ import { NextPage } from 'next';
 import Image from 'next/image';
 import { BREAKPOINT_LG, BREAKPOINT_XL, BREAKPOINT_XXL } from '../breakpoints';
 import { Page } from '../components/website/Page';
+import { UkcaBar } from '../components/website/UkcaBar';
 
 const HomePage: NextPage = () => {
   return (
@@ -39,7 +40,7 @@ const HomePage: NextPage = () => {
           </div>
         </>
       }>
-      {null}
+      <UkcaBar />
     </Page>
   );
 };

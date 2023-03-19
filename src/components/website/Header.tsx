@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import type { FC, ReactNode } from 'react';
+import { Container } from './Container';
 
 export type HeaderProps = {
   title: string;
@@ -14,7 +15,7 @@ export const Header: FC<HeaderProps> = ({
   image,
 }: HeaderProps) => (
   <header className="bg-on-surface-regular">
-    <div className="container px-6 mx-auto flex flex-wrap flex-col md:flex-row items-center text-white pb-8 pt-8 ">
+    <Container className="flex flex-wrap flex-col md:flex-row items-center text-white pb-8 pt-8 ">
       <div className="flex flex-col w-full lg:w-3/5 xl:w-3/5 justify-center lg:items-start overflow-y-hidden">
         <div className="mb-8 md:mb-10 lg:mb-16 xl:max-w-[80%]">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-medium text-center lg:text-left">
@@ -57,6 +58,6 @@ export const Header: FC<HeaderProps> = ({
       <div className="w-full lg:w-2/5 xl:w-2/5 mb-8 lg:mb-12 hidden lg:flex relative justify-center">
         {image}
       </div>
-    </div>
+    </Container>
   </header>
 );
