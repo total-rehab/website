@@ -19,7 +19,7 @@ const HomePage: NextPage = () => {
         <Header
           title={TITLE}
           description={DESCRIPTION}
-          descriptionClassName="xl:w-[65%]"
+          descriptionClassName="xl:w-[85%]"
           image={
             <>
               <div className="absolute left-[-25%] hidden xl:block">
