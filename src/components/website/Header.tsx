@@ -16,7 +16,7 @@ export const Header: FC<HeaderProps> = ({
 }: HeaderProps) => (
   <header className="bg-on-surface-regular">
     <Container className="flex flex-wrap flex-col md:flex-row items-center text-white pb-8 pt-8 ">
-      <div className="flex flex-col w-full lg:w-3/5 xl:w-3/5 justify-center lg:items-start overflow-y-hidden">
+      <div className="flex flex-col w-full lg:w-3/5 justify-center lg:items-start overflow-y-hidden">
         <div className="mb-8 md:mb-10 lg:mb-16 xl:max-w-[80%]">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-medium text-center lg:text-left">
             {title}

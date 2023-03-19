@@ -8,15 +8,13 @@ const ProgramsPage: NextPage = () => (
     title="Sports Injury and Post-Surgery Rehab Programs"
     description="Evidence based physiotherapy programs with you in mind"
     headerImage={
-      <div className="w-[240px]">
-        <Image
-          alt=""
-          src="/images/squat-phone.png"
-          width={1080}
-          height={2458}
-          sizes="240px"
-        />
-      </div>
+      <Image
+        alt=""
+        src="/images/squat-phone.png"
+        width={240}
+        height={547}
+        sizes="240px"
+      />
     }>
     <UkcaBar />
   </Page>

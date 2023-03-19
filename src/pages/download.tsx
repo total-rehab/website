@@ -7,15 +7,13 @@ const DownloadPage: NextPage = () => (
     title="Download Total Rehab App"
     description="We are available to download via the Google Play Store and iOS App Store"
     headerImage={
-      <div className="w-[240px]">
-        <Image
-          alt=""
-          src="/images/squat-phone.png"
-          width={1080}
-          height={2458}
-          sizes="240px"
-        />
-      </div>
+      <Image
+        alt=""
+        src="/images/squat-phone.png"
+        width={240}
+        height={547}
+        sizes="240px"
+      />
     }>
     {null}
   </Page>
