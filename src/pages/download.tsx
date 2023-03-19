@@ -13,23 +13,21 @@ const DownloadPage: NextPage = () => (
       title: TITLE,
       description: DESCRIPTION,
     }}>
-    <main>
-      <Header
-        title={TITLE}
-        description={DESCRIPTION}
-        image={
-          <div className="w-[240px]">
-            <Image
-              alt=""
-              src="/images/squat-phone.png"
-              width={1080}
-              height={2458}
-              sizes="240px"
-            />
-          </div>
-        }
-      />
-    </main>
+    <Header
+      title={TITLE}
+      description={DESCRIPTION}
+      image={
+        <div className="w-[240px]">
+          <Image
+            alt=""
+            src="/images/squat-phone.png"
+            width={1080}
+            height={2458}
+            sizes="240px"
+          />
+        </div>
+      }
+    />
   </Page>
 );
 

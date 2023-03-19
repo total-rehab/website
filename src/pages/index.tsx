@@ -15,44 +15,42 @@ const HomePage: NextPage = () => {
         title: TITLE,
         description: DESCRIPTION,
       }}>
-      <main>
-        <Header
-          title={TITLE}
-          description={DESCRIPTION}
-          descriptionClassName="xl:w-[85%]"
-          image={
-            <>
-              <div className="absolute left-[-25%] hidden xl:block">
-                <Image
-                  alt=""
-                  src="/images/schedule-mock-up.png"
-                  width={500}
-                  height={500}
-                  sizes={`(min-width: ${BREAKPOINT_XL}px) 500px, 0px`}
-                />
-              </div>
-              <div className="absolute right-0 xl:right-[-10%] hidden 2xl:block">
-                <Image
-                  alt=""
-                  src="/images/ankle-support-mock-up.png"
-                  width={500}
-                  height={500}
-                  sizes={`(min-width: ${BREAKPOINT_XXL}px) 500px, 0px`}
-                />
-              </div>
-              <div className="z-10 scale-125 xl:scale-105">
-                <Image
-                  alt=""
-                  src="/images/ankle-and-foot-mock-up.png"
-                  width={500}
-                  height={500}
-                  sizes={`(min-width: ${BREAKPOINT_LG}px) 500px, 0px`}
-                />
-              </div>
-            </>
-          }
-        />
-      </main>
+      <Header
+        title={TITLE}
+        description={DESCRIPTION}
+        descriptionClassName="xl:w-[85%]"
+        image={
+          <>
+            <div className="absolute left-[-25%] hidden xl:block">
+              <Image
+                alt=""
+                src="/images/schedule-mock-up.png"
+                width={500}
+                height={500}
+                sizes={`(min-width: ${BREAKPOINT_XL}px) 500px, 0px`}
+              />
+            </div>
+            <div className="absolute right-0 xl:right-[-10%] hidden 2xl:block">
+              <Image
+                alt=""
+                src="/images/ankle-support-mock-up.png"
+                width={500}
+                height={500}
+                sizes={`(min-width: ${BREAKPOINT_XXL}px) 500px, 0px`}
+              />
+            </div>
+            <div className="z-10 scale-125 xl:scale-105">
+              <Image
+                alt=""
+                src="/images/ankle-and-foot-mock-up.png"
+                width={500}
+                height={500}
+                sizes={`(min-width: ${BREAKPOINT_LG}px) 500px, 0px`}
+              />
+            </div>
+          </>
+        }
+      />
     </Page>
   );
 };
