@@ -7,14 +7,24 @@ const CANONICAL_BASE_URL = 'https://www.total-rehab.co.uk';
 export type MetaProps = {
   title: string;
   description?: string;
-  image: {
+  image?: {
     src: string;
     width: number;
     height: number;
   };
 };
 
-export const Meta = ({ title, description, image }: MetaProps) => {
+const DEFAULT_IMAGE = {
+  src: 'https://www.total-rehab.co.uk/_next/image?url=%2Fimages%2Flogo-mountains.png&w=1200&q=100',
+  width: 1024,
+  height: 500,
+};
+
+export const Meta = ({
+  title,
+  description,
+  image = DEFAULT_IMAGE,
+}: MetaProps) => {
   const fullTitle = [title, SITE_TITLE].filter((x) => x).join(' | ');
   const route = useRouter();
   const canonicalUrl = `${CANONICAL_BASE_URL}${route.pathname}`;

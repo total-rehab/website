@@ -3,23 +3,21 @@ import Image from 'next/image';
 import { Header } from '../components/website/Header';
 import { Page } from '../components/website/Page';
 
+const TITLE = 'Digital Physiotherapy App';
+const DESCRIPTION =
+  'Sports Injury and Post-Surgery Rehabiliation programs designed with you in mind.';
+
 const HomePage: NextPage = () => {
   return (
     <Page
       meta={{
-        title: 'Home',
-        description:
-          'Post-operation and sports rehabilitation programs, designed with you in mind.',
-        image: {
-          src: 'https://www.total-rehab.co.uk/_next/image?url=%2Fimages%2Flogo-mountains.png&w=1200&q=100',
-          width: 1024,
-          height: 500,
-        },
+        title: TITLE,
+        description: DESCRIPTION,
       }}>
       <main>
         <Header
-          title="Digital Physiotherapy App"
-          description="Sports Injury and Post-Surgery Rehabiliation programs designed with you in mind."
+          title={TITLE}
+          description={DESCRIPTION}
           image={
             <>
               <div className="absolute left-[-25%] hidden xl:block">
