@@ -7,16 +7,9 @@ import cn from 'classnames';
 type NavLinkProps = {
   href: string;
   children: ReactNode;
-  activeClassName?: string;
-  inactiveClassName?: string;
 };
 
-export const NavLink: FC<NavLinkProps> = ({
-  children,
-  href,
-  activeClassName,
-  inactiveClassName,
-}: NavLinkProps) => {
+export const NavLink: FC<NavLinkProps> = ({ children, href }: NavLinkProps) => {
   const router = useRouter();
   const isCurrent = router.asPath === href;
 
@@ -25,9 +18,8 @@ export const NavLink: FC<NavLinkProps> = ({
       href={href}
       aria-current={isCurrent ? 'page' : undefined}
       className={cn(
-        'underline-offset-8 text-lg',
-        isCurrent && activeClassName,
-        `hover:underline ${inactiveClassName ?? ''}`,
+        'underline-offset-8 text-lg hover:underline',
+        isCurrent && 'text-primary-regular font-bold',
       )}>
       {children}
     </Link>

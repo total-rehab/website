@@ -10,6 +10,12 @@ module.exports = {
         'secondary-light': '#3EA5C2',
         'secondary-regular': '#3A9AB5',
         'secondary-dark': '#32859C',
+        'on-surface-base': '#1D252B',
+        'on-surface-light': '#2E3A45',
+        'on-surface-regular': '#263039',
+        'surface-base': '#FFFFFF',
+        'surface-regular': '#E3E3E3',
+        'surface-dark': '#D1D1D1',
       },
       fontFamily: {
         sans: ['Open Sans', 'ui-sans-serif', 'system-ui'],
