@@ -1,19 +1,16 @@
-import cn from 'classnames';
 import Image from 'next/image';
 import Link from 'next/link';
 import type { FC, ReactNode } from 'react';
 
-type HeaderProps = {
+export type HeaderProps = {
   title: string;
   description?: string;
-  descriptionClassName?: string;
   image: ReactNode;
 };
 
 export const Header: FC<HeaderProps> = ({
   title,
   description,
-  descriptionClassName,
   image,
 }: HeaderProps) => (
   <header className="bg-on-surface-regular">
@@ -25,11 +22,7 @@ export const Header: FC<HeaderProps> = ({
           </h1>
 
           {description && (
-            <p
-              className={cn(
-                'mt-6 leading-normal text-xl md:text-3xl text-center lg:text-left',
-                descriptionClassName,
-              )}>
+            <p className="mt-6 leading-normal text-xl md:text-3xl text-center lg:text-left">
               {description}
             </p>
           )}
