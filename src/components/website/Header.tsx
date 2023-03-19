@@ -27,7 +27,7 @@ export const Header: FC<HeaderProps> = ({
           {description && (
             <p
               className={cn(
-                'mt-3 leading-normal text-xl md:text-2xl text-center lg:text-left',
+                'mt-6 leading-normal text-xl md:text-3xl text-center lg:text-left',
                 descriptionClassName,
               )}>
               {description}
