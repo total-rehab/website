@@ -3,10 +3,11 @@ import Image from 'next/image';
 import { Header } from '../components/website/Header';
 import { Page } from '../components/website/Page';
 
-const TITLE = 'Sports Injury and Post-Surgery Rehab Programs';
-const DESCRIPTION = 'Evidence based physiotherapy programs with you in mind';
+const TITLE = 'Download Total Rehab App';
+const DESCRIPTION =
+  'We are available to download via the Google Play Store and iOS App Store';
 
-const ProgramsPage: NextPage = () => (
+const DownloadPage: NextPage = () => (
   <Page
     meta={{
       title: TITLE,
@@ -32,4 +33,4 @@ const ProgramsPage: NextPage = () => (
   </Page>
 );
 
-export default ProgramsPage;
+export default DownloadPage;
