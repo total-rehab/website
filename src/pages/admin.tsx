@@ -5,7 +5,7 @@ type AdminPageProps = {
   appEnv: 'production' | 'staging';
 };
 
-const App = dynamic(() => import('../components/App'), { ssr: false });
+const App = dynamic(() => import('../components/admin/App'), { ssr: false });
 
 const AdminPage: NextPage<AdminPageProps> = ({ appEnv }) => (
   <App appEnv={appEnv} />
