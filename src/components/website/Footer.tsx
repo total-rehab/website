@@ -1,6 +1,8 @@
 import type { FC } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import Instagram from '@mui/icons-material/Instagram';
+import Facebook from '@mui/icons-material/Facebook';
 import { Container } from './Container';
 import { NavLink } from './NavLink';
 
@@ -9,13 +11,21 @@ export const Footer: FC = () => (
     <Container>
       <div className="items-center flex flex-col items-center">
         <Image
-          className="mb-6 lg:mb-8"
+          className="mb-6"
           src="/images/total-rehab-logo.png"
           alt="Total Rehab logo"
           width={250}
           height={35}
           sizes="250px"
         />
+        <div className="text-white mb-8 space-x-4">
+          <a href="https://www.facebook.com/totalrehabapp">
+            <Facebook />
+          </a>
+          <a href="https://www.instagram.com/total_rehab_app">
+            <Instagram />
+          </a>
+        </div>
         <ul className="flex flex-col md:flex-row gap-x-10 text-white space-y-6 md:space-y-0 text-center uppercase tracking-wide">
           <li>
             <NavLink href="/blog">Blog</NavLink>
