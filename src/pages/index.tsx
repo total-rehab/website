@@ -4,7 +4,8 @@ import Link from 'next/link';
 import { BREAKPOINT_LG, BREAKPOINT_XL, BREAKPOINT_XXL } from '../breakpoints';
 import { Container } from '../components/website/Container';
 import { Page } from '../components/website/Page';
-import { Prose } from '../components/website/Prose';
+import { SectionHeading } from '../components/website/SectionHeading';
+import { SectionText } from '../components/website/SectionText';
 import { UkcaBar } from '../components/website/UkcaBar';
 
 const HomePage: NextPage = () => {
@@ -43,31 +44,33 @@ const HomePage: NextPage = () => {
           </div>
         </>
       }>
-      <Container className="pt-24 pb-24">
-        <div className="flex flex-wrap flex-col md:flex-row items-center">
-          <div className="w-full lg:w-2/5 hidden lg:block">
-            <Image
-              alt=""
-              src="/images/squat-phone.png"
-              width={350}
-              height={797}
-              sizes="350px"
-            />
+      <Container>
+        <section className="pt-24 pb-24">
+          <div className="flex flex-wrap flex-col md:flex-row items-center">
+            <div className="w-full lg:w-2/5 hidden lg:block">
+              <Image
+                alt=""
+                src="/images/squat-phone.png"
+                width={350}
+                height={797}
+                sizes="350px"
+              />
+            </div>
+            <SectionText className="w-full lg:w-3/5 text-center lg:text-right">
+              <SectionHeading>
+                Adaptive rehab program depending on your level of pain
+              </SectionHeading>
+              <p>
+                Our physiotherapy app features a unique adaptive rehab program
+                that adjust according to your pain level during each exercise,
+                ensuring a comfortable and effective rehabilitation journey.
+              </p>
+              <Link href="/programs" className="hover:underline block">
+                See all programs available &gt;
+              </Link>
+            </SectionText>
           </div>
-          <div className="w-full lg:w-3/5 text-center lg:text-right tracking-wide text-2xl">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium mb-8">
-              Adaptive rehab program depending on your level of pain
-            </h2>
-            <p className="mb-8">
-              Our physiotherapy app features a unique adaptive rehab program
-              that adjust according to your pain level during each exercise,
-              ensuring a comfortable and effective rehabilitation journey.
-            </p>
-            <Link href="/programs" className="hover:underline">
-              See all programs available &gt;
-            </Link>
-          </div>
-        </div>
+        </section>
       </Container>
       <UkcaBar />
     </Page>
