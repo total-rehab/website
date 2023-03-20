@@ -9,6 +9,8 @@ type NavProps = {
   className?: string;
 };
 
+const ACTIVE_LINK_CLASS_NAME = 'text-primary-regular font-medium';
+
 export const MainNav: FC<NavProps> = ({ className }: NavProps) => (
   <div className="bg-on-surface-regular">
     <div className="w-full container mx-auto p-6">
@@ -27,19 +29,31 @@ export const MainNav: FC<NavProps> = ({ className }: NavProps) => (
         </Link>
         <ul className="lg:flex gap-x-10 xl:gap-x-16 text-white my-2 lg:my-0 space-y-2 lg:space-y-0">
           <li>
-            <NavLink href="/programs">Programs</NavLink>
+            <NavLink href="/programs" activeClassName={ACTIVE_LINK_CLASS_NAME}>
+              Programs
+            </NavLink>
           </li>
           <li>
-            <NavLink href="/blog">Blog</NavLink>
+            <NavLink href="/blog" activeClassName={ACTIVE_LINK_CLASS_NAME}>
+              Blog
+            </NavLink>
           </li>
           <li>
-            <NavLink href="/about">About</NavLink>
+            <NavLink href="/about" activeClassName={ACTIVE_LINK_CLASS_NAME}>
+              About
+            </NavLink>
           </li>
           <li>
-            <NavLink href="/download">Download</NavLink>
+            <NavLink href="/download" activeClassName={ACTIVE_LINK_CLASS_NAME}>
+              Download
+            </NavLink>
           </li>
           <li>
-            <NavLink href="/practitioner">Practitioner</NavLink>
+            <NavLink
+              href="/practitioner"
+              activeClassName={ACTIVE_LINK_CLASS_NAME}>
+              Practitioner
+            </NavLink>
           </li>
         </ul>
       </nav>
