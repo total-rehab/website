@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
-import { Header, HeaderProps } from './Header';
+import { Footer } from './Footer';
+import { Header } from './Header';
 import { MainNav } from './MainNav';
 import { Meta, MetaProps } from './Meta';
 
@@ -18,7 +19,7 @@ export const Page = ({
   meta,
   headerImage,
 }: PageProps) => (
-  <>
+  <div className="text-on-surface-base">
     <MainNav />
     <Meta
       title={meta?.title || title}
@@ -27,5 +28,6 @@ export const Page = ({
     />
     <Header title={title} description={description} image={headerImage} />
     {children}
-  </>
+    <Footer />
+  </div>
 );
