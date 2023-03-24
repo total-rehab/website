@@ -17,6 +17,7 @@ const HomePage: NextPage = () => {
         <>
           <div className="absolute left-[-25%] hidden xl:block">
             <Image
+              priority
               alt=""
               src="/images/schedule-mock-up.png"
               width={500}
@@ -26,6 +27,7 @@ const HomePage: NextPage = () => {
           </div>
           <div className="absolute right-0 xl:right-[-10%] hidden 2xl:block">
             <Image
+              priority
               alt=""
               src="/images/ankle-support-mock-up.png"
               width={500}
@@ -35,6 +37,7 @@ const HomePage: NextPage = () => {
           </div>
           <div className="z-10 scale-125 xl:scale-105">
             <Image
+              priority
               alt=""
               src="/images/ankle-and-foot-mock-up.png"
               width={500}
