@@ -28,7 +28,6 @@
     "change-case": "^4.1.2",
     "chart.js": "^4.2.1",
     "classnames": "^2.3.2",
-    "daisyui": "^2.51.3",
     "date-fns": "^2.29.3",
     "next": "13.1.1",
     "normalize.css": "^8.0.1",
