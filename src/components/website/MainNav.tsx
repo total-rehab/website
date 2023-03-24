@@ -49,9 +49,7 @@ export const MainNav: FC<NavProps> = ({ className }: NavProps) => (
             </NavLink>
           </li>
           <li>
-            <NavLink
-              href="/practitioner"
-              activeClassName={ACTIVE_LINK_CLASS_NAME}>
+            <NavLink href="/admin" activeClassName={ACTIVE_LINK_CLASS_NAME}>
               Practitioner
             </NavLink>
           </li>
