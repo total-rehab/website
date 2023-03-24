@@ -1,5 +1,6 @@
 import { NextPage } from 'next';
 import Image from 'next/image';
+import { DownloadGuide } from '../components/website/DownloadGuide';
 import { Page } from '../components/website/Page';
 
 const DownloadPage: NextPage = () => (
@@ -15,7 +16,7 @@ const DownloadPage: NextPage = () => (
         sizes="240px"
       />
     }>
-    {null}
+    <DownloadGuide />
   </Page>
 );
 
