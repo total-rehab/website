@@ -4,13 +4,15 @@ import '../../styles/global.css';
 import { NextPage } from 'next';
 import { AppProps } from 'next/app';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { MainNav } from '../components/website/MainNav';
+import { StyledEngineProvider } from '@mui/material/styles';
 
 const queryClient = new QueryClient();
 
 const App: NextPage<AppProps> = ({ Component, pageProps }: AppProps) => (
   <QueryClientProvider client={queryClient}>
-    <Component {...pageProps} />
+    <StyledEngineProvider injectFirst>
+      <Component {...pageProps} />
+    </StyledEngineProvider>
   </QueryClientProvider>
 );
 

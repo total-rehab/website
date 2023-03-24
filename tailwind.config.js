@@ -64,4 +64,6 @@ module.exports = {
     },
   },
   plugins: [require('@tailwindcss/typography'), require('daisyui')],
+  corePlugins: { preflight: false },
+  important: '#root',
 };
