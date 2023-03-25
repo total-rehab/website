@@ -61,7 +61,12 @@ module.exports = {
           },
         ],
       },
+      extend: {
+        transitionProperty: {
+          height: 'height',
+        },
+      },
     },
   },
-  plugins: [require('@tailwindcss/typography')],
+  plugins: [require('@tailwindcss/typography'), require('tailwind-hamburgers')],
 };

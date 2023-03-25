@@ -29,7 +29,7 @@ export const Header: FC<HeaderProps> = ({
           )}
         </div>
 
-        <div className="flex w-full justify-center lg:justify-start pb-24 lg:pb-0 flex-col items-center md:items-left md:flex-row">
+        <div className="flex w-full justify-center lg:justify-start pb-8 md:pb-12 lg:pb-0 flex-col items-center md:items-left md:flex-row">
           <a
             href="https://apps.apple.com/uk/app/total-rehab/id6446787979"
             className="flex flex-1 md:pr-4 sm:flex-none mb-2 md:mb-0">
@@ -46,7 +46,7 @@ export const Header: FC<HeaderProps> = ({
             href="https://play.google.com/store/apps/details?id=uk.co.totalrehab.app">
             <Image
               alt="Google Play logo"
-              src="/images/play-store.svg"
+              src="images/play-store.svg"
               width={241}
               height={73}
               sizes="241px"
