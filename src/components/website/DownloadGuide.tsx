@@ -22,7 +22,7 @@ export const DownloadGuide: FC = () => (
             <a href="https://apps.apple.com/uk/app/total-rehab/id6446787979">
               <Image
                 alt="App Store logo"
-                src="images/app-store.svg"
+                src="/images/app-store.svg"
                 width={160}
                 height={55}
                 sizes="160px"
@@ -31,7 +31,7 @@ export const DownloadGuide: FC = () => (
             <a href="https://play.google.com/store/apps/details?id=uk.co.totalrehab.app">
               <Image
                 alt="Google Play logo"
-                src="images/play-store.svg"
+                src="/images/play-store.svg"
                 width={160}
                 height={55}
                 sizes="160px"

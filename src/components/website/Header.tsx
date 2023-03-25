@@ -35,7 +35,7 @@ export const Header: FC<HeaderProps> = ({
             className="flex flex-1 md:pr-4 sm:flex-none mb-2 md:mb-0">
             <Image
               alt="App Store logo"
-              src="images/app-store.svg"
+              src="/images/app-store.svg"
               width={241}
               height={73}
               sizes="241px"
@@ -46,7 +46,7 @@ export const Header: FC<HeaderProps> = ({
             href="https://play.google.com/store/apps/details?id=uk.co.totalrehab.app">
             <Image
               alt="Google Play logo"
-              src="images/play-store.svg"
+              src="/images/play-store.svg"
               width={241}
               height={73}
               sizes="241px"
