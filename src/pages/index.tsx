@@ -1,14 +1,27 @@
-import { NextPage } from 'next';
+import { ApiComponents } from '@jambff/oac';
+import { GetServerSideProps, NextPage } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { BREAKPOINT_LG, BREAKPOINT_XL, BREAKPOINT_XXL } from '../breakpoints';
+import { Card } from '../components/website/Card';
+import { CardGrid } from '../components/website/CardGrid';
+import { CardGridSection } from '../components/website/CardGridSection';
 import { Container } from '../components/website/Container';
 import { Page } from '../components/website/Page';
 import { SectionHeading } from '../components/website/SectionHeading';
 import { SectionText } from '../components/website/SectionText';
 import { UkcaBar } from '../components/website/UkcaBar';
+import { getBlogPosts, getPlans } from '../queries';
 
-const HomePage: NextPage = () => {
+type HomePageProps = {
+  plans: ApiComponents['Plan'][];
+  blogPosts: ApiComponents['BlogPost'][];
+};
+
+const HomePage: NextPage<HomePageProps> = ({
+  plans,
+  blogPosts,
+}: HomePageProps) => {
   return (
     <Page
       title="Digital Physiotherapy App"
@@ -76,8 +89,40 @@ const HomePage: NextPage = () => {
         </section>
       </Container>
       <UkcaBar />
+      <section className="bg-on-surface-regular text-white">
+        <CardGridSection
+          title="Available Plans"
+          items={plans}
+          baseUrl="/programs"
+          viewAllText="See all plans"
+        />
+      </section>
+      <section className="bg-primary-regular-bottom">
+        <CardGridSection
+          title="Injury Resources"
+          items={blogPosts}
+          baseUrl="/blog"
+          viewAllText="Learn more"
+        />
+      </section>
     </Page>
   );
+};
+
+export const getServerSideProps: GetServerSideProps<
+  HomePageProps
+> = async () => {
+  const [{ items: plans }, { items: blogPosts }] = await Promise.all([
+    getPlans({ query: { limit: 4, sort: { createdAt: 'desc' } } }),
+    getBlogPosts({ query: { limit: 4, sort: { createdAt: 'desc' } } }),
+  ]);
+
+  return {
+    props: {
+      plans,
+      blogPosts,
+    },
+  };
 };
 
 export default HomePage;

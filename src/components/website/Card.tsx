@@ -18,7 +18,7 @@ type CardProps = {
 export const Card: FC<CardProps> = ({ title, image, href }: CardProps) => (
   <Link
     href={href}
-    className="border border-gray-200 rounded-xl overflow-hidden shadow">
+    className="border border-gray-200 rounded-xl overflow-hidden shadow bg-white">
     <RemoteImage
       aspectRatio={0.667}
       maxWidth={300}
