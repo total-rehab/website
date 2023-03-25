@@ -60,8 +60,8 @@ const HomePage: NextPage<HomePageProps> = ({
           </div>
         </>
       }>
-      <Container>
-        <section className="pt-24 pb-24">
+      <section className="pt-6 pb-6 lg:pt-24 lg:pb-24">
+        <Container>
           <div className="flex flex-wrap flex-col md:flex-row items-center">
             <div className="w-full lg:w-2/5 hidden lg:block">
               <Image
@@ -86,9 +86,63 @@ const HomePage: NextPage<HomePageProps> = ({
               </Link>
             </SectionText>
           </div>
-        </section>
-      </Container>
+        </Container>
+      </section>
       <UkcaBar />
+      <section className="pt-6 pb-6 lg:pt-24">
+        <Container>
+          <div className="flex flex-wrap flex-col md:flex-row items-center">
+            <SectionText className="w-full lg:w-3/5 text-center lg:text-left">
+              <SectionHeading>
+                Health tips and advice in the palm of your hands
+              </SectionHeading>
+              <p>
+                Access valuable information tailored to each stage of your
+                rehabilitation. Stay on track and achieve your physiotherapy
+                goals with ease.
+              </p>
+              <Link href="/blog" className="hover:underline block">
+                Check out some helpful tips &gt;
+              </Link>
+            </SectionText>
+            <div className="w-full lg:w-2/5 hidden lg:flex justify-end">
+              <Image
+                alt=""
+                src="/images/empty-phone.png"
+                width={350}
+                height={797}
+                sizes="350px"
+              />
+            </div>
+          </div>
+        </Container>
+      </section>
+      <section className="pb-6 lg:pt-6 lg:pb-24">
+        <Container>
+          <div className="flex flex-wrap flex-col md:flex-row items-center">
+            <div className="w-full lg:w-2/5 hidden lg:block">
+              <Image
+                alt=""
+                src="/images/empty-phone.png"
+                width={350}
+                height={797}
+                sizes="350px"
+              />
+            </div>
+            <SectionText className="w-full lg:w-3/5 text-center lg:text-right">
+              <SectionHeading>Packed with high-quality content</SectionHeading>
+              <p>
+                Elevate your rehab game with 500+ high quality videos and a
+                choice of 7 rehab programs. Your plan will cover a range of
+                modalities ideal to get you back to health from start to finish.
+              </p>
+              <Link href="/download" className="hover:underline block">
+                Dowload the app &gt;
+              </Link>
+            </SectionText>
+          </div>
+        </Container>
+      </section>
       <section className="bg-on-surface-regular text-white">
         <CardGridSection
           title="Available Plans"
