@@ -10,6 +10,7 @@ import Summarize from '@mui/icons-material/Summarize';
 import Image from '@mui/icons-material/Image';
 import QuestionMark from '@mui/icons-material/QuestionMark';
 import BorderColor from '@mui/icons-material/BorderColor';
+import DateRange from '@mui/icons-material/DateRange';
 import People from '@mui/icons-material/People';
 import Category from '@mui/icons-material/Category';
 import { FormProvider } from '@jambff/ra-components';
@@ -51,6 +52,9 @@ import { Dashboard } from './dashboard/Dashboard';
 import { BlogPostList } from './blog-posts/BlogPostList';
 import { BlogPostCreate } from './blog-posts/BlogPostCreate';
 import { BlogPostEdit } from './blog-posts/BlogPostEdit';
+import { PlanList } from './plans/PlanList';
+import { PlanCreate } from './plans/PlanCreate';
+import { PlanEdit } from './plans/PlanEdit';
 
 type AppProps = {
   appEnv: 'staging' | 'production';
@@ -200,6 +204,13 @@ const App: FC<AppProps> = ({ appEnv }: AppProps) => (
           create={BlogPostCreate}
           edit={BlogPostEdit}
           icon={BorderColor}
+        />
+        <Resource
+          name="plans"
+          list={PlanList}
+          create={PlanCreate}
+          edit={PlanEdit}
+          icon={DateRange}
         />
         <Resource
           name="users"
