@@ -46,7 +46,7 @@ export const Header: FC<HeaderProps> = ({
             href="https://play.google.com/store/apps/details?id=uk.co.totalrehab.app">
             <Image
               alt="Google Play logo"
-              src="images/play-store.svg"
+              src="/images/play-store.svg"
               width={241}
               height={73}
               sizes="241px"
