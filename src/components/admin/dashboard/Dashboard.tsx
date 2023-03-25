@@ -9,8 +9,7 @@ import {
   PointElement,
   Tooltip,
 } from 'chart.js';
-import { useTotalRehabApi } from '../../../hooks/useTotalRehabApi';
-import { FlexRow } from '../generic/FlexRow';
+import { totalRehabApi } from '../../../total-rehab-api';
 import { DashboardCountByDayLineChart } from './DashboardCountByDayLineChart';
 
 Chart.register(
@@ -24,8 +23,7 @@ Chart.register(
 
 export const Dashboard = () => {
   const { spacing } = useTheme();
-  const api = useTotalRehabApi();
-  const { data } = useQuery(['analytics'], () => api.getAnalytics());
+  const { data } = useQuery(['analytics'], () => totalRehabApi.getAnalytics());
 
   console.log(data);
 
