@@ -9,7 +9,8 @@ type PageProps = {
   description: string;
   children: ReactNode;
   meta?: MetaProps;
-  headerImage: ReactNode;
+  headerImage?: ReactNode;
+  hideHeader?: boolean;
 };
 
 export const Page = ({
@@ -18,6 +19,7 @@ export const Page = ({
   children,
   meta,
   headerImage,
+  hideHeader,
 }: PageProps) => (
   <div className="text-on-surface-base">
     <MainNav />
@@ -26,7 +28,9 @@ export const Page = ({
       description={meta?.description || description}
       image={meta?.image}
     />
-    <Header title={title} description={description} image={headerImage} />
+    {!hideHeader && (
+      <Header title={title} description={description} image={headerImage} />
+    )}
     {children}
     <Footer />
   </div>

@@ -30,7 +30,7 @@ export const Footer: FC = () => (
             <NavLink href="/blog">Blog</NavLink>
           </li>
           <li>
-            <NavLink href="/privacy">Privacy</NavLink>
+            <NavLink href="/policies/privacy">Privacy</NavLink>
           </li>
           <li>
             <NavLink href="mailto:support@total-rehab.co.uk">Contact</NavLink>
