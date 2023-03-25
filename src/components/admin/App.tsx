@@ -9,6 +9,7 @@ import CalendarViewWeekIcon from '@mui/icons-material/CalendarViewWeek';
 import Summarize from '@mui/icons-material/Summarize';
 import Image from '@mui/icons-material/Image';
 import QuestionMark from '@mui/icons-material/QuestionMark';
+import BorderColor from '@mui/icons-material/BorderColor';
 import People from '@mui/icons-material/People';
 import Category from '@mui/icons-material/Category';
 import { FormProvider } from '@jambff/ra-components';
@@ -47,6 +48,9 @@ import { GuideEdit } from './guides/GuideEdit';
 import { UserCreate } from './users/UserCreate';
 import { TaskBulkCreate } from './tasks/TaskBulkCreate';
 import { Dashboard } from './dashboard/Dashboard';
+import { BlogPostList } from './blog-posts/BlogPostList';
+import { BlogPostCreate } from './blog-posts/BlogPostCreate';
+import { BlogPostEdit } from './blog-posts/BlogPostEdit';
 
 type AppProps = {
   appEnv: 'staging' | 'production';
@@ -188,6 +192,14 @@ const App: FC<AppProps> = ({ appEnv }: AppProps) => (
           create={GuideCreate}
           edit={GuideEdit}
           icon={QuestionMark}
+        />
+        <Resource
+          name="blog-posts"
+          options={{ label: 'Blog Posts' }}
+          list={BlogPostList}
+          create={BlogPostCreate}
+          edit={BlogPostEdit}
+          icon={BorderColor}
         />
         <Resource
           name="users"
