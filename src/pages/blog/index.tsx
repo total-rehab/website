@@ -34,7 +34,7 @@ const BlogPostsPage: NextPage<BlogPostsPageProps> = ({
         sizes="240px"
       />
     }>
-    <Container className="pt-12 pb-12">
+    <Container className="mt-6 mb-6 lg:mt-12 lg:mb-12">
       <CardGrid>
         {blogPosts.map((blogPost) => (
           <Card

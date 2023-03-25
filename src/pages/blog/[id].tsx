@@ -41,7 +41,7 @@ const BlogPostPage: NextPage<BlogPostPageProps> = ({
         />
       ) : null
     }>
-    <Container className="mt-12 mb-12">
+    <Container className="mt-6 mb-6 lg:mt-12 lg:mb-12">
       {blogPost.content && (
         <div
           className="prose lg:prose-xl mx-auto"
