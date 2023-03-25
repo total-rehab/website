@@ -1,15 +1,15 @@
 import { ApiComponents } from '@jambff/oac';
 import { GetServerSideProps, NextPage } from 'next';
 import Image from 'next/image';
-import { Card } from '../components/website/Card';
-import { CardGrid } from '../components/website/CardGrid';
-import { Container } from '../components/website/Container';
-import { Page } from '../components/website/Page';
-import { Paginator } from '../components/website/Paginator';
-import { UkcaBar } from '../components/website/UkcaBar';
-import { getBlogPosts } from '../queries';
+import { Card } from '../../components/website/Card';
+import { CardGrid } from '../../components/website/CardGrid';
+import { Container } from '../../components/website/Container';
+import { Page } from '../../components/website/Page';
+import { Paginator } from '../../components/website/Paginator';
+import { UkcaBar } from '../../components/website/UkcaBar';
+import { getBlogPosts } from '../../queries';
 
-type BlogPageProps = {
+type BlogPostsPageProps = {
   blogPosts: ApiComponents['BlogPost'][];
   page: number;
   totalPages: number;
@@ -17,11 +17,11 @@ type BlogPageProps = {
 
 const PER_PAGE = 9;
 
-const BlogPage: NextPage<BlogPageProps> = ({
+const BlogPostsPage: NextPage<BlogPostsPageProps> = ({
   blogPosts,
   page,
   totalPages,
-}: BlogPageProps) => (
+}: BlogPostsPageProps) => (
   <Page
     title="Injury resources"
     description="Explore our collection of insightful blog posts on injury and recovery"
@@ -41,6 +41,7 @@ const BlogPage: NextPage<BlogPageProps> = ({
             key={blogPost.id}
             title={blogPost.title}
             image={blogPost.thumbnailImage}
+            href={`/blog/${blogPost.id}`}
           />
         ))}
       </CardGrid>
@@ -54,9 +55,9 @@ const BlogPage: NextPage<BlogPageProps> = ({
   </Page>
 );
 
-export const getServerSideProps: GetServerSideProps<BlogPageProps> = async ({
-  query,
-}) => {
+export const getServerSideProps: GetServerSideProps<
+  BlogPostsPageProps
+> = async ({ query }) => {
   const page = Number(query.page ?? 1);
   const offset = (page - 1) * PER_PAGE;
   const { items: blogPosts, total } = await getBlogPosts({
@@ -74,4 +75,4 @@ export const getServerSideProps: GetServerSideProps<BlogPageProps> = async ({
   };
 };
 
-export default BlogPage;
+export default BlogPostsPage;

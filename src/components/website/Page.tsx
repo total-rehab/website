@@ -6,7 +6,7 @@ import { Meta, MetaProps } from './Meta';
 
 type PageProps = {
   title: string;
-  description: string;
+  description?: string;
   children: ReactNode;
   meta?: MetaProps;
   headerImage?: ReactNode;

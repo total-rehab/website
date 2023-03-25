@@ -1,4 +1,5 @@
 import { ApiComponents } from '@jambff/oac';
+import Link from 'next/link';
 import type { FC } from 'react';
 import {
   BREAKPOINT_LG,
@@ -11,10 +12,13 @@ import { RemoteImage } from './RemoteImage';
 type CardProps = {
   title?: string;
   image?: ApiComponents['Media'];
+  href: string;
 };
 
-export const Card: FC<CardProps> = ({ title, image }: CardProps) => (
-  <div className="border border-gray-200 rounded-xl overflow-hidden shadow">
+export const Card: FC<CardProps> = ({ title, image, href }: CardProps) => (
+  <Link
+    href={href}
+    className="border border-gray-200 rounded-xl overflow-hidden shadow">
     <RemoteImage
       aspectRatio={0.667}
       maxWidth={300}
@@ -32,5 +36,5 @@ export const Card: FC<CardProps> = ({ title, image }: CardProps) => (
         {title}
       </h3>
     </div>
-  </div>
+  </Link>
 );
