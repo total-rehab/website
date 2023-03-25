@@ -7,7 +7,7 @@ import { Container } from './Container';
 import { DownloadGuideSection } from './DownloadGuideSection';
 
 export const DownloadGuide: FC = () => (
-  <Container className="pt-24 pb-24">
+  <Container className="pt-12 pb-12 lg:pt-24 lg:pb-24">
     <div className="md:w-[75%] lg:w-[50%] mx-auto">
       <h2 className="text-4xl font-medium text-center">
         Access the full programs following these steps:

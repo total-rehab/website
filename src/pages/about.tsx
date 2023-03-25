@@ -19,7 +19,7 @@ const AboutPage: NextPage = () => (
         sizes="240px"
       />
     }>
-    <Container className="pt-24 pb-24 space-y-24">
+    <Container className="pt-12 pb-12 lg:pt-24 lg:pb-24 space-y-12 lg:space-y-24">
       <section>
         <div className="bg-on-surface-regular text-white p-8 lg:px-16 lg:py-12 rounded-[3em]">
           <SectionText className="w-full lg:w-4/5 ml-auto text-center lg:text-right">
