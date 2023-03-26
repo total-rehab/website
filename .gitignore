@@ -13,9 +13,12 @@ yalc.lock
 /.next/
 /out/
 /build
+
+# image optimisation
 nextImageExportOptimizer/
 remoteImagesForOptimization/
 next-image-export-optimizer-hashes.json
+images.lock
 
 # misc
 .DS_Store

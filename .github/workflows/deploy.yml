@@ -16,6 +16,14 @@ jobs:
       run: yarn build
     - name: Export
       run: yarn export
+    - name: Cache images
+      id: cache-images
+      uses: actions/cache@v3
+      with:
+        key: ${{ runner.os }}-images-${{ hashFiles('**/images.lock') }}
+        path: |
+          remoteImagesForOptimization
+          public/images/nextImageExportOptimizer
     - name: Optimise images
       run: yarn optimise-images
     - name: Deploy

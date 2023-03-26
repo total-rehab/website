@@ -1,5 +1,6 @@
 const path = require('path');
 const fs = require('fs');
+const glob = require('fast-glob');
 const appRoot = require('app-root-path');
 const dotenv = require('dotenv');
 const { execSync } = require('child_process');
@@ -53,19 +54,43 @@ const getImageSources = async (from) => {
   return mediaRes.data.map(({ src }) => src);
 };
 
-// Generate file for optimising (relevant) remote images
-// @see https://github.com/Niels-IO/next-image-export-optimizer
-(async () => {
+const generateImagesLockFile = (remoteImageSources, localImageSources) => {
+  fs.writeFileSync(
+    path.join(appRoot.path, 'images.lock'),
+    `${[...localImageSources, ...remoteImageSources].join('\n')}\n`,
+  );
+};
+
+const getRemoteImageSources = async () => {
   const [planSources, blogPostSources] = await Promise.all([
     await getImageSources('Plan'),
     await getImageSources('BlogPost'),
   ]);
 
-  const uniqueSources = [...new Set([...planSources, ...blogPostSources])];
+  return [...new Set([...planSources, ...blogPostSources])];
+};
+
+const getLocalImageSources = () =>
+  glob
+    .sync('**/*', {
+      cwd: path.join(appRoot.path, 'public', 'images'),
+    })
+    .filter(
+      (src) =>
+        !src.startsWith('nextImageExportOptimizer') && !src.endsWith('.json'),
+    );
+
+// Generate file for optimising (relevant) remote images
+// @see https://github.com/Niels-IO/next-image-export-optimizer
+(async () => {
+  const remoteImageSources = await getRemoteImageSources();
+  const localImageSources = getLocalImageSources();
+
+  generateImagesLockFile(remoteImageSources, localImageSources);
 
   fs.writeFileSync(
     path.join(appRoot.path, 'remoteOptimizedImages.js'),
-    `module.exports = [\n${uniqueSources
+    `module.exports = [\n${remoteImageSources
       .map((src) => `  '${src}'`)
       .join(',\n')},\n];\n`,
   );
