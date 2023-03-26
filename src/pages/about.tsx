@@ -1,10 +1,10 @@
 import { NextPage } from 'next';
 import Image from 'next/image';
-import { Container } from '../components/website/Container';
-import { Page } from '../components/website/Page';
-import { SectionHeading } from '../components/website/SectionHeading';
-import { SectionText } from '../components/website/SectionText';
-import { UkcaBar } from '../components/website/UkcaBar';
+import { Container } from '../components/Container';
+import { Page } from '../components/Page';
+import { SectionHeading } from '../components/SectionHeading';
+import { SectionText } from '../components/SectionText';
+import { UkcaBar } from '../components/UkcaBar';
 
 const AboutPage: NextPage = () => (
   <Page

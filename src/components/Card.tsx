@@ -6,7 +6,7 @@ import {
   BREAKPOINT_MD,
   BREAKPOINT_SM,
   BREAKPOINT_XL,
-} from '../../breakpoints';
+} from '../breakpoints';
 import { RemoteImage } from './RemoteImage';
 
 type CardProps = {

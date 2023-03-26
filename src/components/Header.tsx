@@ -1,7 +1,6 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import type { FC, ReactNode } from 'react';
-import { BREAKPOINT_LG, BREAKPOINT_SM } from '../../breakpoints';
+import { BREAKPOINT_LG, BREAKPOINT_SM } from '../breakpoints';
 import { Container } from './Container';
 
 export type HeaderProps = {

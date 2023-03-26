@@ -2,15 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* For the rich text editor */
-.ProseMirror {
-  min-height: 300px;
-}
-
-.ProseMirror > * {
-  margin-top: 10px;
-}
-
 .bg-primary-regular-bottom {
   background: linear-gradient(0deg, #83C32B 40%, #FFF 40%)
 }

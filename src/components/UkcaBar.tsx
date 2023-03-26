@@ -1,7 +1,4 @@
-import { FC, ReactNode } from 'react';
-
-import { useRouter } from 'next/router';
-import Link from 'next/link';
+import type { FC } from 'react';
 import cn from 'classnames';
 import Image from 'next/image';
 import { Container } from './Container';

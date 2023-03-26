@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
 import Image from 'next/image';
-import { DownloadGuide } from '../components/website/DownloadGuide';
-import { Page } from '../components/website/Page';
+import { DownloadGuide } from '../components/DownloadGuide';
+import { Page } from '../components/Page';
 
 const DownloadPage: NextPage = () => (
   <Page

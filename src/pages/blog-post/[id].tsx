@@ -1,6 +1,6 @@
 import { ApiComponents, GetBlogPostOptions } from '@jambff/oac';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
-import { PostPage } from '../../components/website/PostPage';
+import { PostPage } from '../../components/PostPage';
 import { getBlogPost } from '../../queries';
 import { getStaticPathsFrom } from '../../static';
 

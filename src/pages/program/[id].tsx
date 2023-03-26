@@ -1,6 +1,6 @@
 import { ApiComponents, GetPlanOptions } from '@jambff/oac';
 import { GetServerSideProps, GetStaticPaths, NextPage } from 'next';
-import { PostPage } from '../../components/website/PostPage';
+import { PostPage } from '../../components/PostPage';
 import { getPlan } from '../../queries';
 import { getStaticPathsFrom } from '../../static';
 

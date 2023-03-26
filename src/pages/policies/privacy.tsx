@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
-import { Container } from '../../components/website/Container';
-import { Page } from '../../components/website/Page';
+import { Container } from '../../components/Container';
+import { Page } from '../../components/Page';
 
 const PrivacyPolicyPage: NextPage = () => (
   <Page

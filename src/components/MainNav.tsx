@@ -1,6 +1,5 @@
 import { FC, useState } from 'react';
 import Link from 'next/link';
-
 import cn from 'classnames';
 import Image from 'next/image';
 import { MainNavLinks } from './MainNavLinks';

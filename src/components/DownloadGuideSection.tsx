@@ -1,10 +1,5 @@
-import Image from 'next/image';
 import type { ComponentType, FC, ReactNode } from 'react';
-import HowToReg from '@mui/icons-material/HowToReg';
-import PhoneAndroid from '@mui/icons-material/PhoneAndroid';
-import LibraryAdd from '@mui/icons-material/LibraryAdd';
 import { SvgIconProps } from '@mui/material';
-import { Container } from './Container';
 
 type DownloadGuideSectionProps = {
   Icon: ComponentType<SvgIconProps>;

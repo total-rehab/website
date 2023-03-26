@@ -1,7 +1,7 @@
 import { ApiComponents } from '@jambff/oac';
 import { NextPage } from 'next';
 import Image from 'next/image';
-import { BREAKPOINT_LG, BREAKPOINT_XL } from '../../breakpoints';
+import { BREAKPOINT_LG, BREAKPOINT_XL } from '../breakpoints';
 import { Container } from './Container';
 import { Page } from './Page';
 import { UkcaBar } from './UkcaBar';

@@ -1,5 +1,4 @@
 import { FC, ReactNode } from 'react';
-
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import cn from 'classnames';

@@ -1,12 +1,12 @@
 import { ApiComponents } from '@jambff/oac';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Image from 'next/image';
-import { Card } from '../../components/website/Card';
-import { CardGrid } from '../../components/website/CardGrid';
-import { Container } from '../../components/website/Container';
-import { Page } from '../../components/website/Page';
-import { Paginator } from '../../components/website/Paginator';
-import { UkcaBar } from '../../components/website/UkcaBar';
+import { Card } from '../../components/Card';
+import { CardGrid } from '../../components/CardGrid';
+import { Container } from '../../components/Container';
+import { Page } from '../../components/Page';
+import { Paginator } from '../../components/Paginator';
+import { UkcaBar } from '../../components/UkcaBar';
 import { getBlogPosts } from '../../queries';
 import { getStaticPathsFromList } from '../../static';
 

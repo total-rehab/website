@@ -1,8 +1,5 @@
-import { FC } from 'react';
-import Link from 'next/link';
-
+import type { FC } from 'react';
 import cn from 'classnames';
-import Image from 'next/image';
 import { NavLink } from './NavLink';
 
 type MainNavLinksProps = {
