@@ -2,6 +2,10 @@
 
 The public website for the Total Rehab app, built using [Next.js](https://nextjs.org/docs).
 
+The site is built statically using GitHub Actions and served on GitHub Pages.
+Supabase webhooks are used to trigger a rebuild, currently whenever a blog post
+or plan is updated.
+
 ## Getting Started
 
 Install dependencies:
