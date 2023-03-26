@@ -21,7 +21,9 @@ jobs:
         key: ${{ runner.os }}-images
         path: |
           remoteImagesForOptimization
+          public/nextImageExportOptimizer
           public/images/nextImageExportOptimizer
+          public/images/next-image-export-optimizer-hashes.json
     - name: Optimise images
       run: yarn optimise-images
     - name: Deploy
