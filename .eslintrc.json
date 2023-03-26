@@ -45,6 +45,14 @@
     "react/jsx-props-no-spreading": "off",
     "react/jsx-filename-extension": ["error", { "extensions": [".jsx", ".tsx"] }],
     "react/require-default-props": "off",
-    "jsx-a11y/label-has-associated-control": "off"
+    "jsx-a11y/label-has-associated-control": "off",
+    "no-restricted-imports": ["error", {
+      "patterns": [
+        {
+          "group": ["next/image"],
+          "message": "For optimisation purposes use ExportedImage from next-image-export-optimizer instead."
+        }
+      ]
+    }]
   }
 }

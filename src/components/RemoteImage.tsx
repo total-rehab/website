@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import type { ApiComponents } from '@jambff/oac';
-import NextImage from 'next/image';
+import ExportedImage from 'next-image-export-optimizer';
 import { ImagePlaceholder } from './ImagePlaceholder';
 
 type ResizeMode = 'cover' | 'contain';
@@ -82,7 +82,7 @@ export const RemoteImage = ({
           height={imageDimensions.height}
         />
       ) : (
-        <NextImage
+        <ExportedImage
           fill
           alt={image.title}
           onError={(err) => {

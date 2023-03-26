@@ -1,6 +1,6 @@
 import { ApiComponents } from '@jambff/oac';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
-import Image from 'next/image';
+import ExportedImage from 'next-image-export-optimizer';
 import { Card } from '../../components/Card';
 import { CardGrid } from '../../components/CardGrid';
 import { Container } from '../../components/Container';
@@ -27,7 +27,7 @@ const BlogPostsPage: NextPage<BlogPostsPageProps> = ({
     title="Injury resources"
     description="Explore our collection of insightful blog posts on injury and recovery"
     headerImage={
-      <Image
+      <ExportedImage
         alt=""
         src="/images/squat-phone.png"
         width={240}

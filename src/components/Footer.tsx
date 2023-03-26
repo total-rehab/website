@@ -1,7 +1,7 @@
 import type { FC } from 'react';
-import Image from 'next/image';
 import Instagram from '@mui/icons-material/Instagram';
 import Facebook from '@mui/icons-material/Facebook';
+import ExportedImage from 'next-image-export-optimizer';
 import { Container } from './Container';
 import { NavLink } from './NavLink';
 
@@ -9,7 +9,7 @@ export const Footer: FC = () => (
   <footer className="bg-on-surface-base pt-6 pb-8">
     <Container>
       <div className="items-center flex flex-col items-center">
-        <Image
+        <ExportedImage
           className="mb-6"
           src="/images/total-rehab-logo.png"
           alt="Total Rehab logo"

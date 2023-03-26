@@ -1,6 +1,6 @@
 import { ApiComponents } from '@jambff/oac';
 import { NextPage } from 'next';
-import Image from 'next/image';
+import ExportedImage from 'next-image-export-optimizer';
 import { BREAKPOINT_LG, BREAKPOINT_XL } from '../breakpoints';
 import { Container } from './Container';
 import { Page } from './Page';
@@ -21,7 +21,7 @@ export const PostPage: NextPage<PostPageProps> = ({
     title={title}
     headerImage={
       heroImage ? (
-        <Image
+        <ExportedImage
           alt=""
           className="rounded-lg"
           src={heroImage.src}

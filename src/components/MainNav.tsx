@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
 import Link from 'next/link';
 import cn from 'classnames';
-import Image from 'next/image';
+import ExportedImage from 'next-image-export-optimizer';
 import { MainNavLinks } from './MainNavLinks';
 
 type NavProps = {
@@ -35,7 +35,7 @@ export const MainNav: FC<NavProps> = ({ className }: NavProps) => {
             )}
             aria-label="Main Navigation">
             <Link href="/">
-              <Image
+              <ExportedImage
                 alt="Total Rehab logo"
                 src="/images/total-rehab-logo.png"
                 className="pr-4"

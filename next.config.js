@@ -8,8 +8,9 @@ const nextConfig = {
     SUPABASE_ANON_KEY: process.env.SUPABASE_ANON_KEY,
     STRIPE_PUBLIC_KEY: process.env.STRIPE_PUBLIC_KEY,
   },
+  transpilePackages: ['next-image-export-optimizer'],
   images: {
-    unoptimized: true, // For static builds
+    loader: 'custom',
     remotePatterns: [
       {
         protocol: 'https',

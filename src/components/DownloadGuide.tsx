@@ -1,8 +1,8 @@
-import Image from 'next/image';
 import type { FC } from 'react';
 import HowToReg from '@mui/icons-material/HowToReg';
 import PhoneAndroid from '@mui/icons-material/PhoneAndroid';
 import LibraryAdd from '@mui/icons-material/LibraryAdd';
+import ExportedImage from 'next-image-export-optimizer';
 import { Container } from './Container';
 import { DownloadGuideSection } from './DownloadGuideSection';
 
@@ -20,7 +20,7 @@ export const DownloadGuide: FC = () => (
           text="Download the Total Rehab App for iPhone and Android via the app store.">
           <div className="flex justify-center space-x-6">
             <a href="https://apps.apple.com/uk/app/total-rehab/id6446787979">
-              <Image
+              <ExportedImage
                 alt="App Store logo"
                 src="/images/app-store.svg"
                 width={160}
@@ -29,7 +29,7 @@ export const DownloadGuide: FC = () => (
               />
             </a>
             <a href="https://play.google.com/store/apps/details?id=uk.co.totalrehab.app">
-              <Image
+              <ExportedImage
                 alt="Google Play logo"
                 src="/images/play-store.svg"
                 width={160}

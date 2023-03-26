@@ -12,7 +12,8 @@
     "postinstall": "yarn oac https://api.total-rehab.co.uk/docs.json",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx,.json .",
     "typecheck": "tsc --noEmit",
-    "prepare": "node ./bin/prepare.js"
+    "prepare": "node ./bin/prepare.js",
+    "optimise-images": "next-image-export-optimizer"
   },
   "husky": {
     "hooks": {
@@ -34,6 +35,7 @@
     "chart.js": "^4.2.1",
     "classnames": "^2.3.2",
     "next": "13.1.1",
+    "next-image-export-optimizer": "^1.4.1",
     "normalize.css": "^8.0.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",

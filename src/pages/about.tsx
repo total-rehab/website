@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import Image from 'next/image';
+import ExportedImage from 'next-image-export-optimizer';
 import { Container } from '../components/Container';
 import { Page } from '../components/Page';
 import { SectionHeading } from '../components/SectionHeading';
@@ -11,7 +11,7 @@ const AboutPage: NextPage = () => (
     title="Our Story and Mission"
     description="Discover more about Total Rehab"
     headerImage={
-      <Image
+      <ExportedImage
         alt=""
         src="/images/squat-phone.png"
         width={240}

@@ -1,6 +1,6 @@
 import { ApiComponents } from '@jambff/oac';
 import { GetStaticProps, NextPage } from 'next';
-import Image from 'next/image';
+import ExportedImage from 'next-image-export-optimizer';
 import Link from 'next/link';
 import { BREAKPOINT_LG, BREAKPOINT_XL, BREAKPOINT_XXL } from '../breakpoints';
 import { CardGridSection } from '../components/CardGridSection';
@@ -27,7 +27,7 @@ const HomePage: NextPage<HomePageProps> = ({
       headerImage={
         <>
           <div className="absolute left-[-25%] hidden xl:block">
-            <Image
+            <ExportedImage
               priority
               alt=""
               src="/images/schedule-mock-up.png"
@@ -37,7 +37,7 @@ const HomePage: NextPage<HomePageProps> = ({
             />
           </div>
           <div className="absolute right-0 xl:right-[-10%] hidden 2xl:block">
-            <Image
+            <ExportedImage
               priority
               alt=""
               src="/images/ankle-support-mock-up.png"
@@ -47,7 +47,7 @@ const HomePage: NextPage<HomePageProps> = ({
             />
           </div>
           <div className="z-10 scale-125 xl:scale-105">
-            <Image
+            <ExportedImage
               priority
               alt=""
               src="/images/ankle-and-foot-mock-up.png"
@@ -62,7 +62,7 @@ const HomePage: NextPage<HomePageProps> = ({
         <Container>
           <div className="flex flex-wrap flex-col md:flex-row items-center">
             <div className="w-full lg:w-2/5 hidden lg:block">
-              <Image
+              <ExportedImage
                 alt=""
                 src="/images/squat-phone.png"
                 width={350}
@@ -104,7 +104,7 @@ const HomePage: NextPage<HomePageProps> = ({
               </Link>
             </SectionText>
             <div className="w-full lg:w-2/5 hidden lg:flex justify-end">
-              <Image
+              <ExportedImage
                 alt=""
                 src="/images/empty-phone.png"
                 width={350}
@@ -119,7 +119,7 @@ const HomePage: NextPage<HomePageProps> = ({
         <Container>
           <div className="flex flex-wrap flex-col md:flex-row items-center">
             <div className="w-full lg:w-2/5 hidden lg:block">
-              <Image
+              <ExportedImage
                 alt=""
                 src="/images/empty-phone.png"
                 width={350}

@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import ExportedImage from 'next-image-export-optimizer';
 import type { FC, ReactNode } from 'react';
 import { BREAKPOINT_LG, BREAKPOINT_SM } from '../breakpoints';
 import { Container } from './Container';
@@ -33,7 +33,7 @@ export const Header: FC<HeaderProps> = ({
           <a
             href="https://apps.apple.com/uk/app/total-rehab/id6446787979"
             className="w-[150px] sm:w-[200px] lg:w-[240px]">
-            <Image
+            <ExportedImage
               alt="App Store logo"
               src="/images/app-store.svg"
               width={240}
@@ -44,7 +44,7 @@ export const Header: FC<HeaderProps> = ({
           <a
             href="https://play.google.com/store/apps/details?id=uk.co.totalrehab.app"
             className="w-[150px] sm:w-[200px] lg:w-[240px]">
-            <Image
+            <ExportedImage
               alt="Google Play logo"
               src="/images/play-store.svg"
               width={240}

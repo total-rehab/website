@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import cn from 'classnames';
-import Image from 'next/image';
+import ExportedImage from 'next-image-export-optimizer';
 import { Container } from './Container';
 
 type UkcaBarProps = {
@@ -10,7 +10,7 @@ type UkcaBarProps = {
 export const UkcaBar: FC<UkcaBarProps> = ({ className }: UkcaBarProps) => (
   <div className={cn('bg-primary-regular', className)}>
     <Container className="flex items-center justify-center lg:justify-end">
-      <Image
+      <ExportedImage
         alt=""
         src="/images/ukca-logo.png"
         width={70}

@@ -1,6 +1,6 @@
 import { ApiComponents } from '@jambff/oac';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
-import Image from 'next/image';
+import ExportedImage from 'next-image-export-optimizer';
 import { Card } from '../../components/Card';
 import { CardGrid } from '../../components/CardGrid';
 import { Container } from '../../components/Container';
@@ -28,7 +28,7 @@ const ProgramsPage: NextPage<ProgramsPageProps> = ({
     title="Sports Injury and Post-Surgery Rehab Programs"
     description="Evidence based physiotherapy programs with you in mind"
     headerImage={
-      <Image
+      <ExportedImage
         alt=""
         src="/images/squat-phone.png"
         width={240}

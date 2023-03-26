@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import Image from 'next/image';
+import ExportedImage from 'next-image-export-optimizer';
 import { DownloadGuide } from '../components/DownloadGuide';
 import { Page } from '../components/Page';
 
@@ -8,7 +8,7 @@ const DownloadPage: NextPage = () => (
     title="Download Total Rehab App"
     description="We are available to download via the Google Play Store and iOS App Store"
     headerImage={
-      <Image
+      <ExportedImage
         alt=""
         src="/images/squat-phone.png"
         width={240}
