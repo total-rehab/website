@@ -1,5 +1,6 @@
 import { NextPage } from 'next';
 import { Html, Head, Main, NextScript } from 'next/document';
+import Script from 'next/script';
 
 export const Document: NextPage = () => (
   <Html lang="en">
@@ -19,6 +20,7 @@ export const Document: NextPage = () => (
         rel="stylesheet"
       />
       <link rel="shortcut icon" href="/favicon.ico" />
+      <Script src="https://js.stripe.com/v3/" />
     </Head>
     <body>
       <Main />
