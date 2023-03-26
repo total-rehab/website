@@ -1,44 +1,32 @@
 name: Deploy
 
 on:
-  workflow_dispatch:
-    inputs:
-      environment:
-        description: Environment
-        type: choice
-        default: staging
-        options:
-          - staging
-          - production
+  push:
+    branches:
+      - main
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}-${{ inputs.environment }}
+  group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  deploy:
+  test:
+    uses: ./.github/workflows/test.yml
+
+  build:
     runs-on: ubuntu-latest
+    needs: test
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Install
-        run: yarn install --frozen-lockfile --non-interactive
-      - name: Prepare environment
-        id: prepare
-        run: |
-          COMMIT_HASH=$(git rev-parse HEAD)
-          yarn prepare-deployment \
-          --app-env ${{ inputs.environment }} \
-          --app-name total-rehab-website-${{ inputs.environment }} \
-          --staging-sub-domain staging \
-          --production-sub-domain www
-        env:
-          DIGITALOCEAN_ACCESS_TOKEN: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
-      - name: Install doctl
-        uses: digitalocean/action-doctl@v2
-        with:
-          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
-      - name: Update app
-        run: doctl apps update ${{ steps.prepare.outputs.digitalocean-app-id }} --spec ./.do/app.yaml
-      - name: Create deployment
-        run: doctl apps create-deployment ${{ steps.prepare.outputs.digitalocean-app-id }}
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Install
+      run: yarn install --frozen-lockfile --non-interactive
+    - name: Build
+      run: yarn build
+    - name: Export
+      run: yarn export
+    - name: Deploy
+      uses: JamesIves/github-pages-deploy-action@4
+      with:
+        branch: gh-pages
+        folder: out

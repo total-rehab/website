@@ -1,30 +1,32 @@
 import { ApiComponents } from '@jambff/oac';
-import { GetServerSideProps, NextPage } from 'next';
+import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Image from 'next/image';
 import { Card } from '../../components/website/Card';
 import { CardGrid } from '../../components/website/CardGrid';
 import { Container } from '../../components/website/Container';
+import { DownloadGuide } from '../../components/website/DownloadGuide';
 import { Page } from '../../components/website/Page';
 import { Paginator } from '../../components/website/Paginator';
 import { UkcaBar } from '../../components/website/UkcaBar';
-import { getBlogPosts } from '../../queries';
+import { getPlans } from '../../queries';
+import { getStaticPathsFromList } from '../../static';
 
-type BlogPostsPageProps = {
-  blogPosts: ApiComponents['BlogPost'][];
+type ProgramsPageProps = {
+  items: ApiComponents['Plan'][];
   page: number;
   totalPages: number;
 };
 
-const PER_PAGE = 9;
+const PER_PAGE = 12;
 
-const BlogPostsPage: NextPage<BlogPostsPageProps> = ({
-  blogPosts,
+const ProgramsPage: NextPage<ProgramsPageProps> = ({
+  items,
   page,
   totalPages,
-}: BlogPostsPageProps) => (
+}: ProgramsPageProps) => (
   <Page
-    title="Injury resources"
-    description="Explore our collection of insightful blog posts on injury and recovery"
+    title="Sports Injury and Post-Surgery Rehab Programs"
+    description="Evidence based physiotherapy programs with you in mind"
     headerImage={
       <Image
         alt=""
@@ -36,12 +38,12 @@ const BlogPostsPage: NextPage<BlogPostsPageProps> = ({
     }>
     <Container className="mt-6 mb-6 lg:mt-12 lg:mb-12">
       <CardGrid>
-        {blogPosts.map((blogPost) => (
+        {items.map((item) => (
           <Card
-            key={blogPost.id}
-            title={blogPost.title}
-            image={blogPost.thumbnailImage}
-            href={`/blog/${blogPost.id}`}
+            key={item.id}
+            title={item.title}
+            image={item.thumbnailImage}
+            href={`/program/${item.id}`}
           />
         ))}
       </CardGrid>
@@ -52,15 +54,19 @@ const BlogPostsPage: NextPage<BlogPostsPageProps> = ({
       />
     </Container>
     <UkcaBar />
+    <DownloadGuide />
   </Page>
 );
 
-export const getServerSideProps: GetServerSideProps<
-  BlogPostsPageProps
-> = async ({ query }) => {
-  const page = Number(query.page ?? 1);
+export const getStaticPaths: GetStaticPaths = async () =>
+  getStaticPathsFromList('Plan', PER_PAGE);
+
+export const getStaticProps: GetStaticProps<ProgramsPageProps> = async ({
+  params,
+}) => {
+  const page = Number(params?.page ?? 1);
   const offset = (page - 1) * PER_PAGE;
-  const { items: blogPosts, total } = await getBlogPosts({
+  const { items, total } = await getPlans({
     query: { limit: PER_PAGE, offset },
   });
 
@@ -70,9 +76,9 @@ export const getServerSideProps: GetServerSideProps<
     props: {
       page,
       totalPages,
-      blogPosts,
+      items,
     },
   };
 };
 
-export default BlogPostsPage;
+export default ProgramsPage;

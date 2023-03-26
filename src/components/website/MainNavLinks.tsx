@@ -21,12 +21,12 @@ export const MainNavLinks: FC<MainNavLinksProps> = ({
       className,
     )}>
     <li>
-      <NavLink href="/programs" activeClassName={ACTIVE_LINK_CLASS_NAME}>
+      <NavLink href="/programs/1" activeClassName={ACTIVE_LINK_CLASS_NAME}>
         Programs
       </NavLink>
     </li>
     <li>
-      <NavLink href="/blog" activeClassName={ACTIVE_LINK_CLASS_NAME}>
+      <NavLink href="/blog-posts/1" activeClassName={ACTIVE_LINK_CLASS_NAME}>
         Blog
       </NavLink>
     </li>

@@ -6,15 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "predev": "yarn prepare-env",
-    "prebuild": "yarn prepare-env && yarn set-app-version",
-    "prestart": "yarn prepare-env",
+    "export": "next export",
+    "predev": "yarn prepare",
+    "prebuild": "yarn prepare",
     "postinstall": "yarn oac https://api.total-rehab.co.uk/docs.json",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx,.json .",
-    "set-app-version": "echo \"APP_VERSION=$(git rev-parse HEAD)\" >> .env",
     "typecheck": "tsc --noEmit",
-    "prepare-env": "node ./bin/prepare-env.js",
-    "prepare-deployment": "node ./bin/prepare-deployment.js"
+    "prepare": "node ./bin/prepare.js"
   },
   "dependencies": {
     "@jambff/oac": "^1.2.0",
@@ -29,7 +27,7 @@
     "chart.js": "^4.2.1",
     "classnames": "^2.3.2",
     "date-fns": "^2.29.3",
-    "next": "13.1.1",
+    "next": "13.3.0",
     "normalize.css": "^8.0.1",
     "pluralize": "^8.0.0",
     "ra-input-rich-text": "^4.7.0",

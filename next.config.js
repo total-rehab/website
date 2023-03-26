@@ -8,6 +8,7 @@ const nextConfig = {
     SUPABASE_ANON_KEY: process.env.SUPABASE_ANON_KEY,
   },
   images: {
+    unoptimized: true, // For static builds
     remotePatterns: [
       {
         protocol: 'https',

@@ -1,10 +1,8 @@
 import { ApiComponents } from '@jambff/oac';
-import { GetServerSideProps, NextPage } from 'next';
+import { GetStaticProps, NextPage } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { BREAKPOINT_LG, BREAKPOINT_XL, BREAKPOINT_XXL } from '../breakpoints';
-import { Card } from '../components/website/Card';
-import { CardGrid } from '../components/website/CardGrid';
 import { CardGridSection } from '../components/website/CardGridSection';
 import { Container } from '../components/website/Container';
 import { Page } from '../components/website/Page';
@@ -81,7 +79,7 @@ const HomePage: NextPage<HomePageProps> = ({
                 that adjust according to your pain level during each exercise,
                 ensuring a comfortable and effective rehabilitation journey.
               </p>
-              <Link href="/programs" className="hover:underline block">
+              <Link href="/programs/1" className="hover:underline block">
                 See all programs available &gt;
               </Link>
             </SectionText>
@@ -101,7 +99,7 @@ const HomePage: NextPage<HomePageProps> = ({
                 rehabilitation. Stay on track and achieve your physiotherapy
                 goals with ease.
               </p>
-              <Link href="/blog" className="hover:underline block">
+              <Link href="/blog-posts/1" className="hover:underline block">
                 Check out some helpful tips &gt;
               </Link>
             </SectionText>
@@ -147,25 +145,23 @@ const HomePage: NextPage<HomePageProps> = ({
         <CardGridSection
           title="Available Plans"
           items={plans}
-          baseUrl="/programs"
-          viewAllText="See all plans"
+          itemBaseHref="/program"
+          viewAllLink={{ text: 'See all plans', href: '/programs/1' }}
         />
       </section>
       <section className="bg-primary-regular-bottom">
         <CardGridSection
           title="Injury Resources"
           items={blogPosts}
-          baseUrl="/blog"
-          viewAllText="Learn more"
+          itemBaseHref="/blog-post"
+          viewAllLink={{ text: 'Learn more', href: '/blog-posts/1' }}
         />
       </section>
     </Page>
   );
 };
 
-export const getServerSideProps: GetServerSideProps<
-  HomePageProps
-> = async () => {
+export const getStaticProps: GetStaticProps<HomePageProps> = async () => {
   const [{ items: plans }, { items: blogPosts }] = await Promise.all([
     getPlans({ query: { limit: 4, sort: { createdAt: 'desc' } } }),
     getBlogPosts({ query: { limit: 4, sort: { createdAt: 'desc' } } }),
