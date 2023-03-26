@@ -18,10 +18,14 @@ export const Footer: FC = () => (
           sizes="250px"
         />
         <div className="text-white mb-8 space-x-4">
-          <a href="https://www.facebook.com/totalrehabapp">
+          <a
+            href="https://www.facebook.com/totalrehabapp"
+            aria-label="Total Rehab Facebook page">
             <Facebook />
           </a>
-          <a href="https://www.instagram.com/total_rehab_app">
+          <a
+            href="https://www.instagram.com/total_rehab_app"
+            aria-label="Total Rehab Instagram page">
             <Instagram />
           </a>
         </div>

@@ -17,6 +17,7 @@ export const MainNav: FC<NavProps> = ({ className }: NavProps) => {
         <div className="relative">
           <button
             type="button"
+            aria-label="Toggle main menu"
             className={cn(
               'tham tham-e-squeeze tham-w-6 lg:hidden absolute right-0 top-[8px]',
               isMobileMenuOpen ? 'tham-active' : '',
