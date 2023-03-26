@@ -38,7 +38,9 @@ export const MainNavLinks: FC<MainNavLinksProps> = ({
       </NavLink>
     </li>
     <li>
-      <NavLink href="/admin" activeClassName={ACTIVE_LINK_CLASS_NAME}>
+      <NavLink
+        href="https://admin.total-rehab.co.uk"
+        activeClassName={ACTIVE_LINK_CLASS_NAME}>
         Practitioner
       </NavLink>
     </li>
