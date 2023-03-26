@@ -12,8 +12,6 @@ jobs:
       run: yarn install --frozen-lockfile --non-interactive
     - name: Build
       run: yarn build
-    - name: Export
-      run: yarn export
     - name: Cache images
       id: cache-images
       uses: actions/cache@v3
@@ -25,6 +23,8 @@ jobs:
           public/images/next-image-export-optimizer-hashes.json
     - name: Optimise images
       run: yarn optimise-images
+    - name: Export
+      run: yarn export
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@v4
       with:
