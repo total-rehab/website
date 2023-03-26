@@ -1,12 +1,16 @@
 import type { FC } from 'react';
-import { PaymentElement } from '@stripe/react-stripe-js';
+import {
+  LinkAuthenticationElement,
+  PaymentElement,
+} from '@stripe/react-stripe-js';
 import { Button } from './Button';
 
 export const PurchaseForm: FC = () => (
   <form>
+    <LinkAuthenticationElement className="mb-2" />
     <PaymentElement />
-    <div className="flex justify-end mt-6">
-      <Button className="text-lg">Submit</Button>
+    <div className="flex justify-center mt-10">
+      <Button className="text-lg">Sign up</Button>
     </div>
   </form>
 );

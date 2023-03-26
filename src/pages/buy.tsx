@@ -6,6 +6,8 @@ import { NextPage } from 'next';
 import { Container } from '../components/Container';
 import { Page } from '../components/Page';
 import { PurchaseForm } from '../components/PurchaseForm';
+import { SectionHeading } from '../components/SectionHeading';
+import { SectionText } from '../components/SectionText';
 import { UkcaBar } from '../components/UkcaBar';
 import { totalRehabApi } from '../total-rehab-api';
 
@@ -21,21 +23,36 @@ const AboutPage: NextPage = () => {
     (): Promise<GetPaymentIntentResponse> => totalRehabApi.getPaymentIntent(),
   );
 
-  console.log(data);
-
   return (
     <Page
       hideHeader
       title="Sign up"
       description="Sign up to the Total Rehab app">
-      {!data?.clientSecret ? null : (
-        <Elements stripe={stripe} options={{ clientSecret: data.clientSecret }}>
-          <Container className="pt-12 pb-12 lg:pt-24 lg:pb-24 space-y-12 lg:space-y-24 max-w-[900px]">
-            <PurchaseForm />
-          </Container>
-          <UkcaBar />
-        </Elements>
-      )}
+      <section>
+        <Container className="pt-12 pb-12 lg:pb-20 space-y-12 lg:space-y-24 max-w-[900px] text-center">
+          <div>
+            <SectionHeading>Sign up for full access</SectionHeading>
+            <SectionText>
+              Purchase a code to gain full access to all programs.
+            </SectionText>
+          </div>
+          {!data?.clientSecret ? null : (
+            <Elements
+              stripe={stripe}
+              options={{
+                clientSecret: data.clientSecret,
+                appearance: {
+                  variables: {
+                    fontFamily: 'Open Sans, ui-sans-serif, system-ui',
+                  },
+                },
+              }}>
+              <PurchaseForm />
+            </Elements>
+          )}
+        </Container>
+      </section>
+      <UkcaBar />
     </Page>
   );
 };
