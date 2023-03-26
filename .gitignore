@@ -18,7 +18,6 @@ yalc.lock
 nextImageExportOptimizer/
 remoteImagesForOptimization/
 next-image-export-optimizer-hashes.json
-images.lock
 
 # misc
 .DS_Store
