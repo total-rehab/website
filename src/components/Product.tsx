@@ -1,9 +1,8 @@
 import { ApiComponents } from '@jambff/oac';
 import getUserLocale from 'get-user-locale';
 import { FC, useCallback, useEffect, useState } from 'react';
-import { totalRehabApi } from '../total-rehab-api';
+import { useAuthenticatedTotalRehabApi } from '../hooks/useAuthenticatedTotalRehabApi';
 import { Button } from './Button';
-import { LoadingSpinner } from './LoadingSpinner';
 
 type ProductProps = {
   product: ApiComponents['Product'];
@@ -12,6 +11,7 @@ type ProductProps = {
 export const Product: FC<ProductProps> = ({ product }: ProductProps) => {
   const [paymentAmount, setPaymentAmount] = useState<string>();
   const [perUnitCost, setPerUnitCost] = useState<string>();
+  const authenticatedTotalRehabApi = useAuthenticatedTotalRehabApi();
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const getLocalAmount = useCallback(
@@ -33,7 +33,7 @@ export const Product: FC<ProductProps> = ({ product }: ProductProps) => {
 
   const onClick = async () => {
     setIsLoading(true);
-    const { checkoutSessionUrl } = await totalRehabApi.checkout({
+    const { checkoutSessionUrl } = await authenticatedTotalRehabApi.checkout({
       params: { id: product.id },
       query: {
         redirectUrl: new URL('/practitioner', window.location.origin).href,
