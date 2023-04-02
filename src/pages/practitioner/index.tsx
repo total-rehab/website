@@ -4,7 +4,6 @@ import { Container } from '../../components/Container';
 import { Page } from '../../components/Page';
 import { SectionHeading } from '../../components/SectionHeading';
 import { SectionText } from '../../components/SectionText';
-import { UkcaBar } from '../../components/UkcaBar';
 import { totalRehabApi } from '../../total-rehab-api';
 import { Product } from '../../components/Product';
 import { DashboardLayout } from '../../components/DashboardLayout';
