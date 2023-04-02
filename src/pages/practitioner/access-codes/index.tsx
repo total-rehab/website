@@ -1,21 +1,42 @@
-import { ApiComponents } from '@jambff/oac';
-import { GetStaticProps, NextPage } from 'next';
+import { NextPage } from 'next';
+import { useRouter } from 'next/router';
 import { Page } from '../../../components/Page';
-import { totalRehabApi } from '../../../total-rehab-api';
-import { Product } from '../../../components/Product';
 import { DashboardLayout } from '../../../components/DashboardLayout';
 import { Table } from '../../../components/Table';
+import { Button } from '../../../components/Button';
 
-const AccessCodesPage: NextPage = () => (
-  <Page hideHeader title="Sign up" description="Sign up to the Total Rehab app">
-    <DashboardLayout>
-      <p className="text-xl mb-8">
-        Purchase access codes to provide your patients with full access to all
-        programs within the Total Rehab app.
-      </p>
-      <Table />
-    </DashboardLayout>
-  </Page>
-);
+const accessCodes = [
+  { code: '123', createdAt: 'sometime', action: <Button>Do something</Button> },
+];
+
+const AccessCodesPage: NextPage = () => {
+  const router = useRouter();
+
+  const onBuyCodesClick = () => {
+    router.push('/practitioner/access-codes/purchase');
+  };
+
+  return (
+    <Page
+      hideHeader
+      title="Sign up"
+      description="Sign up to the Total Rehab app">
+      <DashboardLayout>
+        <div className="flex flex-col xl:flex-row justify-between">
+          <div className="md:flex-[60%]">
+            <p className="text-xl mb-8">
+              The access codes listed below can be to provide your patients with
+              full access to all programs within the Total Rehab app.
+            </p>
+          </div>
+          <div>
+            <Button onClick={onBuyCodesClick}>Buy access codes</Button>
+          </div>
+        </div>
+        <Table className="mt-8" data={accessCodes} />
+      </DashboardLayout>
+    </Page>
+  );
+};
 
 export default AccessCodesPage;
