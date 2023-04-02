@@ -4,11 +4,11 @@ import cn from 'classnames';
 import ExportedImage from 'next-image-export-optimizer';
 import { MainNavLinks } from './MainNavLinks';
 
-type NavProps = {
+type MainNavProps = {
   className?: string;
 };
 
-export const MainNav: FC<NavProps> = ({ className }: NavProps) => {
+export const MainNav: FC<MainNavProps> = ({ className }: MainNavProps) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
@@ -48,7 +48,7 @@ export const MainNav: FC<NavProps> = ({ className }: NavProps) => {
             <MainNavLinks
               className={cn(
                 'lg:h-auto',
-                isMobileMenuOpen ? 'h-[200px]' : 'h-[0px]',
+                isMobileMenuOpen ? 'h-[220px]' : 'h-[0px]',
               )}
             />
           </nav>

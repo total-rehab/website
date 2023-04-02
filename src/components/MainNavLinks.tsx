@@ -38,7 +38,7 @@ export const MainNavLinks: FC<MainNavLinksProps> = ({
       </NavLink>
     </li>
     <li>
-      <NavLink href="/buy" activeClassName={ACTIVE_LINK_CLASS_NAME}>
+      <NavLink href="/practitioner" activeClassName={ACTIVE_LINK_CLASS_NAME}>
         Practitioner
       </NavLink>
     </li>

@@ -15,7 +15,7 @@ export const NavLink: FC<NavLinkProps> = ({
   activeClassName,
 }: NavLinkProps) => {
   const router = useRouter();
-  const isCurrent = router.asPath === href;
+  const isCurrent = router.asPath.includes(href);
 
   return (
     <Link

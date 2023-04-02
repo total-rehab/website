@@ -6,6 +6,7 @@ import { AppProps } from 'next/app';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
+import { SessionProvider } from '../providers/SessionProvider';
 
 if (!process.env.STRIPE_PUBLIC_KEY) {
   throw new Error('STRIPE_PUBLIC_KEY is not set');
@@ -16,9 +17,11 @@ const stripe = loadStripe(process.env.STRIPE_PUBLIC_KEY);
 
 const App: NextPage<AppProps> = ({ Component, pageProps }: AppProps) => (
   <QueryClientProvider client={queryClient}>
-    <Elements stripe={stripe}>
-      <Component {...pageProps} />
-    </Elements>
+    <SessionProvider>
+      <Elements stripe={stripe}>
+        <Component {...pageProps} />
+      </Elements>
+    </SessionProvider>
   </QueryClientProvider>
 );
 
