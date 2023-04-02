@@ -21,7 +21,7 @@ export const Page = ({
   headerImage,
   hideHeader,
 }: PageProps) => (
-  <div className="text-on-surface-base">
+  <div className="text-on-surface-base min-h-screen flex flex-col">
     <MainNav />
     <Meta
       title={meta?.title || title}
