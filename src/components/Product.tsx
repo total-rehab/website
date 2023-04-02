@@ -1,7 +1,9 @@
 import { ApiComponents } from '@jambff/oac';
 import getUserLocale from 'get-user-locale';
 import { FC, useCallback, useEffect, useState } from 'react';
+import { totalRehabApi } from '../total-rehab-api';
 import { Button } from './Button';
+import { LoadingSpinner } from './LoadingSpinner';
 
 type ProductProps = {
   product: ApiComponents['Product'];
@@ -10,6 +12,7 @@ type ProductProps = {
 export const Product: FC<ProductProps> = ({ product }: ProductProps) => {
   const [paymentAmount, setPaymentAmount] = useState<string>();
   const [perUnitCost, setPerUnitCost] = useState<string>();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const getLocalAmount = useCallback(
     (amount: number) => {
@@ -28,6 +31,15 @@ export const Product: FC<ProductProps> = ({ product }: ProductProps) => {
     setPerUnitCost(getLocalAmount(product.price.amount / product.quantity));
   }, [getLocalAmount, product]);
 
+  const onClick = async () => {
+    setIsLoading(true);
+    const { checkoutSessionUrl } = await totalRehabApi.checkout({
+      params: { id: product.id },
+    });
+
+    window.location.href = checkoutSessionUrl;
+  };
+
   return (
     <div className="border border-gray-400 overflow-hidden shdow bg-white text-on-surface-base rounded">
       <div className="px-7 py-5 flex flex-col h-full">
@@ -45,8 +57,10 @@ export const Product: FC<ProductProps> = ({ product }: ProductProps) => {
             </p>
           </div>
         </div>
-        <div>
-          <Button className="mt-8">Buy now</Button>
+        <div className="mt-8">
+          <Button isLoading={isLoading} onClick={onClick}>
+            Buy now
+          </Button>
         </div>
       </div>
     </div>
