@@ -17,7 +17,7 @@ const ProductsPage: NextPage<DashboardPageProps> = ({
   products,
 }: DashboardPageProps) => (
   <Page hideHeader title="Sign up" description="Sign up to the Total Rehab app">
-    <DashboardLayout lead="Purchase">
+    <DashboardLayout>
       <section>
         <Container className="pt-12 pb-12 lg:pb-20 space-y-12 lg:space-y-16 text-center">
           <div>
