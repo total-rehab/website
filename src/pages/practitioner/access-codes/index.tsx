@@ -27,8 +27,12 @@ const AccessCodesPage: NextPage = () => {
     () =>
       data?.items.map((item) => ({
         code: item.code,
-        createdAt: humanDate.prettyPrint(item.createdAt),
-        userEmail: item.assignedUser,
+        created: humanDate.prettyPrint(item.createdAt),
+        user: item.assignedUser ? (
+          item.assignedUser.email
+        ) : (
+          <Button>Assign</Button>
+        ),
       })),
     [data?.items],
   );

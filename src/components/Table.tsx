@@ -30,16 +30,15 @@ export const Table: FC<TableProps> = ({ data, className }: TableProps) => {
           </tr>
         </thead>
         <tbody>
-          {data.map((item) => (
-            <tr
-              key={JSON.stringify(item)}
-              className="bg-white border border-gray-300">
-              {keys.map((key, i) => (
+          {data.map((item, i) => (
+            // eslint-disable-next-line react/no-array-index-key
+            <tr key={i} className="bg-white border border-gray-300">
+              {keys.map((key, j) => (
                 <td
                   key={key}
                   className={cn(
                     'px-6 py-4',
-                    i === 0 ? 'text-left' : 'text-center',
+                    j === 0 ? 'text-left' : 'text-center',
                   )}>
                   {item[key]}
                 </td>
