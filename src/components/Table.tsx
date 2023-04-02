@@ -1,7 +1,6 @@
 import { sentenceCase } from 'change-case';
 import cn from 'classnames';
 import { FC, ReactNode } from 'react';
-import { Button } from './Button';
 
 type TableProps = {
   data: Record<string, ReactNode>[];
