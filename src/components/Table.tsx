@@ -9,7 +9,7 @@ type TableProps = {
 };
 
 export const Table: FC<TableProps> = ({ data, className }: TableProps) => {
-  const keys = Object.keys(data[0]);
+  const keys = Object.keys(data[0] ?? {});
 
   return (
     <div className={cn('overflow-x-auto', className)}>

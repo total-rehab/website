@@ -1,20 +1,37 @@
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
+import { useQuery } from '@tanstack/react-query';
+import { useMemo } from 'react';
+import humanDate from 'human-date';
 import { Page } from '../../../components/Page';
+
 import { DashboardLayout } from '../../../components/DashboardLayout';
 import { Table } from '../../../components/Table';
 import { Button } from '../../../components/Button';
-
-const accessCodes = [
-  { code: '123', createdAt: 'sometime', action: <Button>Do something</Button> },
-];
+import { useAuthenticatedTotalRehabApi } from '../../../hooks/useAuthenticatedTotalRehabApi';
+import { LoadingSpinner } from '../../../components/LoadingSpinner';
 
 const AccessCodesPage: NextPage = () => {
   const router = useRouter();
+  const authenticatedTotalRehabApi = useAuthenticatedTotalRehabApi();
+
+  const { data, isLoading } = useQuery(['access-codes'], () =>
+    authenticatedTotalRehabApi.getAccessCodes(),
+  );
 
   const onBuyCodesClick = () => {
     router.push('/practitioner/access-codes/purchase');
   };
+
+  const tableData = useMemo(
+    () =>
+      data?.items.map((item) => ({
+        code: item.code,
+        createdAt: humanDate.prettyPrint(item.createdAt),
+        userEmail: item.assignedUser,
+      })),
+    [data?.items],
+  );
 
   return (
     <Page
@@ -33,7 +50,10 @@ const AccessCodesPage: NextPage = () => {
             <Button onClick={onBuyCodesClick}>Buy access codes</Button>
           </div>
         </div>
-        <Table className="mt-8" data={accessCodes} />
+        {isLoading && (
+          <LoadingSpinner className="items-center justify-center flex mt-10" />
+        )}
+        {tableData && <Table className="mt-8" data={tableData} />}
       </DashboardLayout>
     </Page>
   );

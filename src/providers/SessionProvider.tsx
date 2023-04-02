@@ -73,6 +73,7 @@ export const SessionProvider: React.FC<SessionProviderProps> = ({
     loadInitialSession();
 
     supabase.auth.onAuthStateChange((_event, newSession) => {
+      console.log('change');
       setSession(newSession);
     });
   }, [loadInitialSession]);
