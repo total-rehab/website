@@ -31,7 +31,7 @@ export const Footer: FC = () => (
         </div>
         <ul className="flex flex-col md:flex-row gap-x-10 text-white space-y-6 md:space-y-0 text-center uppercase tracking-wide">
           <li>
-            <NavLink href="/blog">Blog</NavLink>
+            <NavLink href="/blog-posts/1">Blog</NavLink>
           </li>
           <li>
             <NavLink href="/policies/privacy">Privacy</NavLink>
