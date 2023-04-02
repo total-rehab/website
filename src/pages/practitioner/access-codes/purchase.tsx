@@ -5,13 +5,13 @@ import { totalRehabApi } from '../../../total-rehab-api';
 import { Product } from '../../../components/Product';
 import { DashboardLayout } from '../../../components/DashboardLayout';
 
-type DashboardPageProps = {
+type AccessCodesPurchasePageProps = {
   products: ApiComponents['Product'][];
 };
 
-const ProductsPage: NextPage<DashboardPageProps> = ({
+const AccessCodesPurchasePage: NextPage<AccessCodesPurchasePageProps> = ({
   products,
-}: DashboardPageProps) => (
+}: AccessCodesPurchasePageProps) => (
   <Page hideHeader title="Sign up" description="Sign up to the Total Rehab app">
     <DashboardLayout>
       <p className="text-xl mb-8">
@@ -27,7 +27,9 @@ const ProductsPage: NextPage<DashboardPageProps> = ({
   </Page>
 );
 
-export const getStaticProps: GetStaticProps<DashboardPageProps> = async () => {
+export const getStaticProps: GetStaticProps<
+  AccessCodesPurchasePageProps
+> = async () => {
   const products = await totalRehabApi.getProducts();
 
   // Sort products to put those with the lowest quantity first.
@@ -40,4 +42,4 @@ export const getStaticProps: GetStaticProps<DashboardPageProps> = async () => {
   };
 };
 
-export default ProductsPage;
+export default AccessCodesPurchasePage;

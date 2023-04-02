@@ -44,7 +44,7 @@ export const Product: FC<ProductProps> = ({ product }: ProductProps) => {
   };
 
   return (
-    <div className="border border-gray-400 overflow-hidden shdow bg-white text-on-surface-base rounded">
+    <div className="border border-gray-500 overflow-hidden shdow bg-white text-on-surface-base rounded text-center">
       <div className="px-7 py-5 flex flex-col h-full">
         <div className="flex flex-col flex-1">
           <div>
