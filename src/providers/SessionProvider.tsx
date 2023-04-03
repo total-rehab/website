@@ -1,10 +1,7 @@
 import type { Session } from '@supabase/supabase-js';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
-import { useRouter } from 'next/router';
-import { createSupabaseClient } from '../supabase';
-
-const supabase = createSupabaseClient();
+import { supabase } from '../supabase';
 
 interface ISessionContext {
   session: Session | null;
@@ -36,7 +33,6 @@ export const SessionProvider: React.FC<SessionProviderProps> = ({
   const [session, setSession] = useState<Session | null>(null);
   const [isSessionLoaded, setIsSessionLoaded] = useState<boolean>(false);
   const queryClient = useQueryClient();
-  const router = useRouter();
 
   const refreshSession = useCallback(async () => {
     if (!session) {
@@ -56,8 +52,7 @@ export const SessionProvider: React.FC<SessionProviderProps> = ({
     await supabase.auth.signOut();
     queryClient.clear();
     setSession(null);
-    router.push('/');
-  }, [router, queryClient]);
+  }, [queryClient]);
 
   const loadInitialSession = useCallback(async () => {
     const { data } = await supabase.auth.getSession();
@@ -73,7 +68,6 @@ export const SessionProvider: React.FC<SessionProviderProps> = ({
     loadInitialSession();
 
     supabase.auth.onAuthStateChange((_event, newSession) => {
-      console.log('change');
       setSession(newSession);
     });
   }, [loadInitialSession]);
