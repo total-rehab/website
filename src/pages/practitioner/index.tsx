@@ -1,5 +1,4 @@
 import { NextPage } from 'next';
-import { useRouter } from 'next/router';
 import { useQuery } from '@tanstack/react-query';
 import { useMemo } from 'react';
 import humanDate from 'human-date';
@@ -7,21 +6,15 @@ import { Page } from '../../components/Page';
 
 import { DashboardLayout } from '../../components/DashboardLayout';
 import { Table } from '../../components/Table';
-import { Button } from '../../components/Button';
 import { useAuthenticatedTotalRehabApi } from '../../hooks/useAuthenticatedTotalRehabApi';
 import { LoadingSpinner } from '../../components/LoadingSpinner';
 
 const PatientsPage: NextPage = () => {
-  const router = useRouter();
   const authenticatedTotalRehabApi = useAuthenticatedTotalRehabApi();
 
   const { data, isLoading } = useQuery(['patients'], () =>
     authenticatedTotalRehabApi.getPatients(),
   );
-
-  const onBuyCodesClick = () => {
-    router.push('/practitioner/access-codes/purchase');
-  };
 
   const tableData = useMemo(
     () =>

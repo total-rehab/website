@@ -12,16 +12,11 @@ import { useAuthenticatedTotalRehabApi } from '../../../hooks/useAuthenticatedTo
 import { LoadingSpinner } from '../../../components/LoadingSpinner';
 
 const AccessCodesPage: NextPage = () => {
-  const router = useRouter();
   const authenticatedTotalRehabApi = useAuthenticatedTotalRehabApi();
 
   const { data, isLoading } = useQuery(['access-codes'], () =>
     authenticatedTotalRehabApi.getAccessCodes(),
   );
-
-  const onBuyCodesClick = () => {
-    router.push('/practitioner/access-codes/purchase');
-  };
 
   const tableData = useMemo(
     () =>
@@ -31,7 +26,9 @@ const AccessCodesPage: NextPage = () => {
         user: item.assignedUser ? (
           item.assignedUser.email
         ) : (
-          <Button>Assign</Button>
+          <Button href={`/practitioner/access-codes/assign?code=${item.code}`}>
+            Assign
+          </Button>
         ),
       })),
     [data?.items],
@@ -51,7 +48,9 @@ const AccessCodesPage: NextPage = () => {
             </p>
           </div>
           <div>
-            <Button onClick={onBuyCodesClick}>Buy access codes</Button>
+            <Button href="/practitioner/access-codes/purchase">
+              Buy access codes
+            </Button>
           </div>
         </div>
         {isLoading && (

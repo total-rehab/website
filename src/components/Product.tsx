@@ -35,8 +35,9 @@ export const Product: FC<ProductProps> = ({ product }: ProductProps) => {
     setIsLoading(true);
     const { checkoutSessionUrl } = await authenticatedTotalRehabApi.checkout({
       params: { id: product.id },
-      query: {
-        redirectUrl: new URL('/practitioner', window.location.origin).href,
+      data: {
+        successUrl: new URL('/practitioner', window.location.origin).href,
+        cancelUrl: window.location.href,
       },
     });
 
