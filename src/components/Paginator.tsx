@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import ChevronLeft from '@mui/icons-material/ChevronLeft';
 import ChevronRight from '@mui/icons-material/ChevronRight';
+import { useRouter } from 'next/router';
 import { PaginatorLink } from './PaginatorLink';
 
 type PaginatorProps = {
@@ -10,12 +11,18 @@ type PaginatorProps = {
 };
 
 const CHEVRON_ICON_SIZE = 20;
+const MAX_PAGES = 5;
 
 export const Paginator: FC<PaginatorProps> = ({
   className,
   page,
   totalPages,
 }: PaginatorProps) => {
+  const router = useRouter();
+  const activePage = Number.isFinite(Number(router.query.page))
+    ? Number(router.query.page)
+    : 0;
+
   const prevPage = page - 1;
   const nextPage = page + 1;
 
@@ -32,10 +39,10 @@ export const Paginator: FC<PaginatorProps> = ({
           </PaginatorLink>
         </li>
 
-        {Array(Math.min(totalPages, 5))
+        {Array(Math.min(totalPages, MAX_PAGES))
           .fill(null)
           .map((_, i) => {
-            const currentPage = i + 1;
+            const currentPage = i + 1 + Math.max(0, activePage - MAX_PAGES);
 
             return (
               // eslint-disable-next-line react/no-array-index-key

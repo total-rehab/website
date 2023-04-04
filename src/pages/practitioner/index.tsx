@@ -2,19 +2,29 @@ import { NextPage } from 'next';
 import { useQuery } from '@tanstack/react-query';
 import { useMemo } from 'react';
 import humanDate from 'human-date';
-import { Button as MuiButton } from '@mui/material';
+import { useRouter } from 'next/router';
 import { Page } from '../../components/Page';
 import { DashboardLayout } from '../../components/DashboardLayout';
 import { Table } from '../../components/Table';
 import { Button } from '../../components/Button';
 import { useAuthenticatedTotalRehabApi } from '../../hooks/useAuthenticatedTotalRehabApi';
 import { LoadingSpinner } from '../../components/LoadingSpinner';
+import { Paginator } from '../../components/Paginator';
+
+const LIMIT = 20;
 
 const AccessCodesPage: NextPage = () => {
   const authenticatedTotalRehabApi = useAuthenticatedTotalRehabApi();
+  const router = useRouter();
+  const page = Number(router.query.page ?? 1);
 
-  const { data, isLoading } = useQuery(['access-codes'], () =>
-    authenticatedTotalRehabApi.getAccessCodes(),
+  const { data, isLoading } = useQuery(['access-codes', page], () =>
+    authenticatedTotalRehabApi.getAccessCodes({
+      query: {
+        limit: LIMIT,
+        offset: (page - 1) * LIMIT,
+      },
+    }),
   );
 
   const tableData = useMemo(
@@ -52,6 +62,13 @@ const AccessCodesPage: NextPage = () => {
           <LoadingSpinner className="items-center justify-center flex mt-10" />
         )}
         {tableData && <Table className="mt-8" data={tableData} />}
+        {data?.items && (
+          <Paginator
+            className="mt-12 flex justify-center"
+            page={page}
+            totalPages={Math.ceil(data.total / LIMIT)}
+          />
+        )}
       </DashboardLayout>
     </Page>
   );
