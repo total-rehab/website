@@ -8,6 +8,7 @@ interface ISessionContext {
   isSessionLoaded: boolean;
   refreshSession: () => Promise<Session | null>;
   endSession: () => Promise<void>;
+  getAccessToken: () => Promise<string | null>;
 }
 
 type SessionProviderProps = {
@@ -17,6 +18,7 @@ type SessionProviderProps = {
 export const SessionContext = React.createContext<ISessionContext>({
   session: null,
   isSessionLoaded: false,
+  getAccessToken: async () => null,
   refreshSession: () =>
     new Promise((resolve) => {
       resolve(null);
@@ -35,18 +37,22 @@ export const SessionProvider: React.FC<SessionProviderProps> = ({
   const queryClient = useQueryClient();
 
   const refreshSession = useCallback(async () => {
-    if (!session) {
+    const {
+      data: { session: currentSession },
+    } = await supabase.auth.getSession();
+
+    if (!currentSession) {
       return null;
     }
 
     const {
       data: { session: newSession },
-    } = await supabase.auth.setSession(session);
+    } = await supabase.auth.setSession(currentSession);
 
     setSession(newSession);
 
     return newSession;
-  }, [session]);
+  }, []);
 
   const endSession = useCallback(async () => {
     await supabase.auth.signOut();
@@ -64,6 +70,12 @@ export const SessionProvider: React.FC<SessionProviderProps> = ({
     setIsSessionLoaded(true);
   }, []);
 
+  const getAccessToken = useCallback(async () => {
+    const { data } = await supabase.auth.getSession();
+
+    return data.session?.access_token ?? null;
+  }, []);
+
   useEffect(() => {
     loadInitialSession();
 
@@ -76,10 +88,11 @@ export const SessionProvider: React.FC<SessionProviderProps> = ({
     (): ISessionContext => ({
       session,
       refreshSession,
+      getAccessToken,
       endSession,
       isSessionLoaded,
     }),
-    [session, refreshSession, endSession, isSessionLoaded],
+    [session, refreshSession, endSession, getAccessToken, isSessionLoaded],
   );
 
   return (

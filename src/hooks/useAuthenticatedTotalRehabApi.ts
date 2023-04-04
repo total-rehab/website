@@ -7,7 +7,8 @@ import { useContext } from 'react';
 import { SessionContext } from '../providers/SessionProvider';
 
 export const useAuthenticatedTotalRehabApi = (): OpenApiClient => {
-  const { session, refreshSession, endSession } = useContext(SessionContext);
+  const { getAccessToken, refreshSession, endSession } =
+    useContext(SessionContext);
   const baseURL = process.env.API_BASE_URL;
 
   if (!baseURL) {
@@ -16,10 +17,10 @@ export const useAuthenticatedTotalRehabApi = (): OpenApiClient => {
 
   return createOpenApiClient({
     baseURL,
-    getAccessToken: () => session?.access_token,
+    getAccessToken,
     refreshAccessToken: async () => {
-      const newSession = await refreshSession();
-      const newAccessToken = newSession?.access_token;
+      await refreshSession();
+      const newAccessToken = getAccessToken();
 
       if (!newAccessToken) {
         await endSession();
