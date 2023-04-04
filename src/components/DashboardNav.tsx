@@ -1,7 +1,6 @@
 import { FC, useContext } from 'react';
 import cn from 'classnames';
 import Link from 'next/link';
-import { NavLink } from './NavLink';
 import { SessionContext } from '../providers/SessionProvider';
 
 type NavProps = {
@@ -9,7 +8,7 @@ type NavProps = {
 };
 
 export const DashboardNav: FC<NavProps> = ({ className }: NavProps) => {
-  const { endSession, session, isSessionLoaded } = useContext(SessionContext);
+  const { endSession, isSessionLoaded } = useContext(SessionContext);
 
   return (
     <div className={cn('border-b bg-gray-50 border-gray-300', className)}>
@@ -20,10 +19,10 @@ export const DashboardNav: FC<NavProps> = ({ className }: NavProps) => {
               {isSessionLoaded && (
                 <li>
                   <Link
-                    href="/practitioner/auth"
+                    href="/"
                     onClick={endSession}
                     className="underline-offset-8 text-lg hover:underline font-medium">
-                    Sign {session ? 'out' : 'in'}
+                    Sign out
                   </Link>
                 </li>
               )}

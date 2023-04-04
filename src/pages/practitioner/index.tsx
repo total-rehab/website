@@ -2,27 +2,31 @@ import { NextPage } from 'next';
 import { useQuery } from '@tanstack/react-query';
 import { useMemo } from 'react';
 import humanDate from 'human-date';
+import { Button as MuiButton } from '@mui/material';
 import { Page } from '../../components/Page';
-
 import { DashboardLayout } from '../../components/DashboardLayout';
 import { Table } from '../../components/Table';
+import { Button } from '../../components/Button';
 import { useAuthenticatedTotalRehabApi } from '../../hooks/useAuthenticatedTotalRehabApi';
 import { LoadingSpinner } from '../../components/LoadingSpinner';
 
-const PatientsPage: NextPage = () => {
+const AccessCodesPage: NextPage = () => {
   const authenticatedTotalRehabApi = useAuthenticatedTotalRehabApi();
 
-  const { data, isLoading } = useQuery(['patients'], () =>
-    authenticatedTotalRehabApi.getPatients(),
+  const { data, isLoading } = useQuery(['access-codes'], () =>
+    authenticatedTotalRehabApi.getAccessCodes(),
   );
 
   const tableData = useMemo(
     () =>
       data?.items.map((item) => ({
-        email: item.email,
-        createdAt: humanDate.prettyPrint(item.createdAt),
-        dateOfBirth: humanDate.prettyPrint(item.dateOfBirth),
-        activityLevel: item.activityLevel,
+        code: item.code,
+        created: humanDate.prettyPrint(item.createdAt),
+        action: (
+          <Button href={`/practitioner/patients/create?code=${item.code}`}>
+            Create patient
+          </Button>
+        ),
       })),
     [data?.items],
   );
@@ -33,11 +37,16 @@ const PatientsPage: NextPage = () => {
       title="Sign up"
       description="Sign up to the Total Rehab app">
       <DashboardLayout>
-        <div className="md:flex-[60%]">
-          <p className="text-xl mb-8">
-            Listed below are the patients signed up to the Total Rehab app using
-            the access codes you have provided.
-          </p>
+        <div className="flex flex-col xl:flex-row justify-between">
+          <div className="md:flex-[60%]">
+            <p className="text-xl mb-8">
+              The access codes listed below can be to provide your patients with
+              full access to all programs within the Total Rehab app.
+            </p>
+          </div>
+          <div>
+            <Button href="/practitioner/purchase">Buy access codes</Button>
+          </div>
         </div>
         {isLoading && (
           <LoadingSpinner className="items-center justify-center flex mt-10" />
@@ -48,4 +57,4 @@ const PatientsPage: NextPage = () => {
   );
 };
 
-export default PatientsPage;
+export default AccessCodesPage;

@@ -1,5 +1,4 @@
 import { NextPage } from 'next';
-import { useRouter } from 'next/router';
 import { useQuery } from '@tanstack/react-query';
 import { useMemo } from 'react';
 import humanDate from 'human-date';
@@ -7,27 +6,30 @@ import { Page } from '../../../components/Page';
 
 import { DashboardLayout } from '../../../components/DashboardLayout';
 import { Table } from '../../../components/Table';
-import { Button } from '../../../components/Button';
 import { useAuthenticatedTotalRehabApi } from '../../../hooks/useAuthenticatedTotalRehabApi';
 import { LoadingSpinner } from '../../../components/LoadingSpinner';
+import { Button } from '../../../components/Button';
 
-const AccessCodesPage: NextPage = () => {
+const PatientsPage: NextPage = () => {
   const authenticatedTotalRehabApi = useAuthenticatedTotalRehabApi();
 
-  const { data, isLoading } = useQuery(['access-codes'], () =>
-    authenticatedTotalRehabApi.getAccessCodes(),
+  const { data, isLoading } = useQuery(['patients'], () =>
+    authenticatedTotalRehabApi.getPatients(),
   );
 
   const tableData = useMemo(
     () =>
       data?.items.map((item) => ({
-        code: item.code,
-        created: humanDate.prettyPrint(item.createdAt),
-        user: item.assignedUser ? (
-          item.assignedUser.email
-        ) : (
-          <Button href={`/practitioner/access-codes/assign?code=${item.code}`}>
-            Assign
+        email: item.email,
+        createdAt: humanDate.prettyPrint(item.createdAt),
+        dateOfBirth: item.dateOfBirth
+          ? humanDate.prettyPrint(item.dateOfBirth)
+          : '-',
+        activityLevel: item.activityLevel ?? '-',
+        programAssigned: String(!!item.programId),
+        action: (
+          <Button href={`/practitioner/patients/assign?guid=${item.guid}`}>
+            Assign program
           </Button>
         ),
       })),
@@ -40,18 +42,11 @@ const AccessCodesPage: NextPage = () => {
       title="Sign up"
       description="Sign up to the Total Rehab app">
       <DashboardLayout>
-        <div className="flex flex-col xl:flex-row justify-between">
-          <div className="md:flex-[60%]">
-            <p className="text-xl mb-8">
-              The access codes listed below can be to provide your patients with
-              full access to all programs within the Total Rehab app.
-            </p>
-          </div>
-          <div>
-            <Button href="/practitioner/access-codes/purchase">
-              Buy access codes
-            </Button>
-          </div>
+        <div className="md:flex-[60%]">
+          <p className="text-xl mb-8">
+            Listed below are the patients signed up to the Total Rehab app using
+            the access codes you have provided.
+          </p>
         </div>
         {isLoading && (
           <LoadingSpinner className="items-center justify-center flex mt-10" />
@@ -62,4 +57,4 @@ const AccessCodesPage: NextPage = () => {
   );
 };
 
-export default AccessCodesPage;
+export default PatientsPage;

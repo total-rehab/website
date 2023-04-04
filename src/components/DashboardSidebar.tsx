@@ -21,12 +21,12 @@ export const DashboardSidebar = ({ className }: DashboardSidebarProps) => {
         <ul className="space-y-2 font-medium">
           <li>
             <DashboardSidebarLink href="/practitioner">
-              Patients
+              Access codes
             </DashboardSidebarLink>
           </li>
           <li>
-            <DashboardSidebarLink href="/practitioner/access-codes">
-              Access codes
+            <DashboardSidebarLink href="/practitioner/patients">
+              Patients
             </DashboardSidebarLink>
           </li>
           <li className="sm:hidden">

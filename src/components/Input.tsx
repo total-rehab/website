@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { FC } from 'react';
+import { ChangeEvent, FC } from 'react';
 
 type InputProps = {
   label: string;
@@ -8,6 +8,8 @@ type InputProps = {
   required?: boolean;
   type?: string;
   disabled?: boolean;
+  onChange?: (evt: ChangeEvent<HTMLInputElement>) => void;
+  value?: string | number;
 };
 
 export const Input: FC<InputProps> = ({
@@ -17,6 +19,8 @@ export const Input: FC<InputProps> = ({
   required,
   disabled,
   type = 'text',
+  onChange,
+  value,
 }: InputProps) => (
   <div>
     <label
@@ -29,6 +33,8 @@ export const Input: FC<InputProps> = ({
       id={name}
       name={name}
       disabled={disabled}
+      onChange={onChange}
+      value={value}
       className={cn(
         'border border-gray-400 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5',
         disabled ? 'bg-gray-150 cursor-not-allowed' : 'bg-white',

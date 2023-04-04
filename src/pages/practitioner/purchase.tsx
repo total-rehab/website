@@ -1,9 +1,9 @@
 import { ApiComponents } from '@jambff/oac';
 import { GetStaticProps, NextPage } from 'next';
-import { Page } from '../../../components/Page';
-import { totalRehabApi } from '../../../total-rehab-api';
-import { Product } from '../../../components/Product';
-import { DashboardLayout } from '../../../components/DashboardLayout';
+import { Page } from '../../components/Page';
+import { totalRehabApi } from '../../total-rehab-api';
+import { Product } from '../../components/Product';
+import { DashboardLayout } from '../../components/DashboardLayout';
 
 type AccessCodesPurchasePageProps = {
   products: ApiComponents['Product'][];

@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { ChangeEvent, FC } from 'react';
 
 type SelectInputProps = {
   label: string;
@@ -6,6 +6,8 @@ type SelectInputProps = {
   placeholder?: string;
   required?: boolean;
   options: { label: string; value: string | number }[];
+  value?: string | number;
+  onChange?: (evt: ChangeEvent<HTMLSelectElement>) => void;
 };
 
 export const SelectInput: FC<SelectInputProps> = ({
@@ -14,6 +16,8 @@ export const SelectInput: FC<SelectInputProps> = ({
   placeholder,
   required,
   options,
+  value,
+  onChange,
 }: SelectInputProps) => (
   <div>
     <label
@@ -24,6 +28,8 @@ export const SelectInput: FC<SelectInputProps> = ({
     <select
       id={name}
       name={name}
+      value={value}
+      onChange={onChange}
       className="bg-white border border-gray-400 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
       placeholder={placeholder}
       required={required}>
