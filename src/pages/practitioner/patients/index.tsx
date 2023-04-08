@@ -21,7 +21,6 @@ const PatientsPage: NextPage = () => {
     () =>
       data?.items.map((item) => ({
         email: item.email,
-        createdAt: humanDate.prettyPrint(item.createdAt),
         dateOfBirth: item.dateOfBirth
           ? humanDate.prettyPrint(item.dateOfBirth)
           : '-',
