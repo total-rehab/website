@@ -37,10 +37,11 @@ export const MainNavLinks: FC<MainNavLinksProps> = ({
         Download
       </NavLink>
     </li>
-    <li>
+    {/* Commented out until we want payments to go live. */}
+    {/* <li>
       <NavLink href="/practitioner" activeClassName={ACTIVE_LINK_CLASS_NAME}>
         Practitioner
       </NavLink>
-    </li>
+    </li> */}
   </ul>
 );
