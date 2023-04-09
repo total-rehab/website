@@ -1,9 +1,6 @@
 import type { FC } from 'react';
-import Instagram from '@mui/icons-material/Instagram';
-import Facebook from '@mui/icons-material/Facebook';
 import ExportedImage from 'next-image-export-optimizer';
 import { useRouter } from 'next/router';
-import cn from 'classnames';
 import { Container } from './Container';
 import { NavLink } from './NavLink';
 import { SocialLinks } from './SocialLinks';
