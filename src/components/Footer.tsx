@@ -57,6 +57,9 @@ export const Footer: FC = () => {
               <NavLink href="/policies/privacy">Privacy</NavLink>
             </li>
             <li>
+              <NavLink href="/policies/terms">Terms</NavLink>
+            </li>
+            <li>
               <NavLink href="mailto:support@total-rehab.co.uk">Contact</NavLink>
             </li>
           </ul>

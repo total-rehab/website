@@ -7,6 +7,7 @@ import {
   GetPlanResponse,
   GetPlansOptions,
   GetPlansResponse,
+  GetSettingsResponse,
 } from '@jambff/oac';
 import { totalRehabApi } from './total-rehab-api';
 
@@ -59,3 +60,6 @@ export const getPlans = (opts?: GetPlansOptions): Promise<GetPlansResponse> =>
       include: planIncludes,
     },
   });
+
+export const getSettings = (): Promise<GetSettingsResponse> =>
+  totalRehabApi.getSettings();

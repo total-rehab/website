@@ -31,7 +31,7 @@ export const Page = ({
     {!hideHeader && (
       <Header title={title} description={description} image={headerImage} />
     )}
-    {children}
+    <div className="flex-1">{children}</div>
     <Footer />
   </div>
 );
