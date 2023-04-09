@@ -1,9 +1,16 @@
 import type { FC } from 'react';
 import Instagram from '@mui/icons-material/Instagram';
 import Facebook from '@mui/icons-material/Facebook';
+import classNames from 'classnames';
 
-export const SocialLinks: FC = () => (
-  <div className="text-white space-x-4">
+type SocialLinksProps = {
+  className?: string;
+};
+
+export const SocialLinks: FC<SocialLinksProps> = ({
+  className,
+}: SocialLinksProps) => (
+  <div className={classNames('text-white space-x-4', className)}>
     <a
       href="https://www.facebook.com/totalrehabapp"
       aria-label="Total Rehab Facebook page">

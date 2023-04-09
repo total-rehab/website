@@ -48,7 +48,7 @@ export const Footer: FC = () => {
               sizes="250px"
             />
           )}
-          <SocialLinks />
+          <SocialLinks className="mb-6" />
           <ul className="flex flex-col md:flex-row gap-x-10 text-white space-y-6 md:space-y-0 text-center uppercase tracking-wide">
             <li>
               <NavLink href="/blog-posts/1">Blog</NavLink>
