@@ -44,7 +44,7 @@ const getImageSources = async (from) => {
   const mediaRes = await supabase
     .from('Media')
     .select('src')
-    .eq('id', [...allImageIds]);
+    .in('id', [...allImageIds]);
 
   if (mediaRes.error) {
     throw new Error(mediaRes.error.message);
