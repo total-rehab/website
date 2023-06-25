@@ -106,9 +106,9 @@ const HomePage: NextPage<HomePageProps> = ({
             <div className="w-full lg:w-2/5 hidden lg:flex justify-end">
               <ExportedImage
                 alt=""
-                src="/images/empty-phone.png"
-                width={350}
-                height={797}
+                src="/images/2.png"
+                width={640}
+                height={905}
                 sizes="350px"
               />
             </div>
@@ -121,9 +121,9 @@ const HomePage: NextPage<HomePageProps> = ({
             <div className="w-full lg:w-2/5 hidden lg:block">
               <ExportedImage
                 alt=""
-                src="/images/empty-phone.png"
-                width={350}
-                height={797}
+                src="/images/1.png"
+                width={640}
+                height={905}
                 sizes="350px"
               />
             </div>
